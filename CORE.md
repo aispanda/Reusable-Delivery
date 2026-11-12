@@ -6,6 +6,8 @@ Version 0.4 — proposed method. Required for both routes. Read completely befor
 
 Refresh the current story, relevant comments, decisions, dependencies, evidence and authority. Reuse accurate work; distinguish facts, historical reports, proposals and reviewer opinions. Never invent identities, results, approvals, URLs or implementation. Keep agreed criterion IDs and wording; material changes need reasons, applicable authority and affected rechecks.
 
+When upgrading an existing story to a newer guide, record both guide commit SHAs, compare changed rules and map affected checks. Preserve prior results as historical; retain still-valid evidence, reopen affected checks, and mark checks not yet performed NOT RUN. Do not silently rewrite the guide provenance or restart completed work.
+
 Keep the story understandable on its own, with concise solution/decisions and links to useful detail. Separate design, research, debugging, planning or evidence files only when their detail or lifecycle merits it. There is no fixed document count or word limit. A typical work-item folder starts with `story.md`; add other artifacts as needed, not empty scaffolding that suggests progress.
 
 ClickUp contains title, optional story sentence, folder/story links and owner/date/status fields. GitHub holds the detailed record. Execution evidence governs delivery status; cited human decisions or designated assignment fields govern ownership. Reconcile conflicts and keep unresolved ones visible. Do not maintain competing current stories; preserve historical snapshots.
@@ -14,11 +16,13 @@ Use relevant official platform documentation and identify the supported claim an
 
 ## Privacy, publication and links
 
-Keep client identities, instance URLs, real records, credentials and restricted evidence outside public Git. When sanitizing, preserve meaning with named parameters and a restricted mapping; compare source and published criteria and classify every difference. Missing or unauthorized changes to agreed criteria block completion. Use placeholders/synthetic data and an approved restricted index with opaque references, access owner and retrieval instructions. Do not invent public chat links. Missing or inaccessible required evidence remains a gap.
+Keep client identities, instance URLs, real records, credentials and restricted evidence outside public Git. When sanitizing, preserve meaning with named parameters and a restricted mapping; compare source and published criteria and classify every difference. Missing or unauthorized changes to agreed criteria block completion. Use placeholders/synthetic data and an approved restricted index with opaque references, access owner and retrieval instructions. Keep restricted originals and the mapping outside the repository in an approved access-controlled location; the index identifies its access owner and retrieval procedure without exposing sensitive paths publicly. Ignored local/private/reviews paths are only an accidental-add safety net, not approved private storage by themselves. Do not invent public chat links. Missing or inaccessible required evidence remains a gap.
 
 Before publishing, inspect files/diff, names, commit/branch text, author metadata and history for unauthorized disclosure. `.gitignore` does not remove tracked content or history. Do not falsify author identity. Coordinate the branch, preserve concurrent edits, publish only to the authorized repository and read back saved content and links. Report synchronization failures with a durable local record; never claim success without readback.
 
 Use mutable links for current story/folder and immutable commit/blob references for reviewed inputs and evidence. Label draft branches; verify access as the intended reader. Before replacing any existing ClickUp description, confirm edit authority and capture its current text verbatim (restricted if client-identifying). Account for its criteria in the source/destination comparison. Refresh immediately before writing and reconcile intervening edits; replace only after the GitHub files/links are verified, then read back the saved description and fields. Do not use description length or perceived importance to skip preservation.
+
+If the ClickUp item or access is missing, record synchronization as Pending with the reason and needed item/access/authority; request missing information once and retain the gap until resolved. Do not invent an item or create one without authority. Continue independent authorized GitHub work and report its publication separately; do not claim ClickUp synchronization or overall completion while a required sync remains unresolved.
 
 ## Copyable story
 
@@ -35,7 +39,7 @@ Accountable owner: <actual person or Pending>
 ## Current state
 <Verified result and evidence; unresolved limits; next eligible step and executor.>
 <Independent verification: NOT RUN/Pending/result. Human acceptance: required/not
-required/unknown, with source; actual decision remains Pending until received.>
+required/Pending — requirement unknown, with source; actual decision remains Pending until received.>
 
 ## Outcome and scope
 As a <beneficiary>, I want <capability>, so that <outcome>.
@@ -92,7 +96,9 @@ One assigned executor per step; split meaningful human/AI/automation handoffs. T
 
 For concurrency, use a coordinator or atomic shared claim: record step/files, executor, start and expected duration; read back the successful claim. Conflicting claimants wait. Without reliable coordination, use one writer for that scope. An overdue claim does not authorize takeover: establish that the prior executor stopped, inspect partial effects and record reassignment. Refresh before writeback; inspect uncertain writes before retry. Set proportionate time/cost/retry bounds and change the hypothesis before repeating failed attempts.
 
-States: Pending; In progress (executor/time); Rework (executed check failed); Blocked (specific dependency); Complete (checks passed with evidence); N/A (irrelevant, with reason); Superseded (reason and existing replacement ID). Unknown is not N/A. Neither N/A nor Superseded retires a failed criterion. Evidence governs summaries; changed inputs/criteria reopen affected checks.
+Check results: Pass (observed expected result with evidence), Fail (observed mismatch with evidence), NOT RUN (check not performed), or N/A — reason (check legitimately inapplicable). Missing knowledge is Pending with a reason, not N/A; a failed criterion cannot be retired this way. Human acceptance requirement is required, not required, or Pending with reason; its actual decision is Pending, accepted, or rejected, with source.
+
+Step states: Pending; In progress (executor/time); Rework (executed check failed); Blocked (specific dependency); Complete (checks passed with evidence); N/A (irrelevant, with reason); Superseded (reason and existing replacement ID). Unknown is not N/A. Neither N/A nor Superseded retires a failed criterion. Evidence governs summaries; changed inputs/criteria reopen affected checks.
 
 ## Review and acceptance
 
