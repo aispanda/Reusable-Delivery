@@ -1,0 +1,109 @@
+# Shared story template and execution rules
+
+Version 0.4. Required for both routes. Read completely before acting. If arriving here directly, first follow [DELIVERY.md](DELIVERY.md) to choose a route and consistent guide revision. This guide grants no authority to implement, deploy, spend, share externally or change criteria.
+
+## Working agreement
+
+Refresh the current story, relevant comments, decisions, dependencies, evidence and authority. Reuse accurate work; distinguish facts, historical reports, proposals and reviewer opinions. Never invent identities, results, approvals, URLs or implementation. Keep agreed criterion IDs and wording; material changes need reasons, applicable authority and affected rechecks.
+
+Keep the story understandable on its own, with concise solution/decisions and links to useful detail. Separate design, research, debugging, planning or evidence files only when their detail or lifecycle merits it. There is no fixed document count or word limit. A typical work-item folder starts with `story.md`; add other artifacts as needed, not empty scaffolding that suggests progress.
+
+ClickUp contains title, optional story sentence, folder/story links and owner/date/status fields. GitHub holds the detailed record. Execution evidence governs delivery status; cited human decisions or designated assignment fields govern ownership. Reconcile conflicts and keep unresolved ones visible. Do not maintain competing current stories; preserve historical snapshots.
+
+Use relevant official platform documentation and identify the supported claim and source section/version. Verify actual target metadata, edition, API version, access and behavior before relying on it. A URL proves neither compatibility nor runtime success. A new client/laptop supplies its own configuration and evidence: permissions, acceptance and fixture reservations do not automatically transfer.
+
+## Privacy, publication and links
+
+Keep client identities, instance URLs, real records, credentials and restricted evidence outside public Git. Use placeholders/synthetic data and an approved restricted index with opaque references, access owner and retrieval instructions. Do not invent public chat links. Missing or inaccessible required evidence remains a gap.
+
+Before publishing, inspect files/diff, names, commit/branch text, author metadata and history for unauthorized disclosure. `.gitignore` does not remove tracked content or history. Do not falsify author identity. Coordinate the branch, preserve concurrent edits, publish only to the authorized repository and read back saved content and links. Report synchronization failures with a durable local record; never claim success without readback.
+
+Use mutable links for current story/folder and immutable commit/blob references for reviewed inputs and evidence. Label draft branches; verify access as the intended reader. The migration route adds preservation checks before replacing ClickUp text.
+
+## Copyable story
+
+Replace placeholders with facts, **Pending — missing item**, **Blocked — dependency/resume condition**, **NOT RUN**, or **N/A — reason**. Unknown is not N/A. Keep these concerns covered without mechanically repeating irrelevant sections.
+
+```markdown
+# <stable story ID>: <outcome>
+
+Guide: <verified DELIVERY.md link; guide commit SHA; route NEW or MIGRATE>
+Revision/status/as-of: <revision; documentation/build/test/acceptance states separately>
+Origin: <permitted source reference/version; restricted index if necessary>
+Accountable owner: <actual person or Pending>
+
+## Current state
+<Verified result and evidence; unresolved limits; next eligible step and executor.>
+<Independent verification: NOT RUN/Pending/result. Human acceptance: required/not
+required/unknown, with source; actual decision remains Pending until received.>
+
+## Outcome and scope
+As a <beneficiary>, I want <capability>, so that <outcome>.
+<Scope, exclusions, baseline facts, assumptions and dependencies.>
+
+## Acceptance criteria
+| ID | Agreed criterion and observable expected result | Check/evidence | Result |
+|---|---|---|---|
+| AC-01 | <preserve wording> | <method and evidence> | NOT RUN |
+
+## Solution
+<Concise approach, important alternative/tradeoff, interactions and failure behavior.>
+<Links to design/research/investigation; claim supported and limits of each source.>
+<Relevant product, business, UX, technical and QA concerns; N/A with reason where useful.>
+
+## Execution
+| Step | Action / AC IDs | Dependencies | One executor; planned model/tool | State / result link |
+|---|---|---|---|---|
+| S-01 | <bounded action> | <required inputs> | <Human / Automation / AI; identity> | Pending |
+
+### Next step: S-01
+- Accountable owner; one executor; planned exact model/tool/version: <values>
+- Inputs: <source revision, schema/template, freshness/access; supporting docs and claims>
+- Operation/output: <bounded operation, destination, format, expected result>
+- Check: <AC IDs, method, expected outcome, verifier, evidence to retain>
+- Authority/boundary: <existing authorization reference, action class, excluded effects>
+- Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
+- Actual: NOT RUN. <Later record executor/model/identity source, attempt/time,
+  input/output revisions, expected versus observed checks, evidence, limits and next step.>
+
+## Review and decisions
+| Finding/decision | Reviewer, model/session, identity source and reviewed revision/scope | Disposition/repair | Recheck/evidence |
+|---|---|---|---|
+| <ID> | <actual identity or Pending> | <accepted/rejected/deferred with reason> | NOT RUN |
+<Human-reader and AI-execution perspectives; maker review clearly labeled.
+Fresh independent checker where required. Human acceptance separately recorded.>
+
+## Blockers and history
+<Blocker: timestamp, unmet criterion, attempts, partial effects, impact, responsible
+owner/service, smallest next action and verifiable resume condition.>
+<Material changes: reason/authority, affected criteria/checks, evidence and rechecks.
+Keep one current-state block; label old snapshots historical.>
+```
+
+## Executors and bounded execution
+
+One assigned executor per step; split meaningful human/AI/automation handoffs. The accountable human may differ. Unresolved required assignment blocks dispatch.
+
+- **Human:** actual person and action/decision.
+- **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
+- **AI:** client/agent, exact planned model and applicable reasoning setting; actual model separately with identity source (metadata preferred, self-report labeled). Family names such as Terra, Sol, Claude or Jev are examples, not exact versions or default assignments. Record non-LLM decision models accurately. Resolve planned identity before dispatch; record unknown actual identity with available session evidence rather than guess. No silent substitution of a required model.
+
+**Reconcile → select one eligible step → execute → verify → record → recompute → repeat.** Eligibility requires validated inputs/dependencies, executor, authority and budget. Expand only the immediate step; keep later steps concise. Continue independent work only if pending decisions cannot invalidate it. Preserve completed contracts/results inline or by link before expanding the next step. A tool success or subagent report alone is not acceptance evidence.
+
+For concurrency, use a coordinator or atomic shared claim: record step/files, executor, start and expected duration; read back the successful claim. Conflicting claimants wait. Without reliable coordination, use one writer for that scope. An overdue claim does not authorize takeover: establish that the prior executor stopped, inspect partial effects and record reassignment. Refresh before writeback; inspect uncertain writes before retry. Set proportionate time/cost/retry bounds and change the hypothesis before repeating failed attempts.
+
+States: Pending; In progress (executor/time); Rework (executed check failed); Blocked (specific dependency); Complete (checks passed with evidence); N/A (irrelevant, with reason); Superseded (reason and existing replacement ID). Unknown is not N/A. Neither N/A nor Superseded retires a failed criterion. Evidence governs summaries; changed inputs/criteria reopen affected checks.
+
+## Review and acceptance
+
+Check both human readability and AI execution precision; one reviewer may wear both hats, clearly labeled as maker review when applicable. Human-reader perspective is not human acceptance. A required independent checker must be fresh and inspect actual evidence against frozen criteria. Mockups/model opinions do not prove implementation.
+
+For requested/needed review, send only permitted context: precise question, exact revision, criteria, relevant artifact/evidence, and bounded output structure. Ask for findings with location, impact, correction and verification. Record actual reviewer/model/identity source, scope, findings, dispositions and affected rechecks; verify advice before acting. Reuse unchanged valid reviews. Access/model/transmission failures are blockers, not verdicts. Preserve required independent and human acceptance separately; do not invent approval gates or approvals.
+
+## Supporting detail when needed
+
+- **Design/research:** question and AC IDs; verified facts and dated/versioned source sections; approach/alternatives/tradeoffs; contracts/data flow and failure behavior; assumptions, decisions and validation plan.
+- **Debugging:** expected/observed behavior, reproducible case/environment; logs, hypotheses and discriminating checks; diagnosis/confidence; exact fix reference; original-failure retest and affected regressions; limits/recovery. Mark hypotheses untested/supported/disproven. A successful command is not proof of a fix. Keep sensitive raw logs restricted.
+- **Configuration:** required keys/types/defaults/validation, runtime/tool versions and retrieval mechanism. Commit placeholders/synthetic fixtures; keep real values outside the checkout where practical, otherwise verify local files are ignored and untracked. Use approved secret storage; never print secrets. Label proposed/unrun commands honestly.
+
+Optional [example](EXAMPLE.md) and [validation/source mapping](VALIDATION.md) support illustration or audit. This adapts the earlier agreed template v1.3 and Field Guide v1 + addition v1.1; private source references remain restricted, and user instructions govern adaptations.
