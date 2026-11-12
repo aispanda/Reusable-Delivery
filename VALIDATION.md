@@ -1,5 +1,17 @@
 # Delivery guide validation
 
+## Self-contained route candidate — local review, 12 November 2026
+
+This local candidate replaces required router/route/CORE reads with one complete selected guide. It is not yet published or a completed portfolio migration. Earlier entries below retain their historical revision and scope.
+
+Claude Code reported canonical reviewer `claude-opus-5-5`, medium reasoning. The first review received the full generated guides, router, compatibility pointers, README and generator. It found three issues: refreshed ClickUp text needed a new verbatim capture before replacement, separate mixed-work stories needed distinct route labels, and generation needed explicit UTF-8/LF handling. All were fixed. A fresh focused recheck received full corrected guides, router, generator and all authoring sources; its verdict was **Ready for controlled use**, with no material blockers. That review did not execute the generator or review private project sources. Its statement that route sections were identical is inaccurate: only the bootstrap and shared core are identical; route instructions intentionally differ.
+
+Local checks passed: generated outputs match sources byte-for-byte; deliberately changed content and CRLF drift are rejected; relative Markdown links and compatibility template anchors resolve. Python 3.10+ is required to regenerate. No migrations, implementation or runtime acceptance were proved by these checks. Before publication, verify the candidate diff and rerun the generation check; after publication, read back the exact pinned revision.
+
+Measured whitespace words: router 149; direct new guide 2,147; direct migration guide 2,455. Previous mandatory paths were 2,503 and 2,678 words respectively. Direct paths use one complete file rather than three; an unknown route adds the 149-word router. Original monolith was 2,307 words, so migration is still larger than that older baseline because safeguards and mixed-work handling grew. These are document-size measurements, not token/cost/latency or real-task efficiency results. Optional examples/review history and authoring sources are not required executor reads.
+
+## Historical validation record
+
 Proposed version 0.4, 11 November 2026. Earlier reviews below are historical and retain their original scope. This is the supporting record for [DELIVERY.md](DELIVERY.md), not an additional file every story must create. Human adoption remains Pending. No project has been migrated or implemented by this guide review.
 
 ## Source mapping
