@@ -21,6 +21,14 @@ Use the existing bounded task rows. For example, an AI writer implements an agre
 | S-03 | Check AC-01 behavior, failure paths and evidence. Record findings and rechecks. | S-01 and S-02 | Assigned independent reviewer | Pending |
 | S-04 | Record the acceptance or release decision when required. | S-02 and S-03 | Accountable human | Pending |
 
+Shipment pilot example from [S-05a](https://github.com/aispanda/salesforce-shipment-tracking-integration/blob/1b1a4ecfc01a1d4040f5f5b4006e68e5784fe1dc/story/user-story.md#execution-checklist)
+
+| Step | Executor | Proposed revision | Tested revision | Result |
+|---|---|---|---|---|
+| S-05a | GitHub Actions and Python `unittest` | `84e293ac71a8ce5d124517412a96b48a03e26051` | Merge `83f550e57b3ac16a1374abd09c062cc95e9dfa20` | [22 offline tests passed](https://github.com/aispanda/salesforce-shipment-tracking-integration/actions/runs/43151308174) on each of Python 3.11.18 and 3.14.10. |
+
+The story keeps the fresh review assignment and human acceptance pending in their own rows.
+
 ## Run the checks
 
 For code work, put the selected checks in a versioned command the writer can run locally and CI can run on the proposed change.
@@ -28,6 +36,8 @@ For code work, put the selected checks in a versioned command the writer can run
 Start with existing tests and the smallest useful language-specific checks. A fast editor or agent hook can call the same command when its runtime is suitable. Treat size, duplication and complexity reports as signals to inspect the changed code. Choose any blocking threshold from the repository baseline and observed value. Keep test behavior and transaction boundaries intact during cleanup.
 
 The reviewer examines behavior and maintainability against the proposed revision and agreed criteria. Turn confirmed failures into targeted regressions where useful. Record policy questions for the decision owner. Compare reviewer tools on verified findings, misses, noise, time and cost with equivalent inputs.
+
+If a repository uses an automatic PR reviewer, verify the trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the story, record the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
 
 ## GitHub Actions for a Python story
 
