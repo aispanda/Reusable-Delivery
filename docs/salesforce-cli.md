@@ -4,7 +4,7 @@ Use this guide to verify and recover Salesforce CLI access without inspecting th
 
 ## Inspect and verify
 
-1. Confirm Salesforce CLI is installed with `sf --version`. Consult the [Salesforce CLI command reference](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference.html) and local `sf <command> --help` for the installed version.
+1. Check `command -v sf` and `sf --version` in the actual executor environment. A missing command can mean that Salesforce CLI is installed outside that environment's `PATH`, not necessarily that it is absent. Consult the [Salesforce CLI command reference](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference.html) and local `sf <command> --help` for the installed version.
 2. Run `sf org list --json` privately to identify the intended alias and user. Treat this as an inventory of local authorizations, not proof of live access. Do not publish its output.
 3. Perform a targeted, read-only probe:
 
@@ -13,6 +13,10 @@ sf org list limits --target-org '<ALIAS>' --json
 ```
 
 A successful response establishes that this CLI identity can make that read at that moment; it does not prove permission for later queries, metadata actions, or writes. If it fails, stop work that depends on CLI access. Check the [org command reference](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference_org.html).
+
+### If `sf` is not on PATH
+
+Check a known, trusted local installation location for the current OS and user before installing again. For example, the user-local Salesforce CLI installation on macOS may be at `$HOME/.local/share/sf/client/bin/sf`; installations vary. Check that the candidate exists and is executable, verify its provenance, and run its full path with `--version`. Use that same full path for subsequent commands. If the CLI reports that it cannot write its own log, apply the log-file troubleshooting step to the version check as well. Do not alter PATH or install software merely to establish that an existing binary works.
 
 ## Log in or recover
 
@@ -23,7 +27,7 @@ sf org login web --instance-url '<ORG_LOGIN_URL>' --alias '<ALIAS>'
 sf org list limits --target-org '<ALIAS>' --json
 ```
 
-Use the correct production, sandbox, or My Domain login URL and sign in as the intended user. The browser opens for authentication; close it when finished. An alias identifies a local authorization, so independently verify the org and user rather than trusting the alias name. Avoid changing the default org as a side effect. If the org requires a specific client app, SSO, network, or security policy, follow its administrator's approved process. CLI login uses its own authorization; a hosted MCP connection does not establish CLI access. If a workflow needs both, independently verify that both sessions use the intended org and identity; see [MCP access](salesforce-mcp.md).
+Use the correct production, sandbox, or My Domain login URL and sign in as the intended user. The browser opens for authentication; close it when finished. An alias identifies a local authorization, so independently verify the org and user rather than trusting the alias name. Avoid changing the default org as a side effect. If the org requires a specific client app, SSO, network, or security policy, follow its administrator's approved process. The CLI may have no local authorizations even when the browser or another environment is signed in. Perform login in the executor environment where the CLI will run; complete any browser sign-in and consent, then wait for the CLI's success message before probing. CLI login uses its own authorization; a hosted MCP connection does not establish CLI access. If a workflow needs both, independently verify that both sessions use the intended org and identity; see [MCP access](salesforce-mcp.md).
 
 Use CLI or supported tools for routine org work; reserve the browser for login, Setup/admin tasks, or UI acceptance. Permission to authenticate and read does not authorize mutations, deployment, or bulk changes. For metadata retrieval, validation, deployment, or CSV data operations, select the relevant [CLI command](https://developer.salesforce.com/docs/platform/salesforce-cli-reference/guide/cli_reference.html), target the correct org explicitly, and ensure the operation is authorized.
 
