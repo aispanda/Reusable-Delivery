@@ -21,8 +21,17 @@ Examples and validation history are optional. The selected route identifies the 
 
 The template now lives in [CORE.md — Copyable story](CORE.md#copyable-story). Follow the required reading above before using it.
 
-## Short prompt
+## Short prompts
 
-“Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md to create or migrate this story, preserving its requirements and evidence.”
+For an existing chat, paste this once:
 
-Add the outcome or source story only when it is not already clear from context.
+> Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md for the work in this chat.
+
+Infer the route, brief, destination and existing authority from available context. Ask only for unresolved information needed for the next action. A link alone does not supply inaccessible chat history or grant permission. If the client cannot retrieve the required files in full, report the access gap.
+
+When intent needs to be explicit:
+
+- **New:** Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md to create a story for <outcome> in <repo/folder>.
+- **Migrate:** Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md to migrate <existing work/reference>, preserve its criteria, decisions and evidence, and continue only the remaining authorized work.
+
+Omit details already available in the chat. These prompts use the same entry and required reading protocol.
