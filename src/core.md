@@ -57,7 +57,7 @@ checks, independent review when applicable, and human decisions as bounded steps
 with one executor each. Use N/A with a reason where a check does not apply.>
 | Step | Action / AC IDs | Dependencies | One executor; planned model/tool | State / result link |
 |---|---|---|---|---|
-| S-01 | <bounded action> | <required inputs> | <Human / Automation / AI; identity> | Pending |
+| S-01 | <Verify platform access when applicable, otherwise the next bounded action> | <required inputs> | <Human / Automation / AI; identity> | Pending |
 
 ### Next step: S-01
 - Accountable owner; one executor; planned exact model/tool/version: <values>
@@ -82,6 +82,14 @@ owner/service, smallest next action and verifiable resume condition.>
 <Material changes: reason/authority, affected criteria/checks, evidence and rechecks.
 Keep one current-state block; label old snapshots historical.>
 ```
+
+## Platform access check
+
+For stories that read or change an external platform, put **Verify platform access** first in the Execution table. Make platform discovery, review, build, testing and writes depend on this check. Keep existing task IDs when adding it to a migrated story.
+
+- **Choose the tools.** Use the approved platform MCP or CLI for platform operations. Verify each tool the story will use against the intended account and environment with a minimal read-only probe. Use browser sign-in only to authenticate a tool when needed.
+- **Salesforce.** Verify both Headless 360 MCP and Salesforce CLI against the intended org. Start with MCP: discover, describe, then dispatch_readonly. For CLI, check `sf org list --json` and run a read-only API check against the intended alias. Use MCP first for org work and the verified CLI as appropriate. Writes require existing authority.
+- **Record the result.** Record the tools, target environment, checks, results and time. Keep private identifiers and credentials in restricted storage. If a required connection fails, record the exact error with sensitive values redacted and block dependent steps until rechecked. Recheck when the executor environment or authorization changes. Changes to OAuth scopes or security settings require explicit authorization.
 
 ## Executors and bounded execution
 
