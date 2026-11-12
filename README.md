@@ -1,5 +1,7 @@
 # Reusable-Delivery
 
+See the [file map](FILE-MAP.md) for repository contents and maintenance locations.
+
 [Start here](DELIVERY.md) when the route is unclear, or use one complete guide directly:
 
 > Use https://github.com/aispanda/Reusable-Delivery/blob/main/new/DELIVERY.md for the new work in this chat.
