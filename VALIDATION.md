@@ -77,3 +77,9 @@ The subsequent review received instructions and only eight public GitHub links p
 The maker also put short existing-chat, new-work and migration prompts in DELIVERY.md. The findings above were checked against the actual full local files before editing. These post-review edits are maker corrections, not a new Claude approval. The reviewed commit remains immutable; later commits contain these corrections and this record.
 
 Maker verification covers local Markdown links and fences, selected known private-identifier checks, and byte-for-byte GitHub readback. Those checks do not prove absence of every possible private value. No private source index or raw review packet was uploaded. Runtime tests, concurrent-lock tests and an end-to-end new-story/migration pilot remain NOT RUN. Human adoption Pending.
+
+## Observed migration feedback incorporated
+
+A read-only observer of a shipment-document migration identified five focused improvements now incorporated into CORE and MIGRATE: trace delegated human authority; map material artifacts and links as well as criteria; verify portable restricted-context retrieval; reconcile shared facts/current-state across documents; and verify the transition before marking old locations superseded. These are instructions within existing sections, not mandatory extra documents.
+
+Observed safeguards already worked: criterion comparison caught lost details, demo scope stayed distinct from MVP scope, and publication was not treated as implementation or acceptance. The migration still had unresolved source reconciliation, private-context portability and ClickUp synchronization at this checkpoint. A platform email-verification gate is not a new template approval requirement. No efficiency gain has been measured. The forthcoming Jev review is separate from these observer findings.
