@@ -1,5 +1,7 @@
 # Migrate existing work
 
+If you arrived here directly, read [DELIVERY.md](DELIVERY.md) first and resolve the guide SHA before continuing.
+
 Required reading: [CORE.md](CORE.md), completely, at the same guide commit as [DELIVERY.md](DELIVERY.md) and this route. Do not execute from this route alone. Missing required content blocks dependent work as described in the entry.
 
 1. Inventory the latest story, comments, criteria, decisions, design, research, code and evidence. Confirm source revisions, destination repository/folder, branch, concurrent work and existing authorization. Read relevant prior chats only where they resolve gaps. Distinguish observed results, historical reports, proposals and model opinions; another project’s state is not this project’s evidence.
