@@ -1,6 +1,6 @@
 # Delivery guide validation
 
-Proposed version 0.3, 11 November 2026. This is the supporting record for [DELIVERY.md](DELIVERY.md), not an additional file every story must create. Human adoption remains Pending. No project has been migrated or implemented by this guide review.
+Proposed version 0.4, 11 November 2026. Earlier reviews below are historical and retain their original scope. This is the supporting record for [DELIVERY.md](DELIVERY.md), not an additional file every story must create. Human adoption remains Pending. No project has been migrated or implemented by this guide review.
 
 ## Source mapping
 
@@ -40,7 +40,7 @@ A targeted sample of shipment, exchange, buyer-journey, tax and headless-design 
 
 Proposed efficiencies—one entry link, detailed immediate step only, targeted source reads, deterministic checks for exact facts, focused model questions and affected rechecks—are hypotheses. No measured token, time or cost savings are claimed. A pilot can compare effort, rework and omissions for similar scopes without weakening verification.
 
-## Claude review
+## Historical Claude review: v0.1–v0.3
 
 Requested model: `claude-opus-5-5`, medium effort. Client: Claude Code 2.1.319. Initial sandbox attempt failed with DNS `ENOTFOUND`, zero input/output tokens and no model verdict. A network-enabled retry sent the complete generic v0.1 guide, no private source index or project details; tools, MCP and customizations were disabled. Budget cap $2; requested response limit 650 words. This was document review, not a live-system test.
 
@@ -55,3 +55,25 @@ Successful response metadata reports canonical model `claude-opus-5-5`, first-pa
 | F5: repeated safeguards | Partly accepted: removed redundant authority statements, consolidated related prose, checked metadata/privacy; retained short field reminders where a copied template needs them | Maker read-through; no fixed 'say every rule once' policy imposed |
 
 Recheck of the full v0.2 guide: canonical `claude-opus-5-5` from response metadata, medium effort; reported estimated cost $0.1246064. F1–F5 resolved (F3 only at maker-mapping level; private originals not reviewed). One additional material finding required preserving the current ClickUp description before replacing it. Accepted in v0.3: capture text verbatim in appropriately restricted storage, account for all criteria, confirm edit authority, and reconcile intervening edits. Also clarified that ownership points to the actual human decision or designated assignment field. Final targeted recheck: canonical `claude-opus-5-5` (response metadata), medium effort, estimated cost $0.0224144. Both edits resolved; no remaining material issue in those excerpts. This last check did not re-review the entire guide. Total reported estimated review cost: $0.2753146. No whole-guide final approval or human acceptance is inferred. Runtime/multi-agent lock tests and end-to-end migration pilot NOT RUN. Maker is Codex desktop; precise authoring model variant not exposed. Human final adoption Pending.
+
+## Modular v0.4 review
+
+The entry now selects NEW or MIGRATE; both require CORE from the same resolved commit. EXAMPLE and this validation history are optional. No measured token or cost saving is claimed.
+
+TypeSafe was asked to assess the public v0.3 files and modular proposal, not an implemented migration. Requested alias `jev-latest`; response metadata reported `jev-1.14.0`. Its structured answers supported routing and shared rules and identified missing ambiguity, unavailable-file and revision handling. A targeted proposal recheck scored those clarifications 0.96, 0.97 and 0.97; mandatory core reading 0.99. Cross-route omission risk remained uncertain at 0.55. These are model scores interpreted by the maker, not measured reliability or runtime proof.
+
+Claude Code reviewed the complete candidate operational documents with the original guide as baseline. Response metadata reported `claude-opus-5-5`. The maker moved ClickUp preservation and sanitized-criterion comparison into CORE, clarified mixed-scope handling and direct-route revision resolution, and retained the proposed-method label. That first packet omitted this validation history.
+
+The subsequent review received instructions and only eight public GitHub links pinned to [3e3d7a3](https://github.com/aispanda/Reusable-Delivery/tree/3e3d7a3bfdfefcd2552193ebdccc7ee9cc821d66), including this history. Claude reported fetching all eight files. **WebFetch supplied summaries and short quotes rather than complete file text**, so this was a limited links-based review, not full-text verification of the published revision. Main reviewer metadata reports `claude-opus-5-5`; usage also reports `claude-haiku-5-5` for retrieval processing. Verdict: revise (minor).
+
+| Finding | Maker disposition after links review |
+|---|---|
+| Guide upgrade path unclear | CORE records old/new guide commits, compares rule changes, preserves history and reopens affected checks only |
+| Missing ClickUp item/access fallback | CORE records synchronization Pending and needed authority/access, while reporting successful GitHub publication separately; rejected conflating a ClickUp failure with failed GitHub publication |
+| Check results versus step states unclear | CORE defines check results separately and makes unknown acceptance requirements reasoned Pending |
+| Restricted storage location unclear | CORE requires an approved access-controlled location outside the repository; ignored paths alone provide no privacy protection |
+| Validation history still v0.3 | This section records the modular review and its limitations; earlier reviews remain explicitly historical |
+
+The maker also put short existing-chat, new-work and migration prompts in DELIVERY.md. The findings above were checked against the actual full local files before editing. These post-review edits are maker corrections, not a new Claude approval. The reviewed commit remains immutable; later commits contain these corrections and this record.
+
+Maker verification covers local Markdown links and fences, selected known private-identifier checks, and byte-for-byte GitHub readback. Those checks do not prove absence of every possible private value. No private source index or raw review packet was uploaded. Runtime tests, concurrent-lock tests and an end-to-end new-story/migration pilot remain NOT RUN. Human adoption Pending.
