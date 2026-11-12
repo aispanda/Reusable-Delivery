@@ -2,6 +2,8 @@
 
 ## Story QA checklist and CI pilot
 
+[AI Spanda QA decision and evidence report](references/AI-Spanda-Reusable-Delivery-QA.pdf) records the rollout rules and the pilot state as of 12 November 2026 UTC.
+
 The story checklist assigns the writer, automated checks, independent reviewer where applicable and any required human decision as bounded steps. A focused Claude review (`claude-opus-5-5`) found no material issues. The final wording clarifies the coordinator assignment, aligns the example with the story checklist and specifies which revisions to record for pull request evidence.
 
 The [shipment CI pilot](https://github.com/aispanda/salesforce-shipment-tracking-integration/pull/2) calls the Python workflow at `a6800b03dd76a53f3c83004986829fa5a8676ade`. Both the Python 3.11 and 3.14 jobs passed in [GitHub Actions](https://github.com/aispanda/salesforce-shipment-tracking-integration/actions/runs/43151308174). Locally, the command passed 22 tests on Python 3.14.8 and rejected a deliberately failing test and empty test discovery. A failing GitHub Actions run and adoption as a required check remain pending. The pilot PR is a draft.
