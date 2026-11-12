@@ -1,13 +1,11 @@
 # Reusable-Delivery
 
-Start with [DELIVERY.md](DELIVERY.md): instructions, copyable story template, bounded execution method, worked example, and short prompts in one file.
+**[Start here: DELIVERY.md](DELIVERY.md)**
 
-Use this prompt for new or existing work:
+One entry point selects **[new work](NEW.md)** or **[migration](MIGRATE.md)**. Each route requires the same **[story template and execution rules](CORE.md)**. Load the [example](EXAMPLE.md) or [validation history](VALIDATION.md) only when useful.
 
 > Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md to create or migrate this story, preserving its requirements and evidence.
 
-[VALIDATION.md](VALIDATION.md) records the source mapping, Claude review findings, corrections and review limits. The method is proposed; publication does not imply human acceptance or completed project migration.
+GitHub holds delivery material. ClickUp holds the title, optional story sentence, folder/story links, ownership, dates and status. Private client context, credentials and raw review packets are not published. `.gitignore` is a precaution, not protection for files already committed.
 
-GitHub holds delivery material. ClickUp holds the title, optional story sentence, folder/story links, ownership, dates and status.
-
-Private client context, credentials and raw review packets are not included. The ignore file is a precaution, not a substitute for checking tracked files and history before publishing.
+The modular guide reduces irrelevant required reading in principle; measured token/cost savings and an end-to-end migration pilot are not established. Publication is not project acceptance.
