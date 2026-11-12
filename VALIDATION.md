@@ -1,5 +1,13 @@
 # Delivery guide validation
 
+## Code quality guidance from the shipment prototype
+
+Claude Code (`claude-opus-5-5`, medium reasoning) reviewed the public Python prototype at [6301796](https://github.com/aispanda/salesforce-shipment-tracking-integration/commit/6301796fb38b120dd2e42bf1fd2a5521f845e542). Independent offline checks reproduced a source identity inconsistency and confirmed that late failure could reopen completed work. The equal-timestamp behavior matched the existing policy. A late-row failure confirmed that batch rollback worked and identified a missing regression test.
+
+The shipment writer clarified the contracts and added targeted regressions at [b521f2e](https://github.com/aispanda/salesforce-shipment-tracking-integration/commit/b521f2edf77f6e483977af4505d5bb48b15e8539). A separate test run matched all eight GitHub file blobs and passed 22 tests on Python 3.14.8 with `python3 -B -m unittest discover -s tests -v` from `poc/`. Live Salesforce validation, minimum Python version coverage and the CodeRabbit comparison remain pending.
+
+A focused Claude review of the guide addition recommended naming the decision owner, requiring observed evidence for a passing check and checking affected boundaries in repairs as well as refactors. The coordinator incorporated those edits and regenerated both routes. The guide requires repeatable evidence for the relevant behavior and leaves tool choice to the story.
+
 ## Self-contained route candidate — local review, 12 November 2026
 
 This local candidate replaces required router/route/CORE reads with one complete selected guide. It is not yet published or a completed portfolio migration. Earlier entries below retain their historical revision and scope.

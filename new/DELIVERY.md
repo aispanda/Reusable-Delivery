@@ -79,7 +79,7 @@ As a <beneficiary>, I want <capability>, so that <outcome>.
 - Accountable owner; one executor; planned exact model/tool/version: <values>
 - Inputs: <source revision, schema/template, freshness/access; supporting docs and claims>
 - Operation/output: <bounded operation, destination, format, expected result>
-- Check: <AC IDs, method, expected outcome, verifier, evidence to retain>
+- Check: <AC IDs, command/method, runtime or environment, expected outcome, verifier, evidence to retain>
 - Authority/boundary: <existing authorization reference, action class, excluded effects>
 - Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
 - Actual: NOT RUN. <Later record executor/model/identity source, attempt/time,
@@ -120,6 +120,8 @@ Step states: Pending; In progress (executor/time); Rework (executed check failed
 Check both human readability and AI execution precision; one reviewer may wear both hats, clearly labeled as maker review when applicable. Human-reader perspective is not human acceptance. A required independent checker must be fresh and inspect actual evidence against frozen criteria. Mockups/model opinions do not prove implementation.
 
 For requested/needed review, send only permitted context: precise question, exact revision, criteria, relevant artifact/evidence, and bounded output structure. Ask for findings with location, impact, correction and verification. Record actual reviewer/model/identity source, scope, findings, dispositions and affected rechecks; verify advice before acting. Reuse unchanged valid reviews. Access/model/transmission failures are blockers, not verdicts. Preserve required independent and human acceptance separately; do not invent approval gates or approvals.
+
+For code changes, choose repeatable checks for the changed behavior and its material failure paths. Record the revision, runtime versions and observed results. Verify findings against agreed behavior and reproducible cases. Record confirmed defects and unresolved findings. Send policy questions to the decision owner before changing behavior. Review findings inform decisions. Passing checks require observed results. Where warranted, retain a regression test and rerun affected checks on the repaired revision. Check transaction, access and recovery boundaries touched by the change. Use measurements to support performance claims.
 
 ## Supporting detail when needed
 
