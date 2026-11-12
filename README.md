@@ -1,11 +1,13 @@
 # Reusable-Delivery
 
-**[Start here: DELIVERY.md](DELIVERY.md)**
+[Start here](DELIVERY.md) when the route is unclear, or use one complete guide directly:
 
-One entry point selects **[new work](NEW.md)** or **[migration](MIGRATE.md)**. Each route requires the same **[story template and execution rules](CORE.md)**. Load the [example](EXAMPLE.md) or [validation history](VALIDATION.md) only when useful.
+> Use https://github.com/aispanda/Reusable-Delivery/blob/main/new/DELIVERY.md for the new work in this chat.
 
-> Use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md to create or migrate this story, preserving its requirements and evidence.
+> Use https://github.com/aispanda/Reusable-Delivery/blob/main/migrate/DELIVERY.md for the existing work in this chat, preserving requirements, decisions and evidence.
 
-GitHub holds delivery material. ClickUp holds the title, optional story sentence, folder/story links, ownership, dates and status. Private client context, credentials and raw review packets are not published. `.gitignore` is a precaution, not protection for files already committed.
+For an unknown route: use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md for the work in this chat.
 
-The modular guide reduces irrelevant required reading in principle; measured token/cost savings and an end-to-end migration pilot are not established. Publication is not project acceptance.
+Replace `main` with a verified commit SHA for a pinned handoff. The guide explains revision resolution and context reuse. Examples and validation history are optional. GitHub holds detailed delivery material; ClickUp tracks title, optional story sentence, folder/story links, ownership, dates and status. Private values remain in approved restricted storage; `.gitignore` does not protect tracked files or history.
+
+The two complete guides share authoring sources under `src/`; executors do not need to read those files. Maintainers need Python 3.10 or later and run `python3 scripts/build_guides.py`, then `python3 scripts/build_guides.py --check`. Do not edit generated guides directly. Word/file counts measure reading volume, not actual token, caching, latency or cost savings. Existing SHA-pinned links remain historical; guide upgrades must reconcile revisions.
