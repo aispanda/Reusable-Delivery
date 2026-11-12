@@ -88,7 +88,10 @@ with one executor each. Use N/A with a reason where a check does not apply.>
 - Authority/boundary: <existing authorization reference, action class, excluded effects>
 - Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
 - Actual: NOT RUN. <Later record executor/model/identity source, attempt/time,
-  input/output revisions, expected versus observed checks, evidence, limits and next step.>
+  input/output revisions, expected versus observed checks, evidence, limits and next step.
+  For user-role-dependent checks, also record the identity or role used, the intended
+  user role, access to the target resource, and observed behavior. Keep unverified
+  outcomes Pending.>
 
 ## Review and decisions
 | Finding/decision | Reviewer, model/session, identity source and reviewed revision/scope | Disposition/repair | Recheck/evidence |
