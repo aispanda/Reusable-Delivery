@@ -71,6 +71,9 @@ As a <beneficiary>, I want <capability>, so that <outcome>.
 <Relevant product, business, UX, technical and QA concerns; N/A with reason where useful.>
 
 ## Execution
+<Plan checks for the ACs and material risks before implementation. Schedule build,
+checks, independent review when applicable, and human decisions as bounded steps
+with one executor each. Use N/A with a reason where a check does not apply.>
 | Step | Action / AC IDs | Dependencies | One executor; planned model/tool | State / result link |
 |---|---|---|---|---|
 | S-01 | <bounded action> | <required inputs> | <Human / Automation / AI; identity> | Pending |
@@ -123,7 +126,9 @@ For requested/needed review, send only permitted context: precise question, exac
 
 For code changes, choose repeatable checks for the changed behavior and its material failure paths. Record the revision, runtime versions and observed results. Verify findings against agreed behavior and reproducible cases. Record confirmed defects and unresolved findings. Send policy questions to the decision owner before changing behavior. Review findings inform decisions. Passing checks require observed results. Where warranted, retain a regression test and rerun affected checks on the repaired revision. Check transaction, access and recovery boundaries touched by the change. Use measurements to support performance claims.
 
-Put applicable checks behind a repository-owned command that works locally and in CI. For rollout and a reusable Python workflow, see [Code quality checks](../CODE-QUALITY.md).
+The story coordinator, assigned by the accountable human, uses the agreed criteria, risk and repository rules to decide what to check, when and who checks it. Plan this before implementation and revisit it when scope or risk changes. The accountable human owns acceptance policy, business decisions and any required release approval. For material changes to behavior, shared contracts, access, data or recovery, schedule a fresh independent reviewer after the writer's checks and before merge or handoff. Follow any stricter project requirements. Choose a human or an AI permitted by project policy and suited to the risk and context. Record the exact planned model and reasoning for an AI review. The reviewer inspects the proposed revision and evidence. Repairs reopen affected checks and findings.
+
+Put applicable code checks behind a repository-owned command that works locally and in CI. The story checklist records the check, executor and result. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
 
 ## Supporting detail when needed
 

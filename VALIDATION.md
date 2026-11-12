@@ -1,5 +1,11 @@
 # Delivery guide validation
 
+## Story QA checklist and CI pilot
+
+The story checklist assigns the writer, automated checks, independent reviewer where applicable and any required human decision as bounded steps. A focused Claude review (`claude-opus-5-5`) found no material issues. The final wording clarifies the coordinator assignment, aligns the example with the story checklist and specifies which revisions to record for pull request evidence.
+
+The [shipment CI pilot](https://github.com/aispanda/salesforce-shipment-tracking-integration/pull/2) calls the Python workflow at `a6800b03dd76a53f3c83004986829fa5a8676ade`. Both the Python 3.11 and 3.14 jobs passed in [GitHub Actions](https://github.com/aispanda/salesforce-shipment-tracking-integration/actions/runs/43151308174). Locally, the command passed 22 tests on Python 3.14.8 and rejected a deliberately failing test and empty test discovery. A failing GitHub Actions run and adoption as a required check remain pending. The pilot PR is a draft.
+
 ## Code quality guidance from the shipment prototype
 
 Claude Code (`claude-opus-5-5`, medium reasoning) reviewed the public Python prototype at [6301796](https://github.com/aispanda/salesforce-shipment-tracking-integration/commit/6301796fb38b120dd2e42bf1fd2a5521f845e542). Independent offline checks reproduced a source identity inconsistency and confirmed that late failure could reopen completed work. The equal-timestamp behavior matched the existing policy. A late-row failure confirmed that batch rollback worked and identified a missing regression test.
