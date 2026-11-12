@@ -1,6 +1,6 @@
 # Shared story template and execution rules
 
-Version 0.4. Required for both routes. Read completely before acting. If arriving here directly, first follow [DELIVERY.md](DELIVERY.md) to choose a route and consistent guide revision. This guide grants no authority to implement, deploy, spend, share externally or change criteria.
+Version 0.4 — proposed method. Required for both routes. Read completely before acting. If arriving here directly, first follow [DELIVERY.md](DELIVERY.md) to choose a route and consistent guide revision. This guide grants no authority to implement, deploy, spend, share externally or change criteria.
 
 ## Working agreement
 
@@ -14,11 +14,11 @@ Use relevant official platform documentation and identify the supported claim an
 
 ## Privacy, publication and links
 
-Keep client identities, instance URLs, real records, credentials and restricted evidence outside public Git. Use placeholders/synthetic data and an approved restricted index with opaque references, access owner and retrieval instructions. Do not invent public chat links. Missing or inaccessible required evidence remains a gap.
+Keep client identities, instance URLs, real records, credentials and restricted evidence outside public Git. When sanitizing, preserve meaning with named parameters and a restricted mapping; compare source and published criteria and classify every difference. Missing or unauthorized changes to agreed criteria block completion. Use placeholders/synthetic data and an approved restricted index with opaque references, access owner and retrieval instructions. Do not invent public chat links. Missing or inaccessible required evidence remains a gap.
 
 Before publishing, inspect files/diff, names, commit/branch text, author metadata and history for unauthorized disclosure. `.gitignore` does not remove tracked content or history. Do not falsify author identity. Coordinate the branch, preserve concurrent edits, publish only to the authorized repository and read back saved content and links. Report synchronization failures with a durable local record; never claim success without readback.
 
-Use mutable links for current story/folder and immutable commit/blob references for reviewed inputs and evidence. Label draft branches; verify access as the intended reader. The migration route adds preservation checks before replacing ClickUp text.
+Use mutable links for current story/folder and immutable commit/blob references for reviewed inputs and evidence. Label draft branches; verify access as the intended reader. Before replacing any existing ClickUp description, confirm edit authority and capture its current text verbatim (restricted if client-identifying). Account for its criteria in the source/destination comparison. Refresh immediately before writing and reconcile intervening edits; replace only after the GitHub files/links are verified, then read back the saved description and fields. Do not use description length or perceived importance to skip preservation.
 
 ## Copyable story
 
@@ -27,7 +27,7 @@ Replace placeholders with facts, **Pending — missing item**, **Blocked — dep
 ```markdown
 # <stable story ID>: <outcome>
 
-Guide: <verified DELIVERY.md link; guide commit SHA; route NEW or MIGRATE>
+Guide: <verified DELIVERY.md link; guide commit SHA; route NEW, MIGRATE, or MIGRATE+NEW>
 Revision/status/as-of: <revision; documentation/build/test/acceptance states separately>
 Origin: <permitted source reference/version; restricted index if necessary>
 Accountable owner: <actual person or Pending>
@@ -86,7 +86,7 @@ One assigned executor per step; split meaningful human/AI/automation handoffs. T
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
-- **AI:** client/agent, exact planned model and applicable reasoning setting; actual model separately with identity source (metadata preferred, self-report labeled). Family names such as Terra, Sol, Claude or Jev are examples, not exact versions or default assignments. Record non-LLM decision models accurately. Resolve planned identity before dispatch; record unknown actual identity with available session evidence rather than guess. No silent substitution of a required model.
+- **AI:** client/agent, exact planned model and applicable reasoning setting; actual model separately with identity source (metadata preferred, self-report labeled). Product/family names such as Terra, Sol, Claude or Jev are examples, not exact versions or default assignments. Jev is an AI decision model, not assumed to be an LLM; record executor type accurately. Resolve planned identity before dispatch; record unknown actual identity with available session evidence rather than guess. No silent substitution of a required model.
 
 **Reconcile → select one eligible step → execute → verify → record → recompute → repeat.** Eligibility requires validated inputs/dependencies, executor, authority and budget. Expand only the immediate step; keep later steps concise. Continue independent work only if pending decisions cannot invalidate it. Preserve completed contracts/results inline or by link before expanding the next step. A tool success or subagent report alone is not acceptance evidence.
 
