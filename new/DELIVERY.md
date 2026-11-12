@@ -123,6 +123,8 @@ For requested/needed review, send only permitted context: precise question, exac
 
 For code changes, choose repeatable checks for the changed behavior and its material failure paths. Record the revision, runtime versions and observed results. Verify findings against agreed behavior and reproducible cases. Record confirmed defects and unresolved findings. Send policy questions to the decision owner before changing behavior. Review findings inform decisions. Passing checks require observed results. Where warranted, retain a regression test and rerun affected checks on the repaired revision. Check transaction, access and recovery boundaries touched by the change. Use measurements to support performance claims.
 
+Put applicable checks behind a repository-owned command that works locally and in CI. For rollout and a reusable Python workflow, see [Code quality checks](../CODE-QUALITY.md).
+
 ## Supporting detail when needed
 
 - **Design/research:** question and AC IDs; verified facts and dated/versioned source sections; approach/alternatives/tradeoffs; contracts/data flow and failure behavior; assumptions, decisions and validation plan.

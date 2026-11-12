@@ -1,0 +1,36 @@
+name: Python repository checks
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: Python version to test
+        required: true
+        type: string
+      working-directory:
+        description: Repository directory containing check.py
+        default: .
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Python ${{ inputs.python-version }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ inputs.python-version }}
+      - name: Record revision and runtime
+        run: |
+          git rev-parse HEAD
+          python --version
+      - name: Run the repository check
+        working-directory: ${{ inputs.working-directory }}
+        run: python -B check.py
