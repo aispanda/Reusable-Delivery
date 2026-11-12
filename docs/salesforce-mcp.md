@@ -4,7 +4,7 @@ Use this runbook when MCP setup, recovery, or server selection is needed. An age
 
 ## 1. Reconnect an existing server
 
-If the server is already registered in this agent environment, use its existing approved configuration. For Codex, identify the local server name with `codex mcp list`, then run `codex mcp login <SERVER_NAME>`. Complete sign-in and consent in the browser, wait for the client to confirm authorization, and reconnect or reopen the agent session if it still shows a stale tool list. Then run the read probe below. If registration is missing, start with Setup.
+If the server is already registered in this agent environment, use its existing approved configuration. For Codex, identify the local server name with `codex mcp list`, then run `codex mcp login <SERVER_NAME>`. Complete sign-in and consent in the browser, wait for the client to confirm authorization, and reconnect or reopen the agent session if it still shows a stale tool list. A registered or enabled entry is not proof of authentication, and a successful login is not proof that the current agent session has refreshed its tools. Keep the login process running while the user completes any browser sign-in or approval; do not repeat the login while it is waiting. If the browser opens outside the agent's visible session, direct the user to the opened page without sharing its authorization URL. If the tool list remains stale after success, reopen the agent session and rediscover before the read probe below. If registration is missing, start with Setup.
 
 ## 2. Inspect the org and prepare the client
 
@@ -53,5 +53,6 @@ Standard servers have fixed tool sets. If they do not cover a persona's approved
 | --- | --- |
 | Server missing or inactive | Check edition, feature/permission eligibility, Setup catalog, activation, and propagation; ask the admin to approve changes. |
 | Active but connection or tools fail | Separate activation from client OAuth and user permissions; check copied URL, org type, prefix, identity, tools, and object/field/sharing access. |
+| OAuth metadata discovery or network request fails before sign-in | Check the exact error and whether the executor can reach the configured server; restricted network access is distinct from a bad login or an inactive server. Use an approved network path or request the necessary access, then retry once. Do not disable security controls or expose authorization URLs. |
 | OAuth error, including `scope parameter not supported` | Treat this as an OAuth/client or authority diagnostic, not evidence that the server is inactive. Check exact callback, client ID, requested scopes, PKCE/JWT requirements and ECA policy; try a fresh login through the same intended authority. Do not alter scopes, policies, or activation without approval. See [authentication troubleshooting](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/authentication-issues.html). |
 | Tool unavailable or rejected | Recheck current tool reference, entitlement and permissions; use a supported alternative only within the authorized scope. Capture a sanitized error and block dependent work. |
