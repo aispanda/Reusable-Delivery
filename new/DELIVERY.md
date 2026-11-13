@@ -103,6 +103,11 @@ Fresh independent checker where required. Human acceptance separately recorded.>
 owner/service, smallest next action and verifiable resume condition.>
 <Material changes: reason/authority, affected criteria/checks, evidence and rechecks.
 Keep one current-state block; label old snapshots historical.>
+
+## Files
+<Group every tracked file in this story folder and its subfolders by purpose.
+Use one relative link per file and at most eight words of description, excluding the filename.
+Before publishing, verify that the list matches the tracked files and the links resolve.>
 ```
 
 ## Platform access check

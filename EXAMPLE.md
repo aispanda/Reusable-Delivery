@@ -4,9 +4,9 @@ A Customer Care agent authorized a one-unit return in Lightning, recorded receip
 
 | File | What it contains |
 |---|---|
-| [D05 story](https://github.com/aispanda/B2B-Commerce/blob/b785c07358ef705fe75876f3d86e913fda8e8093/epics/e09-returns-settlement/stories/d05-managed-rma/README.md) | Agreed criteria, the build and test sequence, and what the demo verified. Start here. |
-| [Execution kit](https://github.com/aispanda/B2B-Commerce/blob/b785c07358ef705fe75876f3d86e913fda8e8093/epics/e09-returns-settlement/stories/d05-managed-rma/demo-kit/README.md) | Target-org inputs, layout setup, the synthetic fixture and the reconciliation command. |
-| [Review record](https://github.com/aispanda/B2B-Commerce/blob/b785c07358ef705fe75876f3d86e913fda8e8093/epics/e09-returns-settlement/stories/d05-managed-rma/reviews.md) | Detailed review findings, repairs, rechecks and the scope of the runtime verification. |
+| [D05 story](https://github.com/aispanda/B2B-Commerce/blob/aec0aee7d1443864dbd017d2cba61dcda405fca1/epics/e09-returns-settlement/stories/d05-managed-rma/README.md) | Agreed criteria, the build and test sequence, and what the demo verified. Start here. Its [Files section](https://github.com/aispanda/B2B-Commerce/blob/aec0aee7d1443864dbd017d2cba61dcda405fca1/epics/e09-returns-settlement/stories/d05-managed-rma/README.md#files) indexes the story folder. |
+| [Execution kit](https://github.com/aispanda/B2B-Commerce/blob/aec0aee7d1443864dbd017d2cba61dcda405fca1/epics/e09-returns-settlement/stories/d05-managed-rma/demo-kit/README.md) | Target-org inputs, layout setup, the synthetic fixture and the reconciliation command. |
+| [Review record](https://github.com/aispanda/B2B-Commerce/blob/aec0aee7d1443864dbd017d2cba61dcda405fca1/epics/e09-returns-settlement/stories/d05-managed-rma/reviews.md) | Detailed review findings, repairs, rechecks and the scope of the runtime verification. |
 
 The original run covered full receipt and close for one unit. Partial receipt and live payments are outside that evidence. Use the story's preflight and verification steps to establish results in another org.
 
