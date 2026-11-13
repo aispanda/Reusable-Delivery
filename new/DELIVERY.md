@@ -121,6 +121,8 @@ For stories that read or change an external platform, put **Verify platform acce
 
 ## Executors and bounded execution
 
+Choose the simplest approach that meets the story’s acceptance criteria. Where repetition or consistency warrants it, create or reuse a small template, populate it with automation and AI as appropriate, validate it against source evidence, and generate the deliverable. Keep one authoritative source for each fact and independently verify the finished result. Expand the structure only when its benefit justifies creation, review and maintenance.
+
 One assigned executor per step; split meaningful human/AI/automation handoffs. The accountable human may differ. Unresolved required assignment blocks dispatch.
 
 - **Human:** actual person and action/decision.
