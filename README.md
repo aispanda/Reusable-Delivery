@@ -8,6 +8,8 @@
 
 For an unknown route: use https://github.com/aispanda/Reusable-Delivery/blob/main/DELIVERY.md for the work in this chat.
 
+[OOTB discovery and experiments](references/ootb-experiments.md) is optional guidance for cataloging standard capabilities, testing candidates and carrying results into delivery.
+
 [Code quality checks](CODE-QUALITY.md) shows how to plan verification in a story checklist and reuse a Python CI workflow when applicable.
 
 Replace `main` with a verified commit SHA for a pinned handoff. The guide explains revision resolution and context reuse. Examples and validation history are optional. GitHub holds detailed delivery material; ClickUp tracks title, optional story sentence, folder/story links, ownership, dates and status. Private values remain in approved restricted storage; `.gitignore` does not protect tracked files or history.

@@ -107,16 +107,16 @@ owner/service, smallest next action and verifiable resume condition.>
 Keep one current-state block; label old snapshots historical.>
 
 ## Files
-<Group every tracked file in this story folder and its subfolders by purpose.
+<At story closeout, group every tracked file in this story folder and its subfolders by purpose.
 Use one relative link per file and at most eight words of description, excluding the filename.
-Before publishing, verify that the list matches the tracked files and the links resolve.>
+Before closing the story, verify that the list matches the tracked files and the links resolve.>
 ```
 
 ## Platform access check
 
 For stories that read or change an external platform, put **Verify platform access** first in the Execution table. Make platform discovery, review, build, testing and writes depend on this check. Keep existing task IDs when adding it to a migrated story.
 
-- **Choose the tools.** Use the approved platform MCP or CLI for platform operations. Verify each tool the story will use against the intended account and environment with a minimal read-only probe. Use browser sign-in only to authenticate a tool when needed.
+- **Choose the tools.** Use the approved platform MCP or CLI for backend operations and backend tests. Verify each tool the story will use against the intended account and environment with a minimal read-only probe. Use Playwright or another browser tool for tests of the user journey and user acceptance, acting as the intended user. Browser sign-in also supports tool authentication when needed.
 - **Salesforce.** Verify both Headless 360 MCP and Salesforce CLI against the intended org. Start with MCP: discover, describe, then dispatch_readonly. For CLI, check `sf org list --json` privately and run a read-only API check such as `sf org list limits --target-org <ALIAS> --json`. Use MCP first for org work and the verified CLI as appropriate. Writes require existing authority. If a check fails, open only the matching recovery guide at this guide revision: [MCP setup and recovery](../docs/salesforce-mcp.md) or [CLI setup and recovery](../docs/salesforce-cli.md). If both pass, skip the recovery guides.
 - **Record the result.** Record the tools, target environment, checks, results and time. Keep private identifiers and credentials in restricted storage. If a required connection fails, record the exact error with sensitive values redacted and block dependent steps until rechecked. Recheck when the executor environment or authorization changes. Changes to OAuth scopes or security settings require explicit authorization.
 
@@ -138,6 +138,8 @@ Step states: Pending; In progress (executor/time); Rework (executed check failed
 
 ## Review and acceptance
 
+Run user acceptance checks through Playwright or another browser tool as the intended user. Record the entry point, user role, actions, expected behavior and observed result. Use MCP/CLI for backend checks and supporting state verification. An inaccessible page or missing action leaves the dependent user journey unverified. Record human acceptance separately from test execution.
+
 Check both human readability and AI execution precision; one reviewer may wear both hats, clearly labeled as maker review when applicable. Human-reader perspective is not human acceptance. A required independent checker must be fresh and inspect actual evidence against frozen criteria. Mockups/model opinions do not prove implementation.
 
 For requested/needed review, send only permitted context: precise question, exact revision, criteria, relevant artifact/evidence, and bounded output structure. Ask for findings with location, impact, correction and verification. Record actual reviewer/model/identity source, scope, findings, dispositions and affected rechecks; verify advice before acting. Reuse unchanged valid reviews. Access/model/transmission failures are blockers, not verdicts. Preserve required independent and human acceptance separately; do not invent approval gates or approvals.
@@ -149,6 +151,8 @@ The story coordinator, assigned by the accountable human, uses the agreed criter
 Put applicable code checks behind a repository-owned command that works locally and in CI. The story checklist records the check, executor and result. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
 
 ## Supporting detail when needed
+
+For work exploring standard product capabilities through bounded experiments, read [OOTB discovery and experiments](../references/ootb-experiments.md) at this guide revision. Load it only when that approach is relevant; keep the execution checklist in the story.
 
 - **Design/research:** question and AC IDs; verified facts and dated/versioned source sections; approach/alternatives/tradeoffs; contracts/data flow and failure behavior; assumptions, decisions and validation plan.
 - **Debugging:** expected/observed behavior, reproducible case/environment; logs, hypotheses and discriminating checks; diagnosis/confidence; exact fix reference; original-failure retest and affected regressions; limits/recovery. Mark hypotheses untested/supported/disproven. A successful command is not proof of a fix. Keep sensitive raw logs restricted.
