@@ -55,25 +55,26 @@ As a <beneficiary>, I want <capability>, so that <outcome>.
 <Plan checks for the ACs and material risks before implementation. Schedule build,
 checks, independent review when applicable, and human decisions as bounded steps
 with one executor each. Use N/A with a reason where a check does not apply.>
-| Step | Action / AC IDs | Dependencies | One executor; planned model/tool | State / result link |
+| Step | Action / AC IDs | Dependencies | One executor; model + reasoning / tool | State / result link |
 |---|---|---|---|---|
-| S-01 | <Verify platform access when applicable, otherwise the next bounded action> | <required inputs> | <Human / Automation / AI; identity> | Pending |
+| S-01 | <Verify platform access when applicable, otherwise the next bounded action> | <required inputs> | <Human: person / Automation: tool / AI: model + reasoning> | Pending |
 
 ### Next step: S-01
-- Accountable owner; one executor; planned exact model/tool/version: <values>
+- Accountable owner; one executor: <values>
+- Model and reasoning (AI) or tool/version (automation): <values>
 - Inputs: <source revision, schema/template, freshness/access; supporting docs and claims>
 - Operation/output: <bounded operation, destination, format, expected result>
 - Check: <AC IDs, command/method, runtime or environment, expected outcome, verifier, evidence to retain>
 - Authority/boundary: <existing authorization reference, action class, excluded effects>
 - Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
-- Actual: NOT RUN. <Later record executor/model/identity source, attempt/time,
+- Actual: NOT RUN. <Later record executor, attempt/time,
   input/output revisions, expected versus observed checks, evidence, limits and next step.
   For user-role-dependent checks, also record the identity or role used, the intended
   user role, access to the target resource, and observed behavior. Keep unverified
   outcomes Pending.>
 
 ## Review and decisions
-| Finding/decision | Reviewer, model/session, identity source and reviewed revision/scope | Disposition/repair | Recheck/evidence |
+| Finding/decision | Reviewer, model + reasoning and reviewed revision/scope | Disposition/repair | Recheck/evidence |
 |---|---|---|---|
 | <ID> | <actual identity or Pending> | <accepted/rejected/deferred with reason> | NOT RUN |
 <Human-reader and AI-execution perspectives; maker review clearly labeled.
@@ -105,7 +106,9 @@ One assigned executor per step; split meaningful human/AI/automation handoffs. T
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
-- **AI:** client/agent, exact planned model and applicable reasoning setting; actual model separately with identity source (metadata preferred, self-report labeled). Product/family names such as Terra, Sol, Claude or Jev are examples, not exact versions or default assignments. Jev is an AI decision model, not assumed to be an LLM; record executor type accurately. Resolve planned identity before dispatch; record unknown actual identity with available session evidence rather than guess. No silent substitution of a required model.
+- **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise select by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → stronger reasoning. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages it. Update the task when the selection changes.
+
+Examples, not fixed assignments (checked 13 November 2026): [Meta Muse Wonder](https://research.meta.ai/blog/muse-wonder); [Google Gemini 4 Hydrogen, Argon or Carbon](https://aistudio.google.com/docs/models); [Anthropic Claude Haiku/Sonnet/Opus 5.5 or Fable 5.2](https://platform.claude.com/docs/en/models/overview); [OpenAI GPT-6.1 Terra/Sol or GPT-6 Astra](https://developers.openai.com/api/docs/guides/model-selection). Example task entry: `AI · GPT-6.1 Terra · High`. Reasoning labels are tool-specific. Use [Artificial Analysis](https://artificialanalysis.ai/models) for comparison when needed; project evidence takes priority.
 
 **Reconcile → select one eligible step → execute → verify → record → recompute → repeat.** Eligibility requires validated inputs/dependencies, executor, authority and budget. Expand only the immediate step; keep later steps concise. Continue independent work only if pending decisions cannot invalidate it. Preserve completed contracts/results inline or by link before expanding the next step. A tool success or subagent report alone is not acceptance evidence.
 
@@ -121,11 +124,11 @@ Run user acceptance checks through Playwright or another browser tool as the int
 
 Check both human readability and AI execution precision; one reviewer may wear both hats, clearly labeled as maker review when applicable. Human-reader perspective is not human acceptance. A required independent checker must be fresh and inspect actual evidence against frozen criteria. Mockups/model opinions do not prove implementation.
 
-For requested/needed review, send only permitted context: precise question, exact revision, criteria, relevant artifact/evidence, and bounded output structure. Ask for findings with location, impact, correction and verification. Record actual reviewer/model/identity source, scope, findings, dispositions and affected rechecks; verify advice before acting. Reuse unchanged valid reviews. Access/model/transmission failures are blockers, not verdicts. Preserve required independent and human acceptance separately; do not invent approval gates or approvals.
+For requested/needed review, send only permitted context: precise question, exact revision, criteria, relevant artifact/evidence, and bounded output structure. Ask for findings with location, impact, correction and verification. Record reviewer, model and reasoning, scope, findings, dispositions and affected rechecks; verify advice before acting. Reuse unchanged valid reviews. Access/model/transmission failures are blockers, not verdicts. Preserve required independent and human acceptance separately; do not invent approval gates or approvals.
 
 For code changes, choose repeatable checks for the changed behavior and its material failure paths. Record the revision, runtime versions and observed results. Verify findings against agreed behavior and reproducible cases. Record confirmed defects and unresolved findings. Send policy questions to the decision owner before changing behavior. Review findings inform decisions. Passing checks require observed results. Where warranted, retain a regression test and rerun affected checks on the repaired revision. Check transaction, access and recovery boundaries touched by the change. Use measurements to support performance claims.
 
-The story coordinator, assigned by the accountable human, uses the agreed criteria, risk and repository rules to decide what to check, when and who checks it. Plan this before implementation and revisit it when scope or risk changes. The accountable human owns acceptance policy, business decisions and any required release approval. For material changes to behavior, shared contracts, access, data or recovery, schedule a fresh independent reviewer after the writer's checks and before merge or handoff. Follow any stricter project requirements. Choose a human or an AI permitted by project policy and suited to the risk and context. Record the exact planned model and reasoning for an AI review. The reviewer inspects the proposed revision and evidence. Repairs reopen affected checks and findings.
+The story coordinator, assigned by the accountable human, uses the agreed criteria, risk and repository rules to decide what to check, when and who checks it. Plan this before implementation and revisit it when scope or risk changes. The accountable human owns acceptance policy, business decisions and any required release approval. For material changes to behavior, shared contracts, access, data or recovery, schedule a fresh independent reviewer after the writer's checks and before merge or handoff. Follow any stricter project requirements. Choose a human or an AI permitted by project policy and suited to the risk and context. Record the selected model and reasoning for an AI review. The reviewer inspects the proposed revision and evidence. Repairs reopen affected checks and findings.
 
 Put applicable code checks behind a repository-owned command that works locally and in CI. The story checklist records the check, executor and result. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
 
