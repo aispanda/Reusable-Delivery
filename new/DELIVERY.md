@@ -86,7 +86,7 @@ with one executor each. Use N/A with a reason where a check does not apply.>
 - Check: <AC IDs, command/method, runtime or environment, expected outcome, verifier, evidence to retain>
 - Authority/boundary: <existing authorization reference, action class, excluded effects>
 - Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
-- Actual: NOT RUN. <Later record executor, attempt/time,
+- Actual: NOT RUN. <Later record executor (AI: confirm Model + Reasoning above, or note a change or tool-managed Auto), attempt/time,
   input/output revisions, expected versus observed checks, evidence, limits and next step.
   For user-role-dependent checks, also record the identity or role used, the intended
   user role, access to the target resource, and observed behavior. Keep unverified
@@ -125,7 +125,7 @@ One assigned executor per step; split meaningful human/AI/automation handoffs. T
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
-- **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise select by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → stronger reasoning. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages it. Update the task when the selection changes.
+- **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Set reasoning separately to match task difficulty. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages reasoning, or Auto when it selects the model. Note any selection change in the task result.
 
 Examples, not fixed assignments (checked 13 November 2026): [Meta Muse Wonder](https://research.meta.ai/blog/muse-wonder); [Google Gemini 4 Hydrogen, Argon or Carbon](https://aistudio.google.com/docs/models); [Anthropic Claude Haiku/Sonnet/Opus 5.5 or Fable 5.2](https://platform.claude.com/docs/en/models/overview); [OpenAI GPT-6.1 Terra/Sol or GPT-6 Astra](https://developers.openai.com/api/docs/guides/model-selection). Example task entry: `AI · GPT-6.1 Terra · High`. Reasoning labels are tool-specific. Use [Artificial Analysis](https://artificialanalysis.ai/models) for comparison when needed; project evidence takes priority.
 
