@@ -66,6 +66,15 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 |---|---|---|
 | <Stable AC ID> | <Preserve original IDs and agreed wording verbatim. Label new, unagreed wording Proposed.> | <Reference applicable check IDs and any coverage gaps, or record the result and pinned evidence here when there is no separate check.> |
 
+## Material blockers
+<Use one current entry per distinct material blocker. Reference the affected step or check IDs.>
+
+**<Step/check IDs> · <Short status>**
+- **Goal** · <What must the actor accomplish?>
+- **Blocker** · <What prevents it?>
+- **Current fix** · <Smallest proposed fix, or verified fix with evidence link>
+- **Documentation** · <One best documentation URL. Omit if unavailable.>
+
 **Next** · <One action tied to an existing step or human decision and the relevant criterion or check IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
 ```
 
@@ -84,6 +93,12 @@ Use only the sections that apply. For a proposed scenario, the scenario bullets 
 ## Using the story
 
 Record one next action, its owner, and the agreed criterion it advances or the decision a named human needs to make. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
+
+Start with known checks. Refine Next as fixture, user, permission, documentation, or smaller-step needs emerge. Use plain language and fewer than 30 words each for Goal, Blocker, and Current fix. Mark a proposed fix unverified until tested.
+
+Try the smallest authorized fix first and verify it against the blocker. If stuck, send one authorized reviewer the same three fields, the documentation URL if available, and only essential sanitized evidence in a reusable thread. Request at most 60 words covering one actionable next step, its success check, and any approval or access needed.
+
+The execution agent validates advice, retries only with new evidence or a changed hypothesis, and escalates access or approval needs. Update Current fix in place after failures. On resolution, retain only the verified fix there and link evidence. Preserve prior criteria and evidence. Record material side effects, decisions, and mandatory evidence in existing QA records.
 
 Use the existing execution or QA record when it has the needed detail. Check the Files index against tracked story files, including subfolders, and verify its links before closing. Keep any required independent verification and human acceptance explicit.
 
