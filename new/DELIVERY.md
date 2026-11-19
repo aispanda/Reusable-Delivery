@@ -51,9 +51,14 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 **Acceptance** · <What remains open and what was outside scope. If closure was directed, state who authorized it and exactly what they closed.> [Decision, if recorded](<revision-pinned link>)
 
 ## Proposed scenario checks
-<Include when the story is driven by proposed test scenarios.>
+<Include when the story is driven by proposed test scenarios. Include the setup bullets for demo stories.>
 
-- **<Check ID>** · <Actor, action, and observable expectation. Include exact values, counts, and record relationships where relevant.> <Agreed criterion IDs, if applicable>
+- **Where / who** · <Authorized environment and entry link. Sign in as the intended role or test user.>
+- **Start with** · <Direct test-record links, required starting state, and safe reset if needed.>
+
+**Demo sequence** · <Presenter check IDs in order. Include only when the list also contains setup or QA checks.>
+
+1. **<Check ID>** · <Actor and action> → <One visible expected outcome for a presenter step, or the observable expectation for a QA check. Include exact values, counts, and record relationships where relevant.> <Applicable criterion IDs>
 
 | Check ID | Status | Observed result and evidence |
 |---|---|---|
@@ -91,6 +96,10 @@ Give each proposed check a stable ID. State the actor, action, and observable ex
 Use only the sections that apply. For a proposed scenario, the scenario bullets carry the proposed expectations. The results table tracks outcomes and evidence by ID. Retain agreed criterion IDs and exact wording in the acceptance criteria section and use references to show coverage and gaps. For new work without a scenario, label unagreed criteria Proposed in that section.
 
 ## Using the story
+
+Draft the demo in the story as soon as the path is known. Mark pending fixtures or access explicitly. Write each presenter action once, in replay order, using its stable check ID. Keep QA queries in the QA record and track observed results and evidence by ID.
+
+Revise the setup and actions in place as you run them. Before marking the story demo-ready, confirm intended-user access and record links, verify the safe reset, and replay the sequence from the stated starting condition. Restore the starting state afterward where a safe, authorized reset applies. Omit credentials. Keep restricted links in an authorized record and use a safe reference in the story.
 
 Record one next action, its owner, and the agreed criterion it advances or the decision a named human needs to make. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
 
