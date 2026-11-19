@@ -1,6 +1,6 @@
 # Code quality checks
 
-## Plan verification in the story checklist
+## Plan verification
 
 Before work starts, the story coordinator assigned by the accountable human selects checks from the acceptance criteria, the change's risk and repository policy. The accountable human owns acceptance policy and decides open business, access and release questions. The coordinator updates the plan when scope or risk changes.
 
@@ -12,7 +12,7 @@ For new work, plan verification before the first build step. For migrated work, 
 | Routine implementation | Run existing relevant tests and focused checks for changed behavior. | Apply repository policy. Record the reason when an independent review is inapplicable. |
 | Material behavior, shared contract, access, data, or recovery change | Exercise success and failure paths, including cross-boundary behavior where relevant. | Assign a fresh independent human or approved AI reviewer after writer checks. Schedule a separate human decision when acceptance or release policy requires it. |
 
-Use the existing bounded task rows. For example, an AI writer implements an agreed behavior, CI runs the repository check, and a fresh reviewer checks the proposed revision and its evidence. Give each step one executor and an expected result. Name the planned client, exact model/version and reasoning for AI steps. Record the actual identity, tested revision, runtime, result and evidence link. A repair reopens the affected checks and findings. Use the same approach for human or automation steps, recording the person or tool and version as applicable.
+Record detailed QA procedures, execution results, and repair history in the linked QA record. In the story, summarize the observed outcome and any open gaps against the affected criteria. Use the existing bounded task rows when available. For example, an AI writer implements an agreed behavior, CI runs the repository check, and a fresh reviewer checks the proposed revision and its evidence. Give each step one executor and an expected result. Name the planned client, exact model/version and reasoning for AI steps. Record the actual identity, tested revision, runtime, result and evidence link. A repair reopens the affected checks and findings. Use the same approach for human or automation steps, recording the person or tool and version as applicable.
 
 | Step | Action / AC IDs | Dependencies | One executor; planned model/tool | State / result link |
 |---|---|---|---|---|
@@ -27,7 +27,7 @@ Shipment pilot example from [S-05a](https://github.com/aispanda/salesforce-shipm
 |---|---|---|---|---|
 | S-05a | GitHub Actions and Python `unittest` | `84e293ac71a8ce5d124517412a96b48a03e26051` | Merge `83f550e57b3ac16a1374abd09c062cc95e9dfa20` | [22 offline tests passed](https://github.com/aispanda/salesforce-shipment-tracking-integration/actions/runs/43151308174) on each of Python 3.11.18 and 3.14.10. |
 
-The story keeps the fresh review assignment and human acceptance pending in their own rows.
+The shipment pilot kept the fresh review assignment and human acceptance pending.
 
 ## Run the checks
 
@@ -37,7 +37,7 @@ Start with existing tests and the smallest useful language-specific checks. A fa
 
 The reviewer examines behavior and maintainability against the proposed revision and agreed criteria. Turn confirmed failures into targeted regressions where useful. Record policy questions for the decision owner. Compare reviewer tools on verified findings, misses, noise, time and cost with equivalent inputs.
 
-If a repository uses an automatic PR reviewer, verify the trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the story, record the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
+If a repository uses an automatic PR reviewer, verify the trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the linked QA record, document the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
 
 ## GitHub Actions for a Python story
 

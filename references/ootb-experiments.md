@@ -1,10 +1,10 @@
 # OOTB discovery and experiments
 
-Use this optional guide when exploring out-of-the-box product capabilities through small proofs of concept (POCs). Follow the applicable [delivery route](../DELIVERY.md) at the same guide revision and reuse it if already loaded. Keep one execution checklist in the story. The catalog holds reusable capability research; the story holds task ownership, decisions and execution evidence.
+Use this optional guide when exploring out-of-the-box product capabilities through small proofs of concept (POCs). Follow the applicable [delivery route](../DELIVERY.md) at the same guide revision and reuse it if already loaded. Link the existing execution or discovery record from the story. The catalog holds reusable capability research.
 
 ## Start from the current outcome
 
-Record the latest authorized user outcome, intended users and prior research in the story's Current state and Solution sections. Resolve a conflict with an older requirement before testing the journey. Record authorized scope changes and affected checks in story history so earlier work remains traceable.
+Record the agreed criterion, the native platform behavior observed, and a reference to the discovery evidence. Label any proposed configuration or customization as a proposal. Name the owner of the next check or human decision, and keep investigation steps in the linked discovery record. Resolve conflicts with older requirements before testing. Record authorized scope changes and affected checks in the linked decision or execution record.
 
 Choose the activity and product coverage for discovery, such as buyer returns within a specified commerce product and release. A POC may investigate several related requirements. Set a bounded learning objective, time or attempt limit, permitted environment changes and success check for the next experiment.
 
@@ -33,7 +33,7 @@ Keep the reusable catalog sanitized. Store org-specific identities, URLs, record
 
 1. **Select a candidate.** Link its catalog ID and the requirement or question being tested. Prefer a small existing configuration or supported standard capability that could satisfy the outcome. Record why a candidate needs adaptation, is unsuitable or remains unverified.
 2. **Prepare the test.** Complete platform preflight for dependent work. Verify the intended persona, entry point or trigger, prerequisites and test data. Inspect possible downstream effects such as notifications, inventory or payments and keep execution within existing authorization. Record how to inspect partial results and restore or clean up the test changes.
-3. **Assign and execute.** Expand the next task using the existing story contract, including inputs, output, dependencies, documentation, one executor, planned model/reasoning or automation tool, check, limits and recovery. Use a development/test environment with an appropriate fixture. Run a small experiment, then update the next task from what was learned.
+3. **Assign and execute.** Expand the next task in the linked execution record, including inputs, output, dependencies, documentation, one executor, planned model/reasoning or automation tool, check, limits and recovery. Use a development/test environment with an appropriate fixture. Run a small experiment, then update the next task from what was learned.
 4. **Verify the behavior.** For user acceptance, use Playwright or another browser tool as the intended user, starting at the proposed entry point. For background work, trigger the agreed event and verify state through MCP/CLI. Record expected and observed results, revisions, side effects and evidence. Active configuration, an administrator's successful query or a published page alone leaves user behavior unverified.
 5. **Decide and retain.** Record whether to adopt, adapt, defer or reject the candidate and why. Preserve working assets and useful discoveries. A failed experiment can answer its research question while the desired product capability remains unmet.
 

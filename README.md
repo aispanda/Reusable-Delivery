@@ -10,7 +10,9 @@ For an unknown route: use https://github.com/aispanda/Reusable-Delivery/blob/mai
 
 [OOTB discovery and experiments](references/ootb-experiments.md) is optional guidance for cataloging standard capabilities, testing candidates and carrying results into delivery.
 
-[Code quality checks](CODE-QUALITY.md) shows how to plan verification in a story checklist and reuse a Python CI workflow when applicable.
+[Code quality checks](CODE-QUALITY.md) shows how to plan and record verification and reuse a Python CI workflow when applicable.
+
+[Worked example](EXAMPLE.md) · [User guide](references/AI-Spanda-Reusable-Delivery-User-Guide.pdf) · [QA guide](references/AI-Spanda-Reusable-Delivery-QA.pdf) · [Archive](archive/README.md)
 
 Replace `main` with a verified commit SHA for a pinned handoff. The guide explains revision resolution and context reuse. Examples and validation history are optional. GitHub holds detailed delivery material; ClickUp tracks title/ID, grouping and filtering fields, ownership, dates and status; its description contains the GitHub folder and story links. Private values remain in approved restricted storage; `.gitignore` does not protect tracked files or history.
 

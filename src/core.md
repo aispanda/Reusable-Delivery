@@ -4,8 +4,6 @@ Refresh the current story, relevant comments, decisions, dependencies, evidence 
 
 When upgrading an existing story to a newer guide, record both guide commit SHAs, compare changed rules and map affected checks. Preserve prior results as historical; retain still-valid evidence, reopen affected checks, and mark checks not yet performed NOT RUN. Do not silently rewrite the guide provenance or restart completed work.
 
-Keep the story understandable on its own, with concise solution/decisions and links to useful detail. Separate design, research, debugging, planning or evidence files only when their detail or lifecycle merits it. There is no fixed document count or word limit. A typical work-item folder starts with `story.md`; add other artifacts as needed, not empty scaffolding that suggests progress.
-
 ClickUp holds the short story title/ID, epic or parent grouping, ownership, dates, status and applicable priority, categories, flags and labels for filtering and understanding the work. Its description contains the GitHub story-folder link and story-file link. Keep requirements, acceptance criteria, solution/design, execution checklists, research and QA evidence in GitHub and reference them by link when needed. Keep filtering fields concise; avoid copying delivery content into custom fields or comments. Preserve historical source snapshots under the migration rules. GitHub holds the detailed record. Execution evidence governs delivery status; cited human decisions or designated assignment fields govern ownership. Reconcile conflicts and keep unresolved ones visible. Do not maintain competing current stories; preserve historical snapshots.
 
 Use relevant official platform documentation and identify the supported claim and source section/version. Verify actual target metadata, edition, API version, access and behavior before relying on it. A URL proves neither compatibility nor runtime success. A new client/laptop supplies its own configuration and evidence: permissions, acceptance and fixture reservations do not automatically transfer.
@@ -22,79 +20,43 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 ## Copyable story
 
-Replace placeholders with facts, **Pending — missing item**, **Blocked — dependency/resume condition**, **NOT RUN**, or **N/A — reason**. Unknown is not N/A. Keep these concerns covered without mechanically repeating irrelevant sections.
-
 ```markdown
-# <stable story ID>: <outcome>
+# <ID> · <Outcome title>
 
-Guide: <consumed guide path/link @ verified commit SHA; route NEW, MIGRATE, or MIGRATE+NEW>
-Revision/status/as-of: <revision; documentation/build/test/acceptance states separately>
-Origin: <permitted source reference/version; restricted index if necessary>
-Accountable owner: <actual person or Pending>
+**Owner** · <Confirmed story owner or Pending confirmation> · [Story and execution record](<revision-pinned link>) · [Guide](<revision-pinned link>)
 
-## Current state
-<Verified result and evidence; unresolved limits; next eligible step and executor.>
-<Independent verification: NOT RUN/Pending/result. Human acceptance: required/not
-required/Pending — requirement unknown, with source; actual decision remains Pending until received.>
+**Outcome** · As <actor>, I want <capability> so that <benefit>.
 
-## Outcome and scope
-As a <beneficiary>, I want <capability>, so that <outcome>.
-<Scope, exclusions, baseline facts, assumptions and dependencies.>
+**Demo result** · <Date, scenario, identity verified or unverified, and observed result. If nothing ran, write NOT RUN.> [Evidence](<revision-pinned link>)
 
-## Acceptance criteria
-| ID | Agreed criterion and observable expected result | Check/evidence | Result |
-|---|---|---|---|
-| AC-01 | <preserve wording> | <method and evidence> | NOT RUN |
+**Acceptance** · <What remains open and what was outside scope. If closure was directed, state who authorized it and exactly what they closed.> [Decision, if recorded](<revision-pinned link>)
 
-## Solution
-<Concise approach, important alternative/tradeoff, interactions and failure behavior.>
-<Links to design/research/investigation; claim supported and limits of each source.>
-<Relevant product, business, UX, technical and QA concerns; N/A with reason where useful.>
+| ID | Agreed criterion | Observed result |
+|---|---|---|
+| <Original AC ID> | <Copy the agreed wording verbatim. Repeat for every criterion.> | <What passed or failed, with pinned evidence. For partial coverage, name each check still NOT RUN.> |
 
-## Execution
-<Plan checks for the ACs and material risks before implementation. Schedule build,
-checks, independent review when applicable, and human decisions as bounded steps
-with one executor each. Use N/A with a reason where a check does not apply.>
-| Step | Action / AC IDs | Dependencies | One executor; model + reasoning / tool | State / result link |
-|---|---|---|---|---|
-| S-01 | <Verify platform access when applicable, otherwise the next bounded action> | <required inputs> | <Human: person / Automation: tool / AI: model + reasoning> | Pending |
-
-### Next step: S-01
-- Accountable owner; one executor: <values>
-- Model and reasoning (AI) or tool/version (automation): <values>
-- Inputs: <source revision, schema/template, freshness/access; supporting docs and claims>
-- Operation/output: <bounded operation, destination, format, expected result>
-- Check: <AC IDs, command/method, runtime or environment, expected outcome, verifier, evidence to retain>
-- Authority/boundary: <existing authorization reference, action class, excluded effects>
-- Limits/recovery: <time/cost/retries; inspect partial effects before retry; stop/resume condition>
-- Actual: NOT RUN. <Later record executor (AI: confirm Model + Reasoning above, or note a change or tool-managed Auto), attempt/time,
-  input/output revisions, expected versus observed checks, evidence, limits and next step.
-  For user-role-dependent checks, also record the identity or role used, the intended
-  user role, access to the target resource, and observed behavior. Keep unverified
-  outcomes Pending.>
-
-## Review and decisions
-| Finding/decision | Reviewer, model + reasoning and reviewed revision/scope | Disposition/repair | Recheck/evidence |
-|---|---|---|---|
-| <ID> | <actual identity or Pending> | <accepted/rejected/deferred with reason> | NOT RUN |
-<Human-reader and AI-execution perspectives; maker review clearly labeled.
-Fresh independent checker where required. Human acceptance separately recorded.>
-
-## Blockers and history
-<Blocker: timestamp, unmet criterion, attempts, partial effects, impact, responsible
-owner/service, smallest next action and verifiable resume condition.>
-<Material changes: reason/authority, affected criteria/checks, evidence and rechecks.
-Keep one current-state block; label old snapshots historical.>
-
-## Files
-<At story closeout, group every tracked file in this story folder and its subfolders by purpose.
-Use one relative link per file and at most eight words of description, excluding the filename.
-Before closing the story, verify that the list matches the tracked files and the links resolve.>
+**Next** · <One action tied to an existing step or human decision and the relevant AC IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
 ```
+
+## Keep the story reviewable
+
+Lead with the story’s outcome. Put acceptance criteria in a clearly labeled section. Group related criteria and give each distinct condition its own bullet. Place safeguards and exceptions beside the criteria they qualify. Link or cite evidence where it applies, and include the context a reviewer needs to interpret it.
+
+For new stories, write criteria directly and preserve any wording required verbatim. For migrated stories, carry forward required verbatim criteria exactly as written. Put clarifications in a separate note so reviewers can distinguish them from the source wording.
+
+Stories have no word limit. During review, remove repeated explanations and move optional background to a linked reference. Keep every required criterion, safeguard, exception, and detail needed to judge acceptance in the story itself.
+
+Use the template’s table for stable criterion IDs. Keep conditions within an existing criterion intact when its wording must be preserved.
+
+## Using the story
+
+Record one next action, its owner, and the agreed criterion it advances or the decision a named human needs to make. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
+
+Use the existing execution or QA record when it has the needed detail. Check the Files index against tracked story files, including subfolders, and verify its links before closing. Keep any required independent verification and human acceptance explicit.
 
 ## Platform access check
 
-For stories that read or change an external platform, put **Verify platform access** first in the Execution table. Make platform discovery, review, build, testing and writes depend on this check. Keep existing task IDs when adding it to a migrated story.
+For stories that read or change an external platform, put **Verify platform access** first in the execution plan linked from the story. Make platform discovery, review, build, testing and writes depend on this check. Keep existing task IDs when adding it to a migrated story.
 
 - **Choose the tools.** Use the approved platform MCP or CLI for backend operations and backend tests. Verify each tool the story will use against the intended account and environment with a minimal read-only probe. Use Playwright or another browser tool for tests of the user journey and user acceptance, acting as the intended user. Browser sign-in also supports tool authentication when needed.
 - **Salesforce.** Verify both Headless 360 MCP and Salesforce CLI against the intended org. Start with MCP: discover, describe, then dispatch_readonly. For CLI, check `sf org list --json` privately and run a read-only API check such as `sf org list limits --target-org <ALIAS> --json`. Use MCP first for org work and the verified CLI as appropriate. Writes require existing authority. If a check fails, open only the matching recovery guide at this guide revision: [MCP setup and recovery](../docs/salesforce-mcp.md) or [CLI setup and recovery](../docs/salesforce-cli.md). If both pass, skip the recovery guides.
@@ -134,14 +96,14 @@ For code changes, choose repeatable checks for the changed behavior and its mate
 
 The story coordinator, assigned by the accountable human, uses the agreed criteria, risk and repository rules to decide what to check, when and who checks it. Plan this before implementation and revisit it when scope or risk changes. The accountable human owns acceptance policy, business decisions and any required release approval. For material changes to behavior, shared contracts, access, data or recovery, schedule a fresh independent reviewer after the writer's checks and before merge or handoff. Follow any stricter project requirements. Choose a human or an AI permitted by project policy and suited to the risk and context. Record the selected model and reasoning for an AI review. The reviewer inspects the proposed revision and evidence. Repairs reopen affected checks and findings.
 
-Put applicable code checks behind a repository-owned command that works locally and in CI. The story checklist records the check, executor and result. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
+Put applicable code checks behind a repository-owned command that works locally and in CI. The linked execution record identifies the check, executor and result. The story links the observed result to the relevant criterion. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
 
 ## Supporting detail when needed
 
-For work exploring standard product capabilities through bounded experiments, read [OOTB discovery and experiments](../references/ootb-experiments.md) at this guide revision. Load it only when that approach is relevant; keep the execution checklist in the story.
+For work exploring standard product capabilities through bounded experiments, read [OOTB discovery and experiments](../references/ootb-experiments.md) at this guide revision. Load it only when that approach is relevant; link the execution record from the story.
 
 - **Design/research:** question and AC IDs; verified facts and dated/versioned source sections; approach/alternatives/tradeoffs; contracts/data flow and failure behavior; assumptions, decisions and validation plan.
 - **Debugging:** expected/observed behavior, reproducible case/environment; logs, hypotheses and discriminating checks; diagnosis/confidence; exact fix reference; original-failure retest and affected regressions; limits/recovery. Mark hypotheses untested/supported/disproven. A successful command is not proof of a fix. Keep sensitive raw logs restricted.
 - **Configuration:** required keys/types/defaults/validation, runtime/tool versions and retrieval mechanism. Commit placeholders/synthetic fixtures; keep real values outside the checkout where practical, otherwise verify local files are ignored and untracked. Use approved secret storage; never print secrets. Label proposed/unrun commands honestly.
 
-Optional [example](../EXAMPLE.md) and [validation/source mapping](../VALIDATION.md) support illustration or audit. This adapts the earlier agreed template v1.3 and Field Guide v1 + addition v1.1; private source references remain restricted, and user instructions govern adaptations.
+See the [worked example](../EXAMPLE.md) for the current format and the [archive](../archive/README.md) for the prior format. [Validation history](../VALIDATION.md) documents earlier revisions.

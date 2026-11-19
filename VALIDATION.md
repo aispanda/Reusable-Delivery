@@ -1,5 +1,7 @@
 # Delivery guide validation
 
+This record describes earlier guide revisions, including the [long-format template](archive/long-format/src/core.md#copyable-story). For current work, use the [active routes](DELIVERY.md).
+
 ## Story QA checklist and CI pilot
 
 [AI Spanda QA decision and evidence report](references/AI-Spanda-Reusable-Delivery-QA.pdf) records the rollout rules and the pilot state as of 12 November 2026 UTC.
