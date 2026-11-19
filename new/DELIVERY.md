@@ -80,6 +80,11 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 - **Current fix** · <Smallest proposed fix, or verified fix with evidence link>
 - **Documentation** · <One best documentation URL. Omit if unavailable.>
 
+## Admin guidance
+<Optional at closeout for settings an admin will maintain. Use one bullet per material change.>
+
+- **<What to change>** · <Exact verified admin UI path or durable link to verified runbook instructions> · Replay <existing check ID>. <Include a verified prerequisite or activation step only if it affects the change.>
+
 **Next** · <One action tied to an existing step or human decision and the relevant criterion or check IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
 ```
 
@@ -100,6 +105,8 @@ Use only the sections that apply. For a proposed scenario, the scenario bullets 
 Draft the demo in the story as soon as the path is known. Mark pending fixtures or access explicitly. Write each presenter action once, in replay order, using its stable check ID. Keep QA queries in the QA record and track observed results and evidence by ID.
 
 Revise the setup and actions in place as you run them. Before marking the story demo-ready, confirm intended-user access and record links, verify the safe reset, and replay the sequence from the stated starting condition. Restore the starting state afterward where a safe, authorized reset applies. Omit credentials. Keep restricted links in an authorized record and use a safe reference in the story.
+
+Capture candidate admin paths during execution. Verify them as the intended admin, including any required activation sequence. Finalize Admin guidance after the relevant acceptance checks pass and before closing the story. A passing buyer demo verifies buyer behavior only. Keep proposed admin paths in the execution record until verified, and reference existing checks by ID so the buyer demo stays intact.
 
 Record one next action, its owner, and the agreed criterion it advances or the decision a named human needs to make. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
 
