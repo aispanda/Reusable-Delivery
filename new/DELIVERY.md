@@ -111,6 +111,27 @@ The execution agent validates advice, retries only with new evidence or a change
 
 Use the existing execution or QA record when it has the needed detail. Check the Files index against tracked story files, including subfolders, and verify its links before closing. Keep any required independent verification and human acceptance explicit.
 
+### Example: Quantity rules and volume pricing
+
+- **Where / who** · Open the demo storefront as the test buyer.
+- **Start with** · Open the gauze-box product. Confirm the isolated cart is empty. For a safe reset, remove only the demo line when authorized.
+
+**Demo sequence** · AC-03 → AC-04 → AC-05 → AC-06
+
+1. **AC-03** · Add 8 boxes → $80 subtotal.
+2. **AC-04** · Try 9 boxes → rejected. The cart stays at 8 boxes and $80.
+3. **AC-05** · Enter 10 boxes → $9 each, $90 subtotal.
+4. **AC-06** · Enter 12 boxes → $9 each, $108 subtotal.
+
+**AC-03 · Resolved**
+
+- **Goal** · Add eight units as the test buyer and verify one cart line at $80.
+- **Blocker** · The buyer page showed Out of Stock. In-app browser control then became unavailable.
+- **Current fix** · Playwright Chrome restored buyer testing. Add To Cart was enabled, and AC-03 passed. [Verification details](https://github.com/aispanda/B2B-Commerce/blob/5b5d8838cfbdc2a8075e368b024b28a1a4501ed7/epics/e01-customer-ordering/stories/purchase-quantity-rules-and-volume-pricing/story.md#verification-details)
+- **Documentation** · [Omnichannel Inventory Connect REST APIs](https://help.salesforce.com/s/articleView?id=commerce.inv_omnichannel_inventory_connect_rest_apis.htm&language=en_US&type=5)
+
+[Full example and results](https://github.com/aispanda/B2B-Commerce/blob/5b5d8838cfbdc2a8075e368b024b28a1a4501ed7/epics/e01-customer-ordering/stories/purchase-quantity-rules-and-volume-pricing/story.md)
+
 ## Platform access check
 
 For stories that read or change an external platform, put **Verify platform access** first in the execution plan linked from the story. Make platform discovery, review, build, testing and writes depend on this check. Keep existing task IDs when adding it to a migrated story.
