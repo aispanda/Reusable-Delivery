@@ -52,11 +52,23 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 **Acceptance** · <What remains open and what was outside scope. If closure was directed, state who authorized it and exactly what they closed.> [Decision, if recorded](<revision-pinned link>)
 
-| ID | Agreed criterion | Observed result |
-|---|---|---|
-| <Original AC ID> | <Copy the agreed wording verbatim. Repeat for every criterion.> | <What passed or failed, with pinned evidence. For partial coverage, name each check still NOT RUN.> |
+## Proposed scenario checks
+<Include when the story is driven by proposed test scenarios.>
 
-**Next** · <One action tied to an existing step or human decision and the relevant AC IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
+- **<Check ID>** · <Actor, action, and observable expectation. Include exact values, counts, and record relationships where relevant.> <Agreed criterion IDs, if applicable>
+
+| Check ID | Status | Observed result and evidence |
+|---|---|---|
+| <Check ID> | NOT RUN | <When run, record the observed result and link pinned evidence.> |
+
+## Acceptance criteria
+<Include for agreed criteria and for proposed criteria that are not already captured in the scenario checks.>
+
+| Criterion ID | Criterion | Coverage and evidence |
+|---|---|---|
+| <Stable AC ID> | <Preserve original IDs and agreed wording verbatim. Label new, unagreed wording Proposed.> | <Reference applicable check IDs and any coverage gaps, or record the result and pinned evidence here when there is no separate check.> |
+
+**Next** · <One action tied to an existing step or human decision and the relevant criterion or check IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
 ```
 
 ## Keep the story reviewable
@@ -67,7 +79,9 @@ For new stories, write criteria directly and preserve any wording required verba
 
 Stories have no word limit. During review, remove repeated explanations and move optional background to a linked reference. Keep every required criterion, safeguard, exception, and detail needed to judge acceptance in the story itself.
 
-Use the template’s table for stable criterion IDs. Keep conditions within an existing criterion intact when its wording must be preserved.
+Give each proposed check a stable ID. State the actor, action, and observable expectation once, including exact values, counts, and record relationships where relevant. Preserve agreed criteria verbatim. Map checks to criteria by ID in either direction as needed. Track status, observed result, and evidence by check ID. Use `NOT RUN` until execution.
+
+Use only the sections that apply. For a proposed scenario, the scenario bullets carry the proposed expectations. The results table tracks outcomes and evidence by ID. Retain agreed criterion IDs and exact wording in the acceptance criteria section and use references to show coverage and gaps. For new work without a scenario, label unagreed criteria Proposed in that section.
 
 ## Using the story
 
@@ -107,7 +121,7 @@ Step states: Pending; In progress (executor/time); Rework (executed check failed
 
 ## Review and acceptance
 
-Run user acceptance checks through Playwright or another browser tool as the intended user. Record the entry point, user role, actions, expected behavior and observed result. Use MCP/CLI for backend checks and supporting state verification. An inaccessible page or missing action leaves the dependent user journey unverified. Record human acceptance separately from test execution.
+Use the in-app browser, Chrome, or another browser, manually or through Playwright, as the intended end user. Verify the actual page layout, related lists, available actions, and visible data relevant to the journey. Record the entry point, user role, actions, expected behavior and observed result. Use MCP/CLI for backend checks on records, metadata, and supporting state. An inaccessible page or missing action leaves the dependent user journey unverified. Record human acceptance separately from test execution.
 
 Check both human readability and AI execution precision; one reviewer may wear both hats, clearly labeled as maker review when applicable. Human-reader perspective is not human acceptance. A required independent checker must be fresh and inspect actual evidence against frozen criteria. Mockups/model opinions do not prove implementation.
 
