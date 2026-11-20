@@ -1,3 +1,3 @@
-# Moved
+# Delivery: start here
 
-Read [migrate/DELIVERY.md](migrate/DELIVERY.md), the complete guide, at this same commit. Do not read this pointer as a standalone instruction set.
+Start with [Delivery](DELIVERY.md) to select the NEW or MIGRATE route.

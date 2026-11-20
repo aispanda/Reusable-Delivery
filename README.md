@@ -10,7 +10,7 @@ The router opens the selected route and tells you which modules to read before e
 
 [Code quality checks](CODE-QUALITY.md) shows how to plan and record verification and reuse a Python CI workflow when applicable.
 
-[Worked example](EXAMPLE.md) · [User guide](references/AI-Spanda-Reusable-Delivery-User-Guide.pdf) · [QA guide](references/AI-Spanda-Reusable-Delivery-QA.pdf) · [Archive](archive/README.md)
+[Current worked demo](modules/using.md#example-quantity-rules-and-volume-pricing) · [User guide pointer](references/AI-Spanda-Reusable-Delivery-User-Guide.pdf) · [QA guide pointer](references/AI-Spanda-Reusable-Delivery-QA.pdf) · [Archive](archive/README.md)
 
 Replace `main` with a verified commit SHA for a pinned handoff. The guide explains revision resolution and context reuse. Examples and validation history are optional. GitHub holds detailed delivery material; ClickUp tracks title/ID, grouping and filtering fields, ownership, dates and status; its description contains only the published story’s Outcome sentence copied verbatim and one direct link to the current GitHub story file. Private values remain in approved restricted storage; `.gitignore` does not protect tracked files or history.
 
