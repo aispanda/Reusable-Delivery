@@ -44,7 +44,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Story and execution record](<revision-pinned link>) · [Guide](<revision-pinned link>)
+**Owner** · <Confirmed story owner or Pending confirmation> · [Current execution record](<live link; omit when this story tracks progress>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
