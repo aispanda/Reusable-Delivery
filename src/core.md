@@ -167,6 +167,14 @@ For code changes, choose repeatable checks for the changed behavior and its mate
 
 The story coordinator, assigned by the accountable human, uses the agreed criteria, risk and repository rules to decide what to check, when and who checks it. Plan this before implementation and revisit it when scope or risk changes. The accountable human owns acceptance policy, business decisions and any required release approval. For material changes to behavior, shared contracts, access, data or recovery, schedule a fresh independent reviewer after the writer's checks and before merge or handoff. Follow any stricter project requirements. Choose a human or an AI permitted by project policy and suited to the risk and context. Record the selected model and reasoning for an AI review. The reviewer inspects the proposed revision and evidence. Repairs reopen affected checks and findings.
 
+**Code slice review.** Review each new or changed code slice before dependent work builds on it. Keep the slice the smallest coherent, testable unit and group its related edits. Prepare evidence with the repository command, local tests and dry runs as needed. Both reviews below are mandatory for code, in this order, with no substitute reviewer:
+
+1. Run CodeRabbit on the proposed revision. Verify each finding, fix confirmed problems, rerun affected checks and rerun CodeRabbit on the changed scope.
+2. Request the final review of the repaired revision from Claude Opus 5.5 in a fresh session that did not write the slice. Ask for only exact additions, deletions or refinements with file and line anchors, or a short statement that none are needed.
+3. Apply confirmed Opus fixes and rerun affected checks. If those fixes require CodeRabbit to recheck the affected scope, request another Opus review of the rechecked revision, so Opus always gives the last review. Record both reviews against the final revision.
+
+Proceed with dependent implementation, deployment, merge or handoff only after CodeRabbit and Opus have both completed their reviews, confirmed findings are fixed, and the affected rechecks pass. If either reviewer is unavailable, mark that review step Blocked with the reason and hold dependent work; unrelated work may continue. For code, the Opus review satisfies the fresh independent review above. Human acceptance stays separate.
+
 Put applicable code checks behind a repository-owned command that works locally and in CI. The linked execution record identifies the check, executor and result. The story links the observed result to the relevant criterion. For examples and an optional Python workflow, see [Code quality checks](../CODE-QUALITY.md).
 
 ## Supporting detail when needed

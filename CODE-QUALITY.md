@@ -9,8 +9,8 @@ For new work, plan verification before the first build step. For migrated work, 
 | Change | Evidence to plan | Review before handoff or merge |
 |---|---|---|
 | Documentation or design | Verify source claims, links and agreed criteria as applicable. | Follow project rules and assign an independent source check when preservation or a material design decision requires it. |
-| Routine implementation | Run existing relevant tests and focused checks for changed behavior. | Apply repository policy. Record the reason when an independent review is inapplicable. |
-| Material behavior, shared contract, access, data, or recovery change | Exercise success and failure paths, including cross-boundary behavior where relevant. | Assign a fresh independent human or approved AI reviewer after writer checks. Schedule a separate human decision when acceptance or release policy requires it. |
+| Routine implementation | Run existing relevant tests and focused checks for changed behavior. | Apply the code slice review in the delivery guide's Review and acceptance section. |
+| Material behavior, shared contract, access, data, or recovery change | Exercise success and failure paths, including cross-boundary behavior where relevant. | For code, apply the code slice review; otherwise assign a fresh independent human or approved AI reviewer after writer checks. Schedule a separate human decision when acceptance or release policy requires it. |
 
 Record detailed QA procedures, execution results, and repair history in the linked QA record. In the story, summarize the observed outcome and any open gaps against the affected criteria. Use the existing bounded task rows when available. For example, an AI writer implements an agreed behavior, CI runs the repository check, and a fresh reviewer checks the proposed revision and its evidence. Give each step one executor and an expected result. Name the planned client, exact model/version and reasoning for AI steps. Record the actual identity, tested revision, runtime, result and evidence link. A repair reopens the affected checks and findings. Use the same approach for human or automation steps, recording the person or tool and version as applicable.
 
@@ -37,7 +37,7 @@ Start with existing tests and the smallest useful language-specific checks. A fa
 
 The reviewer examines behavior and maintainability against the proposed revision and agreed criteria. Turn confirmed failures into targeted regressions where useful. Record policy questions for the decision owner. Compare reviewer tools on verified findings, misses, noise, time and cost with equivalent inputs.
 
-If a repository uses an automatic PR reviewer, verify the trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the linked QA record, document the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
+Verify the CodeRabbit trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the linked QA record, document the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
 
 ## GitHub Actions for a Python story
 
