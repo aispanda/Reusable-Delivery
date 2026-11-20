@@ -37,7 +37,7 @@ Start with existing tests and the smallest useful language-specific checks. A fa
 
 The reviewer examines behavior and maintainability against the proposed revision and agreed criteria. Turn confirmed failures into targeted regressions where useful. Record policy questions for the decision owner. Compare reviewer tools on verified findings, misses, noise, time and cost with equivalent inputs.
 
-Verify the CodeRabbit trigger on a representative PR and record its response against the proposed revision. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the linked QA record, document the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
+When CodeRabbit runs through its GitHub App, verify the installation and trigger on a representative PR and record its response against the proposed revision. When it runs through the CLI, record the reviewed revision; a verified CLI sign-in does not show that the app is installed. The shipment pilot verified CodeRabbit on a ready PR. Its draft PR reported that automatic review was skipped. In the linked QA record, document the selected reviewer, timing and disposition of confirmed findings. CI reports the repeatable pass/fail results separately.
 
 ## GitHub Actions for a Python story
 
@@ -63,3 +63,13 @@ jobs:
 Replace the versions and directory with the story's actual support contract. Verify a passing run and a controlled failing run before making the check required. GitHub's default pull-request checkout tests the merge result. Record the PR head and the tested merge revision from the workflow run. Use the ordinary `pull_request` event for untrusted PR code and keep credentials and deployment jobs separate. [GitHub reusable workflows](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows) · [Required status checks](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging)
 
 Complete the **Platform access check** in the selected delivery guide before any Salesforce org work. For Salesforce changes, use the repository's existing command or CI job for the applicable Apex tests, component tests, Salesforce Code Analyzer rules and authorized sandbox validation. Record the results by revision and target environment. [Salesforce Code Analyzer CI integration](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/ci-cd.html)
+
+## Settings for a public personal repository
+
+These settings are optional. They enforce only what GitHub can check and never replace the technical evidence, merge authority or business acceptance recorded under the delivery guide. Rulesets are available for public repositories on GitHub Free. [Available rules for rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)
+
+- **Pull requests.** A ruleset can require a pull request before merging with zero required approvals. That blocks direct pushes to the protected branch while still letting a sole maintainer merge.
+- **Approvals.** A pull request author cannot approve their own pull request, so required approvals block a sole maintainer's merges unless another collaborator with write access approves. Require approvals only when such a reviewer exists.
+- **Status checks.** Add the story check job and verify a passing run and a controlled failing run, as described above, before requiring it. A deployment workflow such as GitHub Pages is not a story check. Select GitHub Actions as the expected source where the ruleset offers it, and choose whether branches must be up to date with the base branch before merging. Required checks show test results only; the Opus review is not a GitHub check, so confirm both reviews in the QA record before merging.
+- **Automatic merge.** Automatic merge must be allowed in repository settings, and it completes as soon as the configured requirements are met, which can happen before the delivery guide's reviews are recorded. Enable it on a pull request only after both reviews are recorded against the final head. If a later push changes reviewed scope, turn it off until those reviews are repeated.
+- **Merge queue.** Merge queues require a repository owned by an organization, so a personal repository cannot use one.
