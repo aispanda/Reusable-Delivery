@@ -11,7 +11,7 @@ Track the route, SHA, modules loaded, current step, results, blockers and next a
 | Now | [agreement.md](../modules/agreement.md), [privacy.md](../modules/privacy.md), [story.md](../modules/story.md) | Working agreement, privacy rules for story content, copyable story and criteria |
 | Before recording any check or step status or the next action, dispatching or running any step | [execution.md](../modules/execution.md), [states.md](../modules/states.md) | Executors, bounded execution and evidence states |
 | Before deriving platform checks or reading or changing an external platform | [platform.md](../modules/platform.md) | Platform access and documentation checks. Open a recovery guide only when its probe fails |
-| Before automation, a decision model or LangGraph | [automation.md](../modules/automation.md) | Automation rules |
+| When planning repeatable work that may warrant automation, or before using automation, a decision model or LangGraph | [automation.md](../modules/automation.md) | Record the LangGraph decision, any revisit trigger and any required human approval in the existing execution record or story. |
 | Before planning or making a code, configuration or data change, a push to the default branch, an intended user test, review, PR, deployment, merge or handoff | [review.md](../modules/review.md) | Testing, review and PR rules, including CodeRabbit first and fresh Claude Opus 5.5 last |
 | Before a commit, push, publication or ClickUp write | [publication.md](../modules/publication.md) | Publication, ClickUp and link rules. Apply the chosen route's ClickUp steps too |
 | Before demo work, a blocker entry, admin guidance or closeout | [using.md](../modules/using.md) | Using the story |
