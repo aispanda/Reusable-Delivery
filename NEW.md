@@ -1,3 +1,3 @@
 # Delivery: start here
 
-Start with [Delivery](DELIVERY.md) to select the NEW or MIGRATE route.
+Start with the [NEW route](new/START.md), or use [Delivery](DELIVERY.md) to choose a route.
