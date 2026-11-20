@@ -1,14 +1,14 @@
-# Delivery: choose the route
+# Delivery: start here
 
-Use the request and available context to select one complete guide:
+Use the request and available context to select one route:
 
-- [New work](new/DELIVERY.md): create a story from an outcome or brief.
-- [Migration](migrate/DELIVERY.md): preserve and organize existing work; includes mixed existing/new scope.
+- [NEW](new/START.md) for creating a story from an outcome or brief.
+- [MIGRATE](migrate/START.md) for preserving and organizing existing work, including mixed existing and new scope.
 
-If intent is still ambiguous, ask one concise question before dependent writes. Use the selected guide for the template and the rules relevant to the work. Direct-route readers do not need this entry.
+Resolve this link's branch or tag to a commit SHA once, or use the SHA already in the link. Fetch the selected route and its modules at that SHA. If intent is still ambiguous, ask one concise question before dependent writes. Reuse verified same-SHA content. If a route entry is missing or incomplete, use the corresponding full guide at that SHA.
 
-If the router link is commit-pinned, use that SHA. Otherwise resolve the supplied branch/tag once and fetch the selected guide at that commit; pass the SHA explicitly with API calls. No router reread is required. Reuse complete verified same-SHA content already in context. If the guide is missing or incomplete, report it and stop dependent work. The guide grants no additional authority.
+Track the guide revision, route, modules loaded and progress in the story's linked execution record, or in the story while no separate record is needed, at its current revision. The guide grants no additional authority.
 
 ## Copyable story
 
-The template is inside each complete guide under “Copyable story”. Choose the applicable route above.
+Choose a route above. It links to the shared story template and tells you what to load before each action. The complete [NEW guide](new/DELIVERY.md) and [MIGRATE guide](migrate/DELIVERY.md) remain available at the same paths.
