@@ -18,7 +18,8 @@ Record detailed QA procedures, execution results, and repair history in the link
 |---|---|---|---|---|
 | S-01 | Implement AC-01 and record the proposed revision. | Agreed AC-01 | AI writer with assigned client, model/version and reasoning | Pending |
 | S-02 | Run the repository check and record the result and runtime. | S-01 | Automation with the assigned workflow revision | Pending |
-| S-03 | Check AC-01 behavior, failure paths and evidence. Record findings and rechecks. | S-01 and S-02 | Assigned independent reviewer | Pending |
+| S-03a | Run CodeRabbit on the proposed revision. Have the writer verify findings, fix confirmed defects, rerun affected checks and obtain CodeRabbit re-review of the changed scope. | S-01 and S-02 | CodeRabbit | Pending |
+| S-03 | Independently check AC-01 behavior, failure paths and evidence on the repaired revision. Record findings, dispositions and affected rechecks. After further repairs, rerun affected checks and reviews, with Opus last. Record both reviews against the final revision. | S-03a | Claude Opus 5.5 in a fresh session that did not write the slice | Pending |
 | S-04 | Record the acceptance or release decision when required. | S-02 and S-03 | Accountable human | Pending |
 
 Shipment pilot example from [S-05a](https://github.com/aispanda/salesforce-shipment-tracking-integration/blob/1b1a4ecfc01a1d4040f5f5b4006e68e5784fe1dc/story/user-story.md#execution-checklist)
