@@ -2,9 +2,13 @@
 
 This record describes earlier guide revisions, including the [long-format template](archive/long-format/src/core.md#copyable-story). For current work, use the [active routes](DELIVERY.md).
 
+## Repository cleanup — 20 November 2026
+
+The pre-cleanup [revision](https://github.com/aispanda/Reusable-Delivery/tree/302385554c48443a020000c51d75cec7888dbb4f) preserves the original paths. Six superseded assets are archived byte-for-byte. Legacy Markdown and PDF paths direct readers to the current entry or worked demo. Generator checks and active relative links were verified locally. Earlier validation records retain their historical scope.
+
 ## Story QA checklist and CI pilot
 
-[AI Spanda QA decision and evidence report](references/AI-Spanda-Reusable-Delivery-QA.pdf) records the rollout rules and the pilot state as of 12 November 2026 UTC.
+[AI Spanda QA decision and evidence report](archive/pre-governance/references/AI-Spanda-Reusable-Delivery-QA.pdf) records the rollout rules and the pilot state as of 12 November 2026 UTC.
 
 The story checklist assigns the writer, automated checks, independent reviewer where applicable and any required human decision as bounded steps. A focused Claude review (`claude-opus-5-5`) found no material issues. The final wording clarifies the coordinator assignment, aligns the example with the story checklist and specifies which revisions to record for pull request evidence.
 
