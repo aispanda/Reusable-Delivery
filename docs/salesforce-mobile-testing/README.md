@@ -1,83 +1,164 @@
-# Salesforce mobile testing on a Mac
+# Mobile app testing on a Mac
 
-Use this runbook when an authorized agent needs to set up and test the Salesforce mobile app on an Apple Silicon Mac. It covers the native Android app, the emulator, and Appium; adapt it to another mobile story without assuming that the barcode example is implemented. The local Android emulator and open-source Appium tooling are free; provider accounts, hosting, or other optional tools may have separate costs or terms.
+Use this runbook when an authorized agent needs to install tools and test a mobile application on an Apple Silicon Mac. It covers native, hybrid and mobile web apps on Android emulators, iOS simulators and physical devices, using Appium. Salesforce barcode lookup is a worked example; do not assume that example is implemented. Local emulator, simulator and Appium tools are free; Apple developer membership, app stores, device clouds and optional services can have separate costs or terms.
 
-**Status:** Proposed reusable process, not a passed test. Gemini Neon proposed the emulator and Appium approach; Claude Opus 5.5 independently reviewed the approach and suggested testing and story changes. Neither review proves that the current Salesforce APK, app, selectors, or camera scan work on a particular Mac or org. Record actual versions and results when you run it.
+**Status:** Proposed process, not a passed test. Gemini proposed the original Salesforce emulator and Appium approach; Claude Opus 5.5 reviewed it and proposed a general process. Neither review proves that any build, selector, device feature or camera scan works in a particular environment. Record actual versions and results.
+
+Steps labeled **Android**, **iOS**, or **Salesforce example** apply only to that case. A **human gate** is a step that requires an authorized person's participation.
 
 ## Agent starting instructions
 
-Give this file and the relevant story to the agent. The agent should inspect the existing environment, use the steps below to install missing tools within the authorized project, perform the manual baseline and then run the appropriate tests. Report what actually ran, and stop only the affected work when interactive login, permissions, incompatible software or another real blocker prevents progress. This guide requires an agent with terminal and device or desktop-control access; a text-only agent cannot operate the emulator itself.
+Give the agent this guide and the relevant story. It should inspect the environment, reuse working tools, install missing prerequisites within the authorized scope, validate a checklist manually and run appropriate automated checks. Report only observed results. Terminal access can control devices through `adb`, `xcrun simctl` and Appium; some setup, interactive login, device permissions or visual inspection may require a person or desktop control. If blocked, record the obstacle and continue independent work.
 
-For detailed setup, read the official [Appium Android setup skill](https://github.com/appium/skills/blob/main/skills/setup-uiautomator2/SKILL.md) and its linked resources. The [Appium skills repository](https://github.com/appium/skills) also includes troubleshooting and real-device workflows. Skills are optional instructions, not a required agent product: an agent without skill support can read the files directly. If installing a skill into an agent, use that agent's documented installation method, inspect its contents first and record the revision. Do not run unfamiliar repository scripts without checking them and the host's rules.
+Optional official agent guidance: [Appium skills](https://github.com/appium/skills) includes `setup-uiautomator2`, `setup-xcuitest` and troubleshooting. Agents without skills support can read the instructions directly. Google's [Android CLI](https://developer.android.com/tools/agents/android-cli) includes `android init` for its agent skill. Inspect skill contents and host rules before installation or running scripts, and record the revision.
 
-Useful open-source repositories: [Appium server](https://github.com/appium/appium), [UiAutomator2 Android driver](https://github.com/appium/appium-uiautomator2-driver), [Appium Inspector](https://github.com/appium/appium-inspector) (optional visual selector inspection), and [WebdriverIO](https://github.com/webdriverio/webdriverio) (one possible JavaScript test client). Appium uses a separate client library to write tests; reuse the project's client if one exists. These links are references, not a requirement to clone every repository.
+Useful repositories: [Appium](https://github.com/appium/appium), [UiAutomator2](https://github.com/appium/appium-uiautomator2-driver), [XCUITest](https://github.com/appium/appium-xcuitest-driver), [Appium Inspector](https://github.com/appium/appium-inspector) for optional visual selector inspection, and [WebdriverIO](https://github.com/webdriverio/webdriverio), one possible test client. Reuse an existing client; cloning every repository is unnecessary.
+
+## Human gates
+
+An agent should use existing authorization and the applicable host rules. A person may need to supply missing scope or authority, enter an administrator password, accept binding terms, grant macOS privacy permissions, complete sign-in/MFA, trust a physical device, configure Apple signing, present a physical test fixture, or make an acceptance decision. Prepare and verify everything else independently. Never record passwords, tokens or MFA codes in scripts, prompts, logs, screenshots or Git.
 
 ## Before you start
 
-1. Read the current story and the applicable [delivery guide](../../DELIVERY.md), including its access, execution, review, privacy and publication rules. Identify the authorized org, user/role, app, test fixture, expected result and reset procedure. Confirm scope and authority; do not use production or create or change records without authorization. Retain current acceptance criteria and IDs.
-2. Check whether an existing Android SDK, emulator, Appium, project test suite and suitable fixture can be reused. Don't overwrite another project's configuration. Check available disk, memory and macOS version against the [Android Emulator requirements](https://developer.android.com/studio/run/emulator). On Apple Silicon choose ARM-compatible software and a compatible ARM system image. Check the current [Appium requirements](https://appium.io/docs/en/latest/quickstart/requirements/) and driver compatibility before selecting and recording versions. The latest release is not automatically the version already approved by a project.
-3. Define a small checklist before automating: question, exact action, expected observable result, evidence and behavior when evidence is missing. Include a deliberately incorrect or restricted case to demonstrate that the check can fail. Use synthetic data and a safe reset for write tests. Keep raw logs, screenshots and page source containing org data in approved restricted storage; publish sanitized results only.
-4. Check Salesforce CLI and MCP independently when the story requires them, using the repository's [Salesforce CLI](../salesforce-cli.md) and [Salesforce MCP](../salesforce-mcp.md) guides. A connected CLI or an existing web session does not prove the emulator is signed in as the intended user.
+1. Read the story and applicable [delivery guide](../../DELIVERY.md). Identify the app, platforms, authorized environment, test user and role, build, fixture, expected outcomes and safe reset. Use synthetic data. Do not use production data or change records without authorization.
+2. Choose the surface for each check:
 
-## 1. Prepare the Android device and Salesforce app
+   | Need | Android | iOS |
+   | --- | --- | --- |
+   | Project native or hybrid app | Compatible debug APK on emulator or device; UiAutomator2 | Simulator `.app` or signed physical-device build; XCUITest |
+   | Vendor app | Vendor emulator build if available; otherwise authorized physical device | Vendor simulator build if available; otherwise authorized physical device |
+   | Mobile website | Chrome on emulator or device | Safari on simulator or device |
+   | Hardware such as camera, NFC or biometrics | Use physical-device evidence where required; simulation may be partial | Use physical-device evidence where required; simulation may be partial |
 
-1. Install or reuse [Android Studio](https://developer.android.com/studio) for the Mac's architecture. Through its SDK Manager install the Android Emulator, SDK Platform-Tools, command-line tools and a supported Android system image. Accept required SDK licenses only when the operator is authorized to do so; hand off any agreement requiring human acceptance. Install a JDK and Node/npm versions compatible with the chosen Appium and driver releases. Verify actual paths and versions rather than relying on an old `JAVA_HOME` example.
-2. In Android Studio select **More Actions → Virtual Device Manager → Create Device**, select an appropriate phone and an ARM64 image, and start it. Choose an Android version supported by the target Salesforce build and record the image and API level. Follow [Android's emulator setup](https://developer.android.com/studio/run/emulator); UI labels vary by version. Verify:
+   Hybrid WebView inspection requires a debuggable and reachable WebView. Store builds may not expose one. Emulator or simulator results do not establish physical hardware behavior.
+3. Reuse installed SDKs, virtual devices, Xcode, Appium, tests and fixtures. Check [Android emulator requirements](https://developer.android.com/studio/run/emulator) and [XCUITest requirements](https://appium.github.io/appium-xcuitest-driver/latest/getting-started/system-requirements/). Choose versions compatible with the project and ARM images for Apple Silicon.
+4. Before automating, write a checklist with the question, exact action, expected result, evidence and behavior when evidence is absent. Include an intentionally incorrect or restricted case to prove the check can fail. Keep sensitive logs, screenshots and page source in approved restricted storage; publish only sanitized evidence.
+5. **Salesforce example:** When needed, independently check [Salesforce CLI](../salesforce-cli.md) and [MCP](../salesforce-mcp.md). A connected CLI or browser session does not prove that the intended user is signed in on the device.
+
+## 1. Prepare Android (Android only)
+
+1. Check existing tools and paths:
 
    ```sh
    uname -m
-   node --version
-   npm --version
-   java -version
-   adb version
-   adb devices -l
+   command -v android adb emulator sdkmanager java node npm
+   printf '%s\n' "$ANDROID_HOME"
    ```
 
-   Expect an `arm64` host and the intended emulator in `device` state. If `adb` isn't on `PATH`, use the actual SDK `platform-tools/adb` path for this session; don't silently change the user's shell profile.
-3. Download the Android **virtual-device build** linked from [Salesforce Mobile Debugging Tools](https://developer.salesforce.com/tools/mobile-debugging) and [Salesforce's preview instructions](https://developer.salesforce.com/docs/platform/mobile-offline/guide/dx-mobile-previews-salesforce-app.html). Before installation inspect the APK's native-library ABIs, if present, with `unzip -l <apk>`, and verify compatibility with the selected emulator. A missing `lib/` directory alone does not prove that the whole app is compatible. Install by dropping the APK onto the running emulator or with `adb -s <emulator-id> install <apk>`; check the actual result. Do not assume a downloaded build is compatible until it launches.
-4. Open the Salesforce app. Have the human complete any binding license agreement, interactive sign-in, identity verification and required consent. Select the intended org and test identity. Never paste credentials, access tokens or MFA codes into test scripts, commits, logs, prompts or screenshots. Use the existing authenticated session without clearing app data; if it expires, hand sign-in back to the human. Follow the org's rules for test accounts and device authorization.
-5. Confirm the app and user, open the target screen manually and record the baseline. For a missing menu item, record the active mobile app, menu contents, the item label, tab visibility, profile/access and the **Setup → Salesforce Navigation** configuration where authorized. Refresh the mobile app after changes. A working direct URL does not prove the menu entry is visible. [Salesforce Mobile Only navigation](https://help.salesforce.com/s/articleView?id=salesforce_app_customize_nav_menu.htm&type=5)
+   Reuse an appropriate SDK and emulator. `command -v` can return a nonzero status for missing tools; check each one individually if needed.
+2. Install [Android CLI](https://developer.android.com/tools/agents/android-cli) using its current official installation instructions, or use Android Studio's SDK Manager or [SDK command-line tools](https://developer.android.com/tools/sdkmanager). For Android CLI, inspect `android help sdk install` and `android sdk list --all`, then install required packages **one at a time**, for example:
 
-## 2. Install and verify Appium
+   ```sh
+   android info
+   android sdk install platform-tools
+   android sdk install emulator
+   android sdk list --all
+   ```
 
-Prefer an isolated project tool directory and existing lockfiles over a system-wide installation. Pin versions only after checking compatibility; keep installation files and tests with the work they support. If the authorized test directory has no `package.json`, run `npm init -y` there first. For example, with a compatible Node/npm already available and inside that test project:
+   Select and install a compatible ARM system image using its exact listed package name. Read current CLI help when options differ. Follow project policy for telemetry. **Human gate:** have an authorized person accept SDK licenses where required.
+3. Create a virtual device with `android emulator create --list-profiles` followed by `android emulator create medium_phone` if the profile fits. The CLI chooses its AVD configuration; inspect the created image and API level for app compatibility. Use `android help emulator start` for the installed version's start syntax. Alternatively use Android Studio's Device Manager or `avdmanager` and `emulator`. Check the actual serial and use it explicitly:
+
+   ```sh
+   adb devices -l
+   adb -s <serial> wait-for-device
+   adb -s <serial> shell getprop sys.boot_completed
+   adb -s <serial> shell getprop ro.product.cpu.abi
+   ```
+
+   Boot completion should be `1`; record the emulator, image, API level and ABI. For mobile web, verify the selected image includes Chrome. If needed, invoke `adb` by its SDK path without silently modifying shell profiles.
+4. Obtain an authorized emulator-compatible app build. Inspect native APK libraries with `unzip -l <apk>`; an absent `lib/` folder alone does not prove compatibility. Check the selected ABI and test installation and launch. An example install is `adb -s <serial> install <apk>`; avoid replacing an existing app or clearing its data without authorization. Inspect the live device for its package and activity, for example using `adb -s <serial> shell dumpsys window`. Values and output differ across Android versions.
+
+   **Salesforce example:** Download the virtual-device build linked from [Salesforce preview instructions](https://developer.salesforce.com/docs/platform/mobile-offline/guide/dx-mobile-previews-salesforce-app.html). Its compatibility and package name must be observed on the selected image.
+5. **Human gate:** Open the app and have the test user complete any required sign-in, identity verification, consent or terms. Preserve the authenticated session. Record the app version, role, entry path and baseline screen. A working deep link does not prove the menu is visible.
+
+   **Salesforce example:** Select the correct login server or My Domain. For a missing navigation item, record the active app, menu, tab visibility, permissions and, if authorized, Salesforce Navigation configuration. [Salesforce navigation](https://help.salesforce.com/s/articleView?id=salesforce_app_customize_nav_menu.htm&type=5)
+
+## 2. Prepare iOS (iOS only)
+
+1. Install Xcode for the supported macOS and XCUITest versions. **Human gate:** the owner handles Apple ID, administrator prompts and the Xcode license. Then check:
+
+   ```sh
+   xcode-select -p
+   xcodebuild -version
+   xcodebuild -runFirstLaunch
+   xcodebuild -downloadPlatform iOS
+   xcrun simctl list runtimes
+   xcrun simctl list devicetypes
+   ```
+
+   First-launch setup or downloading a runtime may require additional authorization or disk space. Use the [driver requirements](https://appium.github.io/appium-xcuitest-driver/latest/getting-started/system-requirements/) for compatibility.
+2. Create and boot a simulator, substituting identifiers from the lists and saving the returned UDID:
+
+   ```sh
+   xcrun simctl create test_iphone "<device type>" "<runtime id>"
+   xcrun simctl boot <udid>
+   xcrun simctl bootstatus <udid> -b
+   ```
+
+   Use `open -a Simulator` if a visible window is needed.
+3. Install the app's simulator-compatible `.app`, not an ordinary device-only store `.ipa`:
+
+   ```sh
+   plutil -extract CFBundleIdentifier raw "<App>.app/Info.plist"
+   xcrun simctl install <udid> "<App>.app"
+   xcrun simctl launch <udid> <bundle-id>
+   ```
+
+   **Salesforce example:** Obtain the simulator build from [Salesforce's preview instructions](https://developer.salesforce.com/docs/platform/mobile-offline/guide/dx-mobile-previews-salesforce-app.html).
+4. Complete any human sign-in and record the baseline. For real iPhones, use the [XCUITest real-device setup](https://appium.github.io/appium-xcuitest-driver/latest/preparation/real-device-config/); trust, Developer Mode and signing may need a human. Treat simulator camera behavior as unavailable unless the relevant simulator and app support it and it has actually been verified.
+
+## 3. Install and verify Appium
+
+Reuse the project's lockfile and test runner. Check [Appium requirements](https://appium.io/docs/en/latest/quickstart/requirements/) and each driver's compatibility before choosing versions; `npm view appium version engines` helps check the current server requirements. In an authorized test project, initialize `package.json` with `npm init -y` only if needed. Example:
 
 ```sh
+export APPIUM_HOME="$PWD/.appium"
 npm install --save-dev --save-exact appium
 npx appium --version
-npx appium driver install uiautomator2
+npx appium driver install uiautomator2   # Android, if needed
+npx appium driver install xcuitest       # iOS, if needed
 npx appium driver list --installed
-npx appium driver doctor uiautomator2
+npx appium driver doctor uiautomator2    # Android
+npx appium driver doctor xcuitest       # iOS
 ```
 
-Set `APPIUM_HOME` to a stable project-specific, writable directory when isolating driver installations. Use the same setting for every Appium command and test. The doctor command must report that required prerequisites pass; record warnings separately. Check and record the installed Appium, driver, Node, npm, Java, SDK and emulator versions. If a version conflict occurs, select a documented compatible combination and repeat the checks. [Appium installation](https://appium.io/docs/en/latest/quickstart/install/) · [UiAutomator2 setup](https://appium.io/docs/en/latest/quickstart/uiauto2-driver/)
+Use the same `APPIUM_HOME` for server, driver and test commands. Doctor should report no required fixes; record warnings and actual tool versions. If incompatible, choose a documented compatible combination and repeat. [Appium installation](https://appium.io/docs/en/latest/quickstart/install/) · [UiAutomator2](https://appium.io/docs/en/latest/quickstart/uiauto2-driver/)
 
-Start Appium bound to loopback, then verify its status endpoint before creating a session. For example, in one terminal run `npx appium --address 127.0.0.1 --port 4723`; in another run `curl --fail http://127.0.0.1:4723/status` and inspect the response. Stop the server when finished. Avoid broad insecure-feature flags. If WebView automation requires an additional driver, first inspect the WebView and choose a matching ChromeDriver using the current driver documentation and project policy. Do not enable automatic downloads or relaxed security blindly.
+Start `npx appium --address 127.0.0.1 --port 4723` and verify from another terminal with `curl --fail http://127.0.0.1:4723/status`. Stop the server after testing. Avoid broad insecure-feature flags. For WebView automation, use an appropriate matching ChromeDriver and project policy; do not enable automatic downloads blindly.
 
-## 3. Validate manually, then automate
+## 4. Validate manually, then automate
 
-1. With the signed-in test user, run the checklist by hand on the emulator and record the observed result for each step. Include the known failure or restricted case. If the checklist cannot distinguish pass from fail, revise it before writing automation.
-2. In the owning project, reuse its test runner or add a minimal Appium client test. Inspect the live app to determine the installed package, activity, accessible selectors and available native/WebView contexts; don't hard-code values from an old example. Create a session for the selected emulator with `noReset` enabled so the authenticated test session is preserved; leave automatic permission granting off when testing permission behavior. Use the [Appium quickstart](https://appium.io/docs/en/latest/quickstart/) and [Salesforce's Appium walkthrough](https://developer.salesforce.com/blogs/2021/08/automated-testing-with-the-salesforce-mobile-app-appium).
-3. Automate the manual checklist using stable accessible labels where available. Capture a screenshot and sanitized assertion outcome for the active app, navigation menu and target entry. Exercise a valid synthetic code and an unknown code; for barcode workflows, compare typed entry with a known fixture and verify cancellation and permission behavior where available. Keep external side effects out of tests unless explicitly authorized and safely resettable.
-4. If the app exposes a debuggable WebView, inspect it with Chrome's device inspection and switch Appium contexts only when supported. A missing WebView, opaque native control or mismatched driver is a test limitation to diagnose, not a passed check. Record actual errors and use a real device or another verified selector strategy when appropriate.
-5. Run relevant local component and server tests first. For each coherent test-code change, follow the delivery guide's required code review sequence: CodeRabbit first, verify and repair its findings, rerun checks, then obtain a fresh Claude Opus 5.5 review last; fix confirmed findings and rerun affected checks. If either review is unavailable, record the blocker and don't perform dependent implementation, deployment, merge or handoff. Record the reviewed revision and checks; do not describe model advice as test results.
+1. Run the checklist by hand on the selected device and record each result, including the deliberate failure. Fix an ambiguous checklist before automating it.
+2. Prove the driver can start a session. For an Android native app, save a `caps.json` with observed values:
 
-## 4. Barcode scanning and physical-device evidence
+   ```json
+   {"capabilities":{"alwaysMatch":{"platformName":"Android","appium:automationName":"UiAutomator2","appium:udid":"<serial>","appium:appPackage":"<package>","appium:appActivity":"<activity>","appium:noReset":true,"appium:autoGrantPermissions":false}}}
+   ```
 
-Salesforce states that its native BarcodeScanner requires a compatible Salesforce mobile app; a desktop or mobile web browser cannot perform a native scan. Salesforce recommends actual physical devices for testing scanning. [Compatibility](https://developer.salesforce.com/docs/platform/mobile-offline/guide/use-barcodescanner-compatibility.html) · [Considerations](https://developer.salesforce.com/docs/platform/mobile-offline/guide/use-barcodescanner-considerations.html)
+   For iOS, use `platformName` `iOS`, automation name `XCUITest`, the simulator UDID and `appium:bundleId`. For a website, use `browserName` `Chrome` or `Safari` and remove app-specific keys. POST the JSON to `http://127.0.0.1:4723/session`, check the response and delete the returned session afterwards. Preserve authenticated sessions and don't automatically grant permissions when testing prompts. [Appium quickstart](https://appium.io/docs/en/latest/quickstart/)
+3. Reuse the project's client or add a minimal test, discover accessible selectors and native/WebView contexts, and automate the validated checklist. Verify expected outcomes with assertions. Capture sanitized results and protect raw evidence. Do not perform external side effects without authorization and a safe reset.
 
-An optional Android emulator experiment can load a PNG/JPEG barcode into **Extended Controls → Camera → Virtual scene images** and aim the virtual camera at it. Android documents this camera feature, but decoding by the particular Salesforce build is **unverified until observed**. Record a failed or unavailable virtual scan honestly; do not turn it into a pass. [Android emulator camera](https://developer.android.com/studio/run/emulator-use-camera)
+   **Salesforce example:** Compare a valid synthetic code, an unknown code and typed entry; test cancellation and permissions when supported. [Salesforce Appium walkthrough](https://developer.salesforce.com/blogs/2021/08/automated-testing-with-the-salesforce-mobile-app-appium) · [UTAM](https://developer.salesforce.com/docs/platform/utam/guide/test-sf-applications.html)
+4. Inspect a debuggable Android WebView with Chrome device inspection or iOS WebView with Safari remote debugging. Switch context only when supported. Missing contexts, incompatible drivers and opaque controls are limitations to diagnose, not passes.
+5. Run relevant local component and server tests. For each coherent test-code change follow the delivery guide's review sequence: CodeRabbit first, verify and repair findings and rerun affected checks; then a fresh Claude Opus 5.5 review last, fix confirmed findings and rerun affected checks. If either review is unavailable, record the blocker and do not perform dependent implementation, deployment, merge or handoff. Record reviewed revisions and checks.
 
-For acceptance, use an authorized physical phone and a synthetic barcode displayed on a second screen or printed label. Test scanning, the result and cancellation; compare against manual entry and the expected stock or record. Appium can drive a USB-authorized Android phone, but presenting the barcode requires a person or a physical fixture. Record device/OS/app versions, role, expected and observed outcomes, and restricted evidence. Do not claim physical-camera behavior from a simulation.
+## 5. Hardware features and physical-device evidence
+
+Camera, NFC, Bluetooth, biometrics and push may need physical-device evidence. Simulations can support regression checks when the specific capability and app support them; do not claim physical behavior from simulation. Android documents location and fingerprint simulation through its [emulator console](https://developer.android.com/studio/run/emulator-console), and virtual scene images through its [emulator camera](https://developer.android.com/studio/run/emulator-use-camera). Whether an app reacts correctly must be observed.
+
+On a physical device, Appium can drive a USB-authorized Android phone or properly configured iPhone. Presenting a code, card or fingerprint may need a person or physical fixture. Record device, OS and app versions, role, expected and observed results, and protected evidence.
+
+**Salesforce example:** Native BarcodeScanner requires a compatible Salesforce mobile app; scanning is unsupported in a desktop or mobile browser. Salesforce recommends physical devices for scan testing. Whether an emulator virtual-scene image decodes in a particular build is unverified. For acceptance, use an authorized phone and synthetic barcode; test scan, result and cancellation and compare with typed entry and expected stock. [Compatibility](https://developer.salesforce.com/docs/platform/mobile-offline/guide/use-barcodescanner-compatibility.html) · [Considerations](https://developer.salesforce.com/docs/platform/mobile-offline/guide/use-barcodescanner-considerations.html)
 
 ## Results and handoff
 
-Record each check as **PASS**, **FAIL**, **BLOCKED**, or **NOT RUN**, with exact revision, versions, user/role, target environment, expected and observed results, and an appropriately protected evidence reference. For a blocker record the goal, specific obstacle, smallest next action, and the best supporting documentation. Update the owning story and its ClickUp pointer only under the applicable delivery rules. Do not mark an acceptance criterion complete until its required evidence and human decision are present.
+Record each check as **PASS**, **FAIL**, **BLOCKED**, or **NOT RUN**, with revision, tool versions, platform, device or simulator, OS, user or role, environment, expected and observed results, and an appropriately protected evidence reference. For a blocker record the goal, obstacle, smallest next action and supporting documentation. Update the owning story under its delivery rules. Do not mark acceptance complete until its required evidence and decision are present.
 
-If an automated test fails, preserve evidence, separate setup, authentication, permissions, app defects and test-harness problems, then retest the affected check after a verified fix. Leave an authenticated session, profile data and other people's test artifacts intact.
+If a test fails, preserve evidence; distinguish setup, authentication, permissions, app defects and harness problems; and retest after a verified fix. Preserve existing sessions and other people's artifacts.
 
 ## References
 
-- [Salesforce Mobile Tools playlist](https://www.youtube.com/playlist?list=PLgIMQe2PKPSJsVvAdRvJbot0KjD_XpzT5) · [Android emulator setup video](https://www.youtube.com/watch?v=fo0wyyutKkw). The videos are from 2021; use current documentation for menu names, versions and requirements.
-- [Salesforce virtual-device builds](https://developer.salesforce.com/docs/platform/mobile-offline/guide/dx-mobile-previews-salesforce-app.html) · [Salesforce mobile Appium walkthrough](https://developer.salesforce.com/blogs/2021/08/automated-testing-with-the-salesforce-mobile-app-appium).
-- [Android Emulator](https://developer.android.com/studio/run/emulator) · [Appium documentation](https://appium.io/docs/en/latest/).
+- [Appium documentation](https://appium.io/docs/en/latest/) · [Appium skills](https://github.com/appium/skills) · [XCUITest requirements](https://appium.github.io/appium-xcuitest-driver/latest/getting-started/system-requirements/)
+- **Android:** [Android CLI](https://developer.android.com/tools/agents/android-cli) · [SDK tools](https://developer.android.com/tools/sdkmanager) · [Emulator](https://developer.android.com/studio/run/emulator) · [Emulator console](https://developer.android.com/studio/run/emulator-console) · [Camera](https://developer.android.com/studio/run/emulator-use-camera)
+- **iOS:** [Xcode](https://developer.apple.com/xcode/)
+- **Salesforce example:** [Virtual-device builds](https://developer.salesforce.com/docs/platform/mobile-offline/guide/dx-mobile-previews-salesforce-app.html) · [Appium walkthrough](https://developer.salesforce.com/blogs/2021/08/automated-testing-with-the-salesforce-mobile-app-appium) · [UTAM](https://developer.salesforce.com/docs/platform/utam/guide/test-sf-applications.html) · [Mobile Tools playlist](https://www.youtube.com/playlist?list=PLgIMQe2PKPSJsVvAdRvJbot0KjD_XpzT5). Older walkthroughs and videos may have outdated versions or menus.
