@@ -3,7 +3,6 @@
     {
       "id": "AC-01",
       "title": "Flag overdue invoices",
-      "scenarioId": "QA-01",
       "version": 1,
       "actor": "invoice_reviewer",
       "environment": "test_queue",

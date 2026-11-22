@@ -80,7 +80,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 Lead with the outcome, scope, and repeatable workflow. Keep the full acceptance criteria in the linked `scenarios.json`. Preserve stable IDs and agreed wording, including safeguards and exceptions. Label unagreed wording as Proposed in the review record.
 
-Give each verification case a stable ID. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence in a private run record. Use `NOT RUN` until execution.
+Use the acceptance criterion ID to identify its verification and run records. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence in a private run record. Use `NOT RUN` until execution.
 
 ## Task checklist
 
@@ -98,7 +98,7 @@ Copy the [scenario template](../templates/scenarios.json) beside the story. The 
 
 - Write the title, starting state, ordered actions, and expected result once per criterion. Include required records, rejection reasons, and exceptions in the expected result. Include one verification case in the same record. Split independent cases into separate criteria.
 - Record the actor, scenario version, and required surfaces. Fold setup into the starting state and all execution steps into actions. Add environment or fixtures only when they help reproduce the case. Put any surface-specific readback in actions. Split the criterion if a required surface needs a materially different starting state or procedure.
-- Keep task links in checklist `supports`. Keep runtime identities, fixture mappings, and evidence in approved restricted storage.
+- Use criterion IDs in checklist `supports` and private run records. Keep runtime identities, fixture mappings, and evidence in approved restricted storage.
 - Start at version 1. Increase it only when a change affects what the check proves. Preserve existing IDs and applicable evidence during a format-only migration.
 - Record runs using the private [results schema](../templates/results.schema.json). A case passes when every required surface passes on the current version and selected build.
 

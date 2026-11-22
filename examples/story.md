@@ -8,7 +8,7 @@
 
 **Operations** · Open the invoice queue and use the Overdue flag to identify who needs a follow-up.
 
-**Demo result** · Synthetic walkthrough of QA-01.
+**Demo result** · Synthetic walkthrough of AC-01.
 
 **Acceptance** · Pending the story owner's decision.
 
@@ -16,4 +16,4 @@
 
 [Acceptance criteria and verification checks](invoice.scenarios.example.json)
 
-**Next** · Story owner reviews QA-01 and records the acceptance decision.
+**Next** · Story owner reviews AC-01 and records the acceptance decision.

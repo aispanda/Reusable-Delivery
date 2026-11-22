@@ -4,12 +4,12 @@
   "description": "Each acceptance criterion is one public verification record. Private results use results.schema.json.",
   "type": "object",
   "x-applicationChecks": [
-    "SCN-1 Reject duplicate criterion IDs, duplicate scenario IDs, and ID collisions with checklist tasks.",
+    "SCN-1 Reject duplicate criterion IDs and ID collisions with checklist tasks.",
     "SCN-2 Require at least one complete criterion before publishing. Split distinct scenarios into separate criteria.",
     "SCN-3 State requirements in expectedResult and verification steps in actions. Prefix steps by surface when needed. Split cases with materially different starting states or procedures.",
     "SCN-4 Resolve runtime aliases in approved restricted storage.",
     "SCN-5 Review every shared definition for private identifiers or runtime details.",
-    "SCN-6 Increase scenario version when a change affects what the check proves. Carry forward IDs and versions for structure-only migrations."
+    "SCN-6 Increase the criterion version when its verification behavior changes. Preserve IDs and versions for a format-only migration."
   ],
   "$defs": {
     "id": {
@@ -107,7 +107,6 @@
         "startingState",
         "actions",
         "expectedResult",
-        "scenarioId",
         "version",
         "actor",
         "surfaces"
@@ -118,9 +117,6 @@
         },
         "title": {
           "$ref": "#/$defs/words19"
-        },
-        "scenarioId": {
-          "$ref": "#/$defs/id"
         },
         "version": {
           "type": "integer",

@@ -1,17 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Private scenario run results",
-  "description": "Store real runs in approved restricted storage. Match by scenarioId, scenarioVersion, surface and tested revision. NOT RUN, Stale and the scenario result are derived.",
+  "description": "Store real runs in approved restricted storage. Match by criterionId, criterionVersion, surface and tested revision. NOT RUN, Stale and the criterion result are derived.",
   "type": "array",
   "items": {
     "$ref": "#/$defs/run"
   },
   "x-applicationChecks": [
     "RES-1 Reject duplicate run IDs.",
-    "RES-2 Validate new runs against the known scenario version and required surface. If that version specifies an environment, the run must match it. Preserve older runs as history.",
+    "RES-2 Validate new runs against the known criterion version and required surface. If that version specifies an environment, the run must match it. Preserve older runs as history.",
     "RES-3 Append runs and identify corrected runs in Comments. Preserve earlier observations and evidence.",
-    "RES-4 For each required surface, use the latest runAt matching the selected revision, current scenario version and applicable environment. Break time ties by append order. If only a different revision or version has applicable evidence, display Stale; otherwise display NOT RUN.",
-    "RES-5 Pass the scenario only when every required surface passes. Otherwise summarize in this order: Fail, Blocked, NOT RUN, Stale. Keep each surface result visible.",
+    "RES-4 For each required surface, use the latest runAt matching the selected revision, current criterion version and applicable environment. Break time ties by append order. If only a different revision or version has applicable evidence, display Stale; otherwise display NOT RUN.",
+    "RES-5 Pass the criterion only when every required surface passes. Otherwise summarize in this order: Fail, Blocked, NOT RUN, Stale. Keep each surface result visible.",
     "RES-6 Validate runAt as an RFC 3339 date-time using format validation, which must be enabled in the validator."
   ],
   "$defs": {
@@ -39,8 +39,8 @@
       "additionalProperties": false,
       "required": [
         "runId",
-        "scenarioId",
-        "scenarioVersion",
+        "criterionId",
+        "criterionVersion",
         "surface",
         "revision",
         "result",
@@ -52,10 +52,10 @@
         "runId": {
           "$ref": "#/$defs/id"
         },
-        "scenarioId": {
+        "criterionId": {
           "$ref": "#/$defs/id"
         },
-        "scenarioVersion": {
+        "criterionVersion": {
           "type": "integer",
           "minimum": 1
         },

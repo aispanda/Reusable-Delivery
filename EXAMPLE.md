@@ -10,4 +10,4 @@ The synthetic [invoice story](examples/story.md) with its [acceptance criterion]
 
 The synthetic [scenario definitions](examples/scenarios.example.json) cover a draft reviewer opening a source PDF and a user without access being denied. The [synthetic run records](examples/results.example.json) show the private result format with fake evidence references. No real runs are represented.
 
-At build `syn_rev_b`, SC-01 passes on Desktop UI and Backend. SC-02 shows a stale Desktop UI pass from `syn_rev_a` and a current Backend failure, so its scenario result is Fail. Mobile UI is unchecked in both scenarios.
+At build `syn_rev_b`, AC-03 passes on Desktop UI and Backend. AC-04 shows a stale Desktop UI pass from `syn_rev_a` and a current Backend failure, so its criterion result is Fail. Mobile UI is unchecked in both scenarios.

@@ -134,7 +134,7 @@
       "format": "storyReferences",
       "help": "IDs of story criteria, checks or scenarios this task supports. Omit when none.",
       "example": [
-        "QA-01"
+        "AC-01"
       ],
       "ai": "Read only the cited criteria, checks or scenarios needed for this task.",
       "review": "Use the story for inline check results and private run records for structured scenarios."

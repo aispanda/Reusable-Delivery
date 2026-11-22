@@ -3,7 +3,6 @@
     {
       "id": "AC-03",
       "title": "Trace a draft to its source",
-      "scenarioId": "SC-01",
       "version": 1,
       "actor": "sales_reviewer",
       "environment": "test_org",
@@ -25,7 +24,6 @@
     {
       "id": "AC-04",
       "title": "Restrict access to the source PDF",
-      "scenarioId": "SC-02",
       "version": 1,
       "actor": "no_access_user",
       "environment": "test_org",

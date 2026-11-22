@@ -1,8 +1,6 @@
 [
   {
     "runId": "RUN-SYN.1",
-    "scenarioId": "SC-01",
-    "scenarioVersion": 1,
     "surface": "desktopUi",
     "revision": "syn_rev_b",
     "result": "Pass",
@@ -12,12 +10,12 @@
     "method": "Manual",
     "testedAs": "sales_reviewer",
     "identityVerified": true,
-    "environment": "test_org"
+    "environment": "test_org",
+    "criterionId": "AC-03",
+    "criterionVersion": 1
   },
   {
     "runId": "RUN-SYN.2",
-    "scenarioId": "SC-01",
-    "scenarioVersion": 1,
     "surface": "backend",
     "revision": "syn_rev_b",
     "result": "Pass",
@@ -25,12 +23,12 @@
     "evidence": "restricted:synthetic/run-2-readback",
     "runAt": "2026-01-15T10:05:00-05:00",
     "method": "Manual",
-    "environment": "test_org"
+    "environment": "test_org",
+    "criterionId": "AC-03",
+    "criterionVersion": 1
   },
   {
     "runId": "RUN-SYN.3",
-    "scenarioId": "SC-02",
-    "scenarioVersion": 1,
     "surface": "desktopUi",
     "revision": "syn_rev_a",
     "result": "Pass",
@@ -40,12 +38,12 @@
     "method": "Manual",
     "testedAs": "no_access_user",
     "identityVerified": true,
-    "environment": "test_org"
+    "environment": "test_org",
+    "criterionId": "AC-04",
+    "criterionVersion": 1
   },
   {
     "runId": "RUN-SYN.4",
-    "scenarioId": "SC-02",
-    "scenarioVersion": 1,
     "surface": "backend",
     "revision": "syn_rev_b",
     "result": "Fail",
@@ -53,6 +51,8 @@
     "evidence": "restricted:synthetic/run-4-log",
     "runAt": "2026-01-15T10:20:00-05:00",
     "method": "Manual",
-    "environment": "test_org"
+    "environment": "test_org",
+    "criterionId": "AC-04",
+    "criterionVersion": 1
   }
 ]

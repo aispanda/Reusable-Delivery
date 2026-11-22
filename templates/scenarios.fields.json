@@ -10,7 +10,6 @@
     "startingState",
     "actions",
     "expectedResult",
-    "scenarioId",
     "version",
     "environment",
     "fixtures"
@@ -24,15 +23,9 @@
       "label": "Title",
       "help": "Name the required behavior."
     },
-    "scenarioId": {
-      "label": "Scenario ID",
-      "help": "Keep this ID stable. Reuse the existing ID when moving a story check.",
-      "example": "SC-01",
-      "editable": false
-    },
     "version": {
-      "label": "Scenario version",
-      "help": "Start at 1. Increase it when a change affects what the scenario proves."
+      "label": "Criterion version",
+      "help": "Start at 1. Increase it when a change affects what this criterion’s verification proves."
     },
     "actor": {
       "label": "Actor",
@@ -79,14 +72,6 @@
     "runId": {
       "label": "Run ID",
       "help": "Use a unique ID."
-    },
-    "scenarioId": {
-      "label": "Scenario ID",
-      "help": "Use the ID of the scenario tested."
-    },
-    "scenarioVersion": {
-      "label": "Scenario version",
-      "help": "Record the version used for this run."
     },
     "surface": {
       "label": "Surface",
@@ -135,6 +120,14 @@
     "comments": {
       "label": "Comments",
       "help": "Explain what blocked the run or cite the run being corrected."
+    },
+    "criterionId": {
+      "label": "Criterion ID",
+      "help": "Use the ID of the acceptance criterion tested."
+    },
+    "criterionVersion": {
+      "label": "Criterion version",
+      "help": "Record the criterion version used for this run."
     }
   },
   "statusGuide": {
