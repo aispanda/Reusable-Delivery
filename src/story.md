@@ -49,8 +49,9 @@ See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.
 
 ## Record blockers
 
-Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Reference the affected task or criterion IDs and use a short status. A single-task blocker belongs in its Comments.
+Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Reference the affected task or criterion IDs. A single-task blocker belongs in its Comments.
 
+- **Status** · Use Open while the obstacle remains. Use Closed after verifying the fix.
 - **Goal** · What must the actor accomplish? Use fewer than 30 words.
 - **Blocker** · What prevents it? Use fewer than 30 words.
 - **Current fix** · Smallest proposed fix, or verified fix with evidence link. Use fewer than 30 words.
