@@ -2,6 +2,7 @@
 """Generate route entries, complete guides and modules from the same sources."""
 
 import argparse
+import json
 from pathlib import Path
 import re
 
@@ -43,6 +44,19 @@ def generated_files():
         yield path, f"{generated_comment}\n\n{content.rstrip()}\n\n<!-- end of {path} -->\n"
 
     core = "\n".join(modules.values())
+    story_template = re.search(r"^\x60\x60\x60markdown\n(.*?)^\x60\x60\x60$", modules["story"], re.M | re.S)
+    if not story_template:
+        raise ValueError("Expected the copyable Markdown template in src/story.md")
+    yield "templates/story.md", story_template.group(1)
+
+    field_guide = json.loads((ROOT / "templates/story-package.fields.json").read_text(encoding="utf-8"))
+    for name in ("checklist", "scenarios"):
+        section = dict(field_guide["files"][f"{name}.json"])
+        section["$comment"] = (
+            f"Generated from story-package.fields.json. {section['$comment']}"
+        )
+        yield f"templates/{name}.fields.json", json.dumps(section, indent=2, ensure_ascii=False) + "\n"
+
     for route, title in ROUTES:
         prefix = f"# {title}\n\n"
         route_text = source(route).rstrip()
