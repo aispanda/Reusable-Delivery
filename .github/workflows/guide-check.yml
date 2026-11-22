@@ -13,3 +13,5 @@ jobs:
         with:
           python-version: '3.14'
       - run: python3 scripts/build_guides.py --check
+      - run: python3 -m pip install jsonschema==4.26.0 rfc3339-validator==0.1.4
+      - run: python3 -m unittest discover -s tests -v
