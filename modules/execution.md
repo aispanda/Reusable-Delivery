@@ -4,13 +4,13 @@
 
 Choose the simplest approach that meets the story’s acceptance criteria. Where repetition or consistency warrants it, create or reuse a small template, populate it with automation and AI as appropriate, validate it against source evidence, and generate the deliverable. Keep one authoritative source for each fact and independently verify the finished result. Expand the structure only when its benefit justifies creation, review and maintenance.
 
-One assigned executor per step; split meaningful human/AI/automation handoffs. The accountable human may differ. Unresolved required assignment blocks dispatch.
+Confirm one executor per task before dispatch. Split meaningful human, AI, and automation handoffs. The story owner is accountable for the overall outcome and acceptance decision. Use a stable public alias when the executor's identity is private and keep the identity mapping in restricted storage.
 
 For a checklist task, read its row, its direct prerequisites and the relevant [field guidance](../templates/checklist.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
-- **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Set reasoning separately to match task difficulty. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages reasoning, or Auto when it selects the model. Note any selection change in the task result.
+- **AI:** group **Agent**, **Model**, and **Reasoning** under **Task assignment** in the checklist, with separate JSON fields. Specify the model before dispatch. Require a reasoning setting when the task needs a specific setting, and use the tool's supported label. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Prefer task-relevant quality, then cost and speed. Record any selection change in the task result.
 
 Examples, not fixed assignments (checked 13 November 2026): [Meta Muse Wonder](https://research.meta.ai/blog/muse-wonder); [Google Gemini 4 Hydrogen, Argon or Carbon](https://aistudio.google.com/docs/models); [Anthropic Claude Haiku/Sonnet/Opus 5.5 or Fable 5.2](https://platform.claude.com/docs/en/models/overview); [OpenAI GPT-6.1 Terra/Sol or GPT-6 Astra](https://developers.openai.com/api/docs/guides/model-selection). Example task entry: `AI · GPT-6.1 Terra · High`. Reasoning labels are tool-specific. Use [Artificial Analysis](https://artificialanalysis.ai/models) for comparison when needed; project evidence takes priority.
 

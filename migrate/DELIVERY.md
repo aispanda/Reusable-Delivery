@@ -44,7 +44,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
+**Owner** · <Person accountable for the story outcome and acceptance decision, or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
@@ -52,9 +52,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 **Operations** · <Trigger, repeatable action and observable result for the beneficiary. Include when it clarifies the story.>
 
-**Demo result** · <Date, scenario, identity verified or unverified, and observed result. If nothing ran, write NOT RUN.> [Evidence](<revision-pinned link>)
-
-**Acceptance** · <Requirement, decision and what remains open by criterion or check ID. Record who authorized any closure and its scope.> [Decision, if recorded](<revision-pinned link>)
+**Acceptance** · <Human decision for the story, or Pending decision. Record who authorized acceptance, waiver, or closure, which criteria it covers, and which criterion IDs remain open.> [Decision, if recorded](<revision-pinned link>)
 
 ## Requirements and verification
 
@@ -69,14 +67,14 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 - **<What to change>** · <Exact verified admin UI path or durable link to verified runbook instructions> · Replay <existing check ID>. <Include a verified prerequisite or activation step only if it affects the change.>
 
-**Next** · <One action tied to an existing step or human decision and the relevant criterion or check IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
+**Next** · <Optional. Include one immediate action when it clarifies priority or sequence. Reference the relevant task or criterion IDs and name the confirmed executor or decision-maker when known.>
 ```
 
 ## Keep the story reviewable
 
 Lead with the outcome, scope, and repeatable workflow. Keep the full acceptance criteria in the linked `scenarios.json`. Preserve stable IDs and agreed wording, including safeguards and exceptions. Label unagreed wording as Proposed in the review record.
 
-Use the acceptance criterion ID to identify its verification and run records. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence in a private run record. Use `NOT RUN` until execution.
+Use the acceptance criterion ID to identify its verification and run records. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence, including from a stakeholder demo that exercises the criterion, in a private run record. Use `NOT RUN` until execution.
 
 ## Task checklist
 
@@ -117,9 +115,9 @@ Revise the setup and actions in place as you run them. Before marking the story 
 
 Capture candidate admin paths during execution. Verify them as the intended admin, including any required activation sequence. Finalize Admin guidance after the relevant acceptance checks pass and before closing the story. A passing buyer demo verifies buyer behavior only. Keep proposed admin paths in the execution record until verified, and reference existing checks by ID so the buyer demo stays intact.
 
-Record one next action, its owner, and the agreed criterion it advances or the decision a named human needs to make. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
+Record the next action in the execution record, including its executor and the agreed criterion or decision it advances. Use the optional story **Next** note only when it clarifies priority or sequence. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
 
-Start with known checks. Refine Next as fixture, user, permission, documentation, or smaller-step needs emerge. Use plain language and fewer than 30 words each for Goal, Blocker, and Current fix. Mark a proposed fix unverified until tested.
+Start with known checks. Update the next action in the execution record as fixture, user, permission, documentation, or smaller-step needs emerge. Use plain language and fewer than 30 words each for Goal, Blocker, and Current fix. Mark a proposed fix unverified until tested.
 
 Try the smallest authorized fix first and verify it against the blocker. If stuck, send one authorized reviewer the same three fields, the documentation URL if available, and only essential sanitized evidence in a reusable thread. Request at most 60 words covering one actionable next step, its success check, and any approval or access needed.
 
@@ -163,13 +161,13 @@ For stories that read or change an external platform, put **Verify platform acce
 
 Choose the simplest approach that meets the story’s acceptance criteria. Where repetition or consistency warrants it, create or reuse a small template, populate it with automation and AI as appropriate, validate it against source evidence, and generate the deliverable. Keep one authoritative source for each fact and independently verify the finished result. Expand the structure only when its benefit justifies creation, review and maintenance.
 
-One assigned executor per step; split meaningful human/AI/automation handoffs. The accountable human may differ. Unresolved required assignment blocks dispatch.
+Confirm one executor per task before dispatch. Split meaningful human, AI, and automation handoffs. The story owner is accountable for the overall outcome and acceptance decision. Use a stable public alias when the executor's identity is private and keep the identity mapping in restricted storage.
 
 For a checklist task, read its row, its direct prerequisites and the relevant [field guidance](../templates/checklist.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
-- **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Set reasoning separately to match task difficulty. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages reasoning, or Auto when it selects the model. Note any selection change in the task result.
+- **AI:** group **Agent**, **Model**, and **Reasoning** under **Task assignment** in the checklist, with separate JSON fields. Specify the model before dispatch. Require a reasoning setting when the task needs a specific setting, and use the tool's supported label. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Prefer task-relevant quality, then cost and speed. Record any selection change in the task result.
 
 Examples, not fixed assignments (checked 13 November 2026): [Meta Muse Wonder](https://research.meta.ai/blog/muse-wonder); [Google Gemini 4 Hydrogen, Argon or Carbon](https://aistudio.google.com/docs/models); [Anthropic Claude Haiku/Sonnet/Opus 5.5 or Fable 5.2](https://platform.claude.com/docs/en/models/overview); [OpenAI GPT-6.1 Terra/Sol or GPT-6 Astra](https://developers.openai.com/api/docs/guides/model-selection). Example task entry: `AI · GPT-6.1 Terra · High`. Reasoning labels are tool-specific. Use [Artificial Analysis](https://artificialanalysis.ai/models) for comparison when needed; project evidence takes priority.
 
