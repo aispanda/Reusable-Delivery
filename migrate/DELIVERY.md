@@ -107,6 +107,7 @@ Copy the [scenario template](../templates/scenarios.json) beside the story. The 
 - Use criterion IDs in checklist `supports` and private run records. Keep runtime identities, fixture mappings, and evidence in approved restricted storage.
 - Start at version 1. Increase it only when a change affects what the check proves. Preserve existing IDs and applicable evidence during a format-only migration.
 - Record runs using the private [results schema](../templates/results.schema.json). A case passes when every required surface passes on the current version and selected build.
+- Assign a different agent to build and test. On new runs, record the canonical `builderAgent` and `testerAgent` IDs from the build and test handoffs. Validate new records before appending them using `python3 scripts/validate_results.py /path/to/new-runs.json` from the guide repository. The [validator](../scripts/validate_results.py) requires `jsonschema` and `rfc3339-validator`. Use `--historical` only when reading old records. Missing IDs in those records leave independence unverified.
 
 ## Using the story
 

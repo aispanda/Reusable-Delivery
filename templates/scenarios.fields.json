@@ -105,6 +105,14 @@
       "label": "Runner",
       "help": "Name the tool or use an alias for the tester when useful."
     },
+    "builderAgent": {
+      "label": "Builder agent",
+      "help": "Record the canonical agent ID of the builder for the tested revision. Required on new runs."
+    },
+    "testerAgent": {
+      "label": "Tester agent",
+      "help": "Record the canonical agent ID of the independent tester. Required on new runs and must differ from the builder ID."
+    },
     "testedAs": {
       "label": "Tested as",
       "help": "Use the alias for the account or role used."

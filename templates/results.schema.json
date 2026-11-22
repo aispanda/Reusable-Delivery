@@ -12,7 +12,8 @@
     "RES-3 Append runs and identify corrected runs in Comments. Preserve earlier observations and evidence.",
     "RES-4 For each required surface, use the latest runAt matching the selected revision, current criterion version and applicable environment. Break time ties by append order. If only a different revision or version has applicable evidence, display Stale; otherwise display NOT RUN.",
     "RES-5 Pass the criterion only when every required surface passes. Otherwise summarize in this order: Fail, Blocked, NOT RUN, Stale. Keep each surface result visible.",
-    "RES-6 Validate runAt as an RFC 3339 date-time using format validation, which must be enabled in the validator."
+    "RES-6 Validate runAt as an RFC 3339 date-time using format validation, which must be enabled in the validator.",
+    "RES-7 Require builderAgent and testerAgent on new runs. Reject equal IDs. Use the same canonical ID wherever the same agent appears. Historical records without both IDs may be read as history with independence unverified."
   ],
   "$defs": {
     "id": {
@@ -29,6 +30,10 @@
       "pattern": "^\\S+(\\s+\\S+){0,18}$",
       "x-maxWords": 19
     },
+    "agentId": {
+      "$ref": "#/$defs/alias",
+      "not": { "pattern": "\\s" }
+    },
     "words30": {
       "type": "string",
       "pattern": "^\\S+(\\s+\\S+){0,29}$",
@@ -37,6 +42,10 @@
     "run": {
       "type": "object",
       "additionalProperties": false,
+      "dependentRequired": {
+        "builderAgent": ["testerAgent"],
+        "testerAgent": ["builderAgent"]
+      },
       "required": [
         "runId",
         "criterionId",
@@ -97,6 +106,12 @@
         },
         "runner": {
           "$ref": "#/$defs/words19"
+        },
+        "builderAgent": {
+          "$ref": "#/$defs/agentId"
+        },
+        "testerAgent": {
+          "$ref": "#/$defs/agentId"
         },
         "testedAs": {
           "$ref": "#/$defs/alias"
