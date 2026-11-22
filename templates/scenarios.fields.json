@@ -1,5 +1,5 @@
 {
-  "$comment": "Generated from story-package.fields.json. Field guidance for public definitions and private results. Validation and derivation rules are in scenarios.schema.json and results.schema.json.",
+  "$comment": "Generated from story-package.fields.json. Field guidance for public definitions and private results. Validation and derivation rules are in scenarios.schema.json and results.schema.json. The displayFields section documents viewer-only labels. Do not author those keys in scenarios.json.",
   "columns": [
     "id",
     "title",
@@ -66,14 +66,16 @@
     "expectedResult": {
       "label": "Expected result",
       "help": "State every required outcome, including records, rejection reasons, and exceptions."
-    },
+    }
+  },
+  "displayFields": {
     "assertions": {
       "label": "Surface assertions",
-      "help": "For older scenarios, describe what to inspect on the required surface. Fold checks into Actions for new criteria."
+      "help": "Shown for older scenario files. Put verification steps in Actions for new criteria."
     },
     "supportingTasks": {
       "label": "Supporting tasks",
-      "help": "Checklist tasks linked to this criterion or verification record."
+      "help": "Derived from checklist Supports links. Task status is separate from the scenario result."
     }
   },
   "resultFields": {
