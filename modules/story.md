@@ -26,7 +26,7 @@
 <When used, link the [blockers record](blockers.json).>
 
 ## Admin guidance
-<Optional at closeout for settings an admin will maintain. Use one bullet per material change.>
+<Recommended at closeout for settings an admin will maintain. Use one bullet per material change. Omit the section when there are no maintainer steps to document.>
 
 - **<What to change>** · <Exact verified admin UI path or durable link to verified runbook instructions> · Replay <existing check ID>. <Include a verified prerequisite or activation step only if it affects the change.>
 
