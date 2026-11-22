@@ -13,7 +13,7 @@ If required content is missing, inaccessible or incomplete, report it and stop d
 1. Establish the beneficiary, outcome, scope, exclusions, known facts and open decisions from the request and relevant sources. Check for existing related work before creating a duplicate. If this is existing or partly existing work, switch to ../migrate/DELIVERY.md at this same SHA before dependent writes.
 2. Confirm the intended repository, folder, current branch, existing changes and authorization. Reuse an appropriate repository/folder; create a new repository only when authorized. Ask for a genuinely missing destination or decision rather than inventing one. No fixed artifact count is required.
 3. Create `story.md` using the Copyable story template. Copy the [scenario template](../templates/scenarios.json) beside it and author observable criteria with stable IDs there. Preserve requirements already agreed in the brief; label new interpretations as proposals. Apply the Privacy, publication and links rules for sanitization mapping and source/published criterion comparison. Keep unknown owners and results explicit. Link any design or research needed to execute the story. Follow Scenario definitions.
-4. Record one next eligible action. When build or setup tasks need a checklist, copy the [checklist template](../templates/checklist.json) beside `story.md` and link it from the story. Apply the Task checklist, Executors and bounded execution, and Review and acceptance rules.
+4. Record one next eligible action. Copy the [checklist template](../templates/checklist.json) beside `story.md` and link it from the story. Apply the Task checklist, Executors and bounded execution, and Review and acceptance rules.
 5. Apply the Privacy, publication and links rules for publication checks. After GitHub readback, create/update the authorized ClickUp item with its short title/ID, applicable grouping/filtering fields and owner/date/status fields; set its description to the story's Outcome sentence, copied verbatim, and one direct link to the current GitHub story file. Apply the Privacy, publication and links rules for preservation and concurrency checks before replacing any existing ClickUp description. Verify the saved pointer and fields.
 6. Continue eligible work already authorized, recording results using the Executors and bounded execution rules. Story creation alone is not permission to build or deploy. Report verified results, remaining decisions and the next action.
 
@@ -42,7 +42,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](<live link to checklist.json, when used>) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
+**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
@@ -59,14 +59,8 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 [Acceptance criteria and verification checks](scenarios.json)
 <Keep criterion wording and verification details in the linked file. Store actual results in approved restricted storage.>
 
-## Material blockers
-<Use one current entry per story-wide or shared blocker. Reference the affected task or check IDs. A single-task blocker belongs in its Comments.>
-
-**<Step/check IDs> · <Short status>**
-- **Goal** · <What must the actor accomplish?>
-- **Blocker** · <What prevents it?>
-- **Current fix** · <Smallest proposed fix, or verified fix with evidence link>
-- **Documentation** · <One best documentation URL. Omit if unavailable.>
+## Blockers
+<When used, link the [blockers record](blockers.json).>
 
 ## Admin guidance
 <Optional at closeout for settings an admin will maintain. Use one bullet per material change.>
@@ -91,6 +85,15 @@ Keep build and setup tasks in the linked [checklist](../templates/checklist.json
 - Keep one current record for each decision, blocker or file. Use task Comments and evidence for task-specific records. Shared records can live in the story or a linked artifact.
 
 See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.
+
+## Record blockers
+
+Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Reference the affected task or criterion IDs and use a short status. A single-task blocker belongs in its Comments.
+
+- **Goal** · What must the actor accomplish? Use fewer than 30 words.
+- **Blocker** · What prevents it? Use fewer than 30 words.
+- **Current fix** · Smallest proposed fix, or verified fix with evidence link. Use fewer than 30 words.
+- **Documentation** · One best documentation URL. Omit if unavailable.
 
 ## Scenario definitions
 

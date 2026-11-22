@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Blockers",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["goal", "blocker", "currentFix"],
+    "properties": {
+      "affectedIds": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9]*-[A-Za-z0-9.]+$"
+        }
+      },
+      "status": {
+        "$ref": "#/$defs/shortText"
+      },
+      "goal": {
+        "$ref": "#/$defs/shortText"
+      },
+      "blocker": {
+        "$ref": "#/$defs/shortText"
+      },
+      "currentFix": {
+        "$ref": "#/$defs/shortText"
+      },
+      "documentationUrl": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://[^\\s]+$"
+      }
+    }
+  },
+  "$defs": {
+    "shortText": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,28}$"
+    }
+  }
+}

@@ -12,3 +12,5 @@ Resolve this link's branch or tag to a commit SHA once, or use the SHA already i
 Choose a route above. It links to the shared story template and tells you what to load before each action. For build and setup work, use the [checklist template](templates/checklist.json), [schema](templates/checklist.schema.json), and [field guidance](templates/checklist.fields.json) at the same revision. The complete [NEW guide](new/DELIVERY.md) and [MIGRATE guide](migrate/DELIVERY.md) remain available at the same paths.
 
 For stories with structured scenarios, use the [scenario template](templates/scenarios.json), [scenario schema](templates/scenarios.schema.json), and [field guidance](templates/scenarios.fields.json). Store real runs in approved restricted storage using the [results schema](templates/results.schema.json).
+
+Use the [blockers starter](templates/blockers.json) and [schema](templates/blockers.schema.json) when the story has blockers to record.

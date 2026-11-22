@@ -44,7 +44,7 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](<live link to checklist.json, when used>) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
+**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
@@ -61,14 +61,8 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 [Acceptance criteria and verification checks](scenarios.json)
 <Keep criterion wording and verification details in the linked file. Store actual results in approved restricted storage.>
 
-## Material blockers
-<Use one current entry per story-wide or shared blocker. Reference the affected task or check IDs. A single-task blocker belongs in its Comments.>
-
-**<Step/check IDs> · <Short status>**
-- **Goal** · <What must the actor accomplish?>
-- **Blocker** · <What prevents it?>
-- **Current fix** · <Smallest proposed fix, or verified fix with evidence link>
-- **Documentation** · <One best documentation URL. Omit if unavailable.>
+## Blockers
+<When used, link the [blockers record](blockers.json).>
 
 ## Admin guidance
 <Optional at closeout for settings an admin will maintain. Use one bullet per material change.>
@@ -93,6 +87,15 @@ Keep build and setup tasks in the linked [checklist](../templates/checklist.json
 - Keep one current record for each decision, blocker or file. Use task Comments and evidence for task-specific records. Shared records can live in the story or a linked artifact.
 
 See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.
+
+## Record blockers
+
+Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Reference the affected task or criterion IDs and use a short status. A single-task blocker belongs in its Comments.
+
+- **Goal** · What must the actor accomplish? Use fewer than 30 words.
+- **Blocker** · What prevents it? Use fewer than 30 words.
+- **Current fix** · Smallest proposed fix, or verified fix with evidence link. Use fewer than 30 words.
+- **Documentation** · One best documentation URL. Omit if unavailable.
 
 ## Scenario definitions
 
