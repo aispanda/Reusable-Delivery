@@ -1,0 +1,62 @@
+[
+  {
+    "stepId": "C-01",
+    "task": "Add an Overdue flag to the invoice review queue.",
+    "status": "Pass",
+    "ownerType": "AI",
+    "model": "Claude Sonnet 5.5",
+    "reasoning": "Medium",
+    "reusableArtifact": {
+      "planned": false
+    },
+    "outputs": "Queue rule and unit tests in the app repository.",
+    "completion": "Unit tests for past due, due today and paid invoices pass on the stated revision.",
+    "supports": [
+      "A-01"
+    ],
+    "evidence": "Synthetic: unit run at revision a1b2c3d, 3 of 3 cases passed. Not a story result.",
+    "value": "Reviewers see which invoices need follow-up first.",
+    "agent": "AI-02",
+    "docs": "https://github.com/aispanda/Reusable-Delivery/blob/main/modules/execution.md",
+    "scope": "Flag overdue invoices in the synthetic queue.",
+    "guardrails": "Use synthetic fixtures and preserve paid invoices."
+  },
+  {
+    "stepId": "C-02",
+    "task": "Load three synthetic invoices into the test environment.",
+    "status": "Pass",
+    "ownerType": "Automation",
+    "direction": "Fixture loader v1.2, triggered manually by the test operator, against the test environment.",
+    "reusableArtifact": {
+      "planned": false
+    },
+    "outputs": "Invoices INV-1 to INV-3 in the A-01 starting state.",
+    "completion": "Read back all three invoices with the expected due dates and payment states.",
+    "supports": [
+      "A-01"
+    ],
+    "evidence": "Synthetic: readback log lists INV-1, INV-2 and INV-3 with expected states.",
+    "agent": "AI-03"
+  },
+  {
+    "stepId": "C-03",
+    "task": "Independently verify the overdue flag on the synthetic invoices.",
+    "status": "In progress",
+    "ownerType": "AI",
+    "requires": [
+      "C-01",
+      "C-02"
+    ],
+    "reusableArtifact": {
+      "planned": false
+    },
+    "outputs": "Independent checklist verification with evidence.",
+    "completion": "Read back the flag on the built revision for each synthetic invoice and record the observed statuses in the checklist.",
+    "supports": [
+      "A-01"
+    ],
+    "comments": "Formal end-to-end acceptance and the human decision are pending.",
+    "agent": "AI-04",
+    "model": "Claude Sonnet 5.5"
+  }
+]

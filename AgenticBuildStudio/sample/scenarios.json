@@ -1,0 +1,27 @@
+{
+  "criteria": [
+    {
+      "id": "A-01",
+      "title": "Flag overdue invoices",
+      "version": 1,
+      "actor": "invoice_reviewer",
+      "environment": "test_queue",
+      "fixtures": [
+        "overdue_unpaid",
+        "due_today",
+        "overdue_paid"
+      ],
+      "surfaces": {
+        "desktopUi": true,
+        "mobileUi": false,
+        "backend": false
+      },
+      "startingState": "A reviewer has invoices with known due dates and payment states.",
+      "actions": [
+        "The reviewer opens the invoice queue.",
+        "Inspect the Overdue flag on all three fixture invoices."
+      ],
+      "expectedResult": "Unpaid invoices past their due date show Overdue. Unpaid invoices due today and paid invoices have no Overdue flag."
+    }
+  ]
+}

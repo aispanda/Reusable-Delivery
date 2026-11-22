@@ -1,0 +1,26 @@
+[
+  {
+    "id": "B-01",
+    "affectedIds": [
+      "C-03",
+      "A-01"
+    ],
+    "status": "Closed",
+    "goal": "Inspect flags in the synthetic invoice queue.",
+    "blocker": "The test reviewer could not open the queue.",
+    "currentFix": "Verified the test reviewer can open the synthetic queue and inspect all three fixtures.",
+    "documentationUrl": "https://github.com/aispanda/Reusable-Delivery/blob/main/modules/platform.md"
+  },
+  {
+    "id": "B-02",
+    "status": "Open",
+    "affectedIds": [
+      "A-01",
+      "C-03"
+    ],
+    "goal": "Run formal acceptance on the synthetic invoice queue.",
+    "blocker": "The designated reviewer cannot open the acceptance test environment.",
+    "currentFix": "Ask the test administrator to confirm reviewer access and verify the queue opens.",
+    "documentationUrl": "https://github.com/aispanda/Reusable-Delivery/blob/main/modules/platform.md"
+  }
+]

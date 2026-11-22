@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "leadId": "AI-01",
+  "sharedGuardrails": [
+    "Use only synthetic invoices."
+  ],
+  "agents": [
+    {
+      "id": "AI-01",
+      "name": "Implementation Lead",
+      "role": "Invoice story coordination",
+      "instructions": "Check readiness, assign work and verify evidence and handoffs.",
+      "authority": "May dispatch ready tasks. Escalate scope and acceptance to the story owner.",
+      "runtime": {
+        "platform": "Codex"
+      }
+    },
+    {
+      "id": "AI-02",
+      "name": "Invoice Builder",
+      "role": "Queue rule implementation",
+      "instructions": "Implement the assigned queue change and hand over the exact revision.",
+      "authority": "May edit the assigned branch. Escalate scope changes to the lead.",
+      "runtime": {
+        "platform": "Codex",
+        "model": "Claude Sonnet 5.5",
+        "reasoning": "Medium",
+        "environment": "Synthetic invoice environment"
+      },
+      "guardrails": [
+        "Use synthetic invoice data."
+      ],
+      "tools": [
+        "Git"
+      ],
+      "skills": [
+        "Independent verification handoff"
+      ],
+      "references": [
+        {
+          "title": "Execution and handoff guidance",
+          "location": "https://github.com/aispanda/Reusable-Delivery/blob/main/modules/execution.md"
+        }
+      ]
+    },
+    {
+      "id": "AI-03",
+      "name": "Fixture Loader",
+      "role": "Synthetic invoice setup",
+      "instructions": "Load the approved synthetic fixture set in the test environment.",
+      "authority": "Use the approved test environment and fixture set.",
+      "runtime": {
+        "platform": "Fixture runner"
+      }
+    },
+    {
+      "id": "AI-04",
+      "name": "Invoice Verifier",
+      "role": "Independent checklist verification",
+      "instructions": "Verify the built behavior against the assigned checklist completion check.",
+      "authority": "Report checklist verification to the lead and return defects for repair.",
+      "runtime": {
+        "platform": "Codex"
+      }
+    },
+    {
+      "id": "AI-05",
+      "name": "Acceptance Tester",
+      "role": "Formal end-to-end verification",
+      "instructions": "Start a fresh session after prerequisites pass. Check A-01 on the exact build with approved synthetic invoices. Record evidence by criterion and scenario.",
+      "authority": "Report test outcomes. Record an access or runtime blocker and leave the check unpassed if the required session is unavailable.",
+      "runtime": {
+        "platform": "Google Antigravity App",
+        "model": "Gemini Neon",
+        "environment": "Synthetic test environment"
+      },
+      "references": [
+        {
+          "title": "Invoice acceptance criterion",
+          "location": "invoice.scenarios.example.json"
+        }
+      ]
+    }
+  ]
+}
