@@ -1,6 +1,6 @@
 [
   {
-    "stepId": "S-01",
+    "stepId": "C-01",
     "task": "Add an Overdue flag to the invoice review queue.",
     "status": "Pass",
     "ownerType": "AI",
@@ -12,46 +12,49 @@
     "outputs": "Queue rule and unit tests in the app repository.",
     "completion": "Unit tests for past due, due today and paid invoices pass on the stated revision.",
     "supports": [
-      "AC-01"
+      "A-01"
     ],
     "evidence": "Synthetic: unit run at revision a1b2c3d, 3 of 3 cases passed. Not a story result.",
-    "value": "Reviewers see which invoices need follow-up first."
+    "value": "Reviewers see which invoices need follow-up first.",
+    "agent": "AI-02"
   },
   {
-    "stepId": "S-02",
+    "stepId": "C-02",
     "task": "Load three synthetic invoices into the test environment.",
     "status": "Pass",
     "ownerType": "Automation",
     "direction": "Fixture loader v1.2, triggered manually by the test operator, against the test environment.",
     "reusableArtifact": {
-      "planned": true,
-      "description": "Fixture file for other invoice-date checks."
+      "planned": false
     },
-    "outputs": "Invoices INV-1 to INV-3 in the AC-01 starting state.",
+    "outputs": "Invoices INV-1 to INV-3 in the A-01 starting state.",
     "completion": "Read back all three invoices with the expected due dates and payment states.",
     "supports": [
-      "AC-01"
+      "A-01"
     ],
-    "evidence": "Synthetic: readback log lists INV-1, INV-2 and INV-3 with expected states."
+    "evidence": "Synthetic: readback log lists INV-1, INV-2 and INV-3 with expected states.",
+    "agent": "AI-03"
   },
   {
-    "stepId": "S-03",
-    "task": "Run AC-01 as the test reviewer and record the result.",
+    "stepId": "C-03",
+    "task": "Independently verify the overdue flag on the synthetic invoices.",
     "status": "Pass",
-    "ownerType": "Human",
+    "ownerType": "AI",
     "requires": [
-      "S-01",
-      "S-02"
+      "C-01",
+      "C-02"
     ],
     "reusableArtifact": {
       "planned": false
     },
-    "outputs": "Recorded AC-01 run result with linked evidence.",
-    "completion": "The AC-01 record identifies the tested build, observation, and evidence.",
+    "outputs": "Independent checklist verification with evidence.",
+    "completion": "Read back the flag on the built revision for each synthetic invoice and record the observed statuses in the checklist.",
     "supports": [
-      "AC-01"
+      "A-01"
     ],
-    "evidence": "Synthetic: screen recording of build 1.4.0 linked from the AC-01 run record.",
-    "comments": "Acceptance of AC-01 stays with the story owner."
+    "evidence": "Synthetic checklist evidence: build 1.4.0 showed the flag only on the overdue invoice. Formal acceptance remains pending.",
+    "comments": "Formal end-to-end acceptance and the human decision are pending.",
+    "agent": "AI-04",
+    "model": "Claude Sonnet 5.5"
   }
 ]

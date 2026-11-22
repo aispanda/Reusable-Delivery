@@ -13,7 +13,7 @@ If required content is missing, inaccessible or incomplete, report it and stop d
 1. Establish the beneficiary, outcome, scope, exclusions, known facts and open decisions from the request and relevant sources. Check for existing related work before creating a duplicate. If this is existing or partly existing work, switch to ../migrate/DELIVERY.md at this same SHA before dependent writes.
 2. Confirm the intended repository, folder, current branch, existing changes and authorization. Reuse an appropriate repository/folder; create a new repository only when authorized. Ask for a genuinely missing destination or decision rather than inventing one. No fixed artifact count is required.
 3. Create `story.md` using the Copyable story template. Copy the [scenario template](../templates/scenarios.json) beside it and author observable criteria with stable IDs there. Preserve requirements already agreed in the brief; label new interpretations as proposals. Apply the Privacy, publication and links rules for sanitization mapping and source/published criterion comparison. Keep unknown owners and results explicit. Link any design or research needed to execute the story. Follow Scenario definitions.
-4. Record one next eligible action. Copy the [checklist template](../templates/checklist.json) beside `story.md` and link it from the story. Apply the Task checklist, Executors and bounded execution, and Review and acceptance rules.
+4. Copy the [checklist template](../templates/checklist.json) beside `story.md` and link it from the story. Before active implementation, record Next and complete Agent roster and readiness. Apply the Task checklist, Executors and bounded execution, and Review and acceptance rules.
 5. Apply the Privacy, publication and links rules for publication checks. After GitHub readback, create/update the authorized ClickUp item with its short title/ID, applicable grouping/filtering fields and owner/date/status fields; set its description to the story's Outcome sentence, copied verbatim, and one direct link to the current GitHub story file. Apply the Privacy, publication and links rules for preservation and concurrency checks before replacing any existing ClickUp description. Verify the saved pointer and fields.
 6. Continue eligible work already authorized, recording results using the Executors and bounded execution rules. Story creation alone is not permission to build or deploy. Report verified results, remaining decisions and the next action.
 
@@ -39,6 +39,8 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 ## Copyable story
 
+Copy the [story starter](../templates/story.md) and use the [shared field guide](../templates/story-package.fields.json) at the same revision.
+
 ```markdown
 # <ID> · <Outcome title>
 
@@ -57,6 +59,9 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 [Acceptance criteria and verification checks](scenarios.json)
 <Keep criterion wording and verification details in the linked file. Store actual results in approved restricted storage.>
 
+## Agents
+<Link the [agent roster](agent-roster.json) once the delivery team is selected.>
+
 ## Blockers
 <When used, link the [blockers record](blockers.json).>
 
@@ -65,10 +70,12 @@ If the ClickUp item or access is missing, record synchronization as Pending with
 
 - **<What to change>** · <Exact verified admin UI path or durable link to verified runbook instructions> · Replay <existing check ID>. <Include a verified prerequisite or activation step only if it affects the change.>
 
-**Next** · <Optional. Include one immediate action when it clarifies priority or sequence. Reference the relevant task or criterion IDs and name the confirmed executor or decision-maker when known.>
+**Next** · <Required once implementation is active, including while blocked. State the next activity, including parallel work ready to start when applicable. Link to any blocker affecting that activity. At closure, record completion or the final handoff.>
 ```
 
 ## Keep the story reviewable
+
+Use the [shared field guide](../templates/story-package.fields.json) to author all five story files. AI can draft from the story and verified references. Human reviewers refine the checklist, criteria and roster using subject-matter expertise. Use the schemas to validate the reviewed JSON. Keep actual blocker records current as evidence changes.
 
 Lead with the outcome, scope, and repeatable workflow. Keep the full acceptance criteria in the linked `scenarios.json`. Preserve stable IDs and agreed wording, including safeguards and exceptions. Label unagreed wording as Proposed in the review record.
 
@@ -76,17 +83,27 @@ Use the acceptance criterion ID to identify its verification and run records. In
 
 ## Task checklist
 
-Keep build and setup tasks in the linked [checklist](../templates/checklist.json). The [schema](../templates/checklist.schema.json) defines the task data contract. The [field guidance](../templates/checklist.fields.json) gives short instructions and examples that a viewer can display.
+Keep build and setup tasks in the linked [checklist](../templates/checklist.json). The [schema](../templates/checklist.schema.json) defines the task data contract. The shared field guide gives short instructions and examples that a viewer can display.
 
 - The story owns the outcome, scope, repeatable workflow, and acceptance decision. The linked criteria file owns requirements and their verification definitions. The checklist owns task status, Task AC, task results, and task evidence.
-- A task lists applicable story criterion, check or scenario IDs in `supports`. Story QA cites relevant task evidence by task ID. Mark a task Pass when evidence confirms its Task AC. Record a story or scenario result from evidence for that check.
+- Use stable C- IDs for new tasks and A- IDs for new criteria. Preserve historical IDs. A task lists applicable story criterion, check or scenario IDs in `supports`. Story QA cites relevant task evidence by task ID. Mark a task Pass when evidence confirms its Task AC. Record a story or scenario result from evidence for that check.
 - Keep one current record for each decision, blocker or file. Use task Comments and evidence for task-specific records. Shared records can live in the story or a linked artifact.
 
 See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.
 
+## Agent roster and readiness
+
+Copy the [roster starter](../templates/agent-roster.json) and validate it with the [roster schema](../templates/agent-roster.schema.json). Let the story determine the team's role names. Use a stable AI- ID for each new agent. Give each agent a name, role, operating instructions and authority. Record applicable skills, tools, references and runtime selections. Use approved public aliases for environments and identities. Keep private handles and credentials in restricted configuration.
+
+The Implementation Lead owns assignments, checklist, Next, blockers, documentation quality, evidence and handoffs. Before dispatch, the lead verifies the roster's unique IDs, that its lead is a listed agent, that every checklist task's Agent resolves to a roster entry, that verification is assigned to a different actual agent from the builder, and that human decisions have named owners. The checklist holds each task's scope, expected outputs, status and assignment. The roster states how the agent operates across its tasks.
+
+Each agent loads applicable skills and verifies access to primary documentation, tools, inputs, templates, expected outputs, acceptance checks and dependencies. Update weak or missing task references and propose changes to the solution approach for the lead to confirm. Load required skills and references before the lead starts implementation.
+
+Separate Codex agents build and independently verify checklist tasks. Record task verification in checklist evidence. Once the build and checklist prerequisites pass, use a fresh Gemini Neon session in the standalone Google Antigravity App for formal end-to-end acceptance checks. Hand over the exact build, approved fixtures and required test surfaces. Leave the builder's conclusions out of the initial handoff. Record observed results and evidence by criterion and scenario in the existing format. Use the corresponding roster IDs for builderAgent and testerAgent. After a failure, return the work to Codex for fixes and independent task verification, then run formal acceptance again in a fresh session. The designated human records final story acceptance. If the app, model or test access is unavailable, record a blocker and leave the checks unpassed.
+
 ## Record blockers
 
-Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Reference the affected task or criterion IDs. A single-task blocker belongs in its Comments.
+Use the [starter](../templates/blockers.json) and [schema](../templates/blockers.schema.json). Keep one current entry per story-wide or shared blocker. Use a stable B- ID for new blockers. Link to that ID from Next when needed. Reference the affected task or criterion IDs. A single-task blocker belongs in its Comments.
 
 - **Status** · Use Open while the obstacle remains. Use Closed after verifying the fix.
 - **Goal** · What must the actor accomplish? Use fewer than 30 words.
@@ -96,7 +113,7 @@ Use the [starter](../templates/blockers.json) and [schema](../templates/blockers
 
 ## Scenario definitions
 
-Copy the [scenario template](../templates/scenarios.json) beside the story. The [schema](../templates/scenarios.schema.json) defines one record per criterion, and the [field guidance](../templates/scenarios.fields.json) covers criteria and private runs.
+Copy the [scenario template](../templates/scenarios.json) beside the story. The [schema](../templates/scenarios.schema.json) defines one record per criterion. The shared field guide also covers private runs under the scenarios section.
 
 - Write the title, starting state, ordered actions, and expected result once per criterion. Include required records, rejection reasons, and exceptions in the expected result. Include one verification case in the same record. Split independent cases into separate criteria.
 - Record the actor, scenario version, and required surfaces. Fold setup into the starting state and all execution steps into actions. Add environment or fixtures only when they help reproduce the case. Put any surface-specific readback in actions. Split the criterion if a required surface needs a materially different starting state or procedure.
@@ -113,9 +130,9 @@ Revise the setup and actions in place as you run them. Before marking the story 
 
 Capture candidate admin paths during execution. Verify them as the intended admin, including any required activation sequence. Finalize Admin guidance after the relevant acceptance checks pass and before closing the story. A passing buyer demo verifies buyer behavior only. Keep proposed admin paths in the execution record until verified, and reference existing checks by ID so the buyer demo stays intact.
 
-Record the next action in the execution record, including its executor and the agreed criterion or decision it advances. Use the optional story **Next** note only when it clarifies priority or sequence. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
+Keep **Next** current in active stories, including while blocked. State the next activity and link to any blocker that affects it. Record completion or final handoff at closure. Label proposals explicitly. Only an authorized decision changes agreed scope or criteria. Report what was observed, with a reference to the evidence. Keep commands, logs, test steps, and repair history in linked execution or QA files. At closeout, add a **Files** index. Link each file and describe its purpose in at most eight words.
 
-Start with known checks. Update the next action in the execution record as fixture, user, permission, documentation, or smaller-step needs emerge. Use plain language and fewer than 30 words each for Goal, Blocker, and Current fix. Mark a proposed fix unverified until tested.
+Start with known checks. Update Next as fixture, user, permission, documentation, or smaller-step needs emerge. Use plain language and fewer than 30 words each for Goal, Blocker, and Current fix. Mark a proposed fix unverified until tested.
 
 Try the smallest authorized fix first and verify it against the blocker. If stuck, send one authorized reviewer the same three fields, the documentation URL if available, and only essential sanitized evidence in a reusable thread. Request at most 60 words covering one actionable next step, its success check, and any approval or access needed.
 
@@ -161,7 +178,7 @@ Choose the simplest approach that meets the story’s acceptance criteria. Where
 
 Confirm one executor per task before dispatch. Split meaningful human, AI, and automation handoffs. The story owner is accountable for the overall outcome and acceptance decision. Use a stable public alias when the executor's identity is private and keep the identity mapping in restricted storage.
 
-For a checklist task, read its row, its direct prerequisites and the relevant [field guidance](../templates/checklist.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
+For a checklist task, read its row, its direct prerequisites and the checklist section of the [shared field guide](../templates/story-package.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.

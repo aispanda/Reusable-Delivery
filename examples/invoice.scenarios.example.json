@@ -1,7 +1,7 @@
 {
   "criteria": [
     {
-      "id": "AC-01",
+      "id": "A-01",
       "title": "Flag overdue invoices",
       "version": 1,
       "actor": "invoice_reviewer",

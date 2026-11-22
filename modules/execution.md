@@ -6,7 +6,7 @@ Choose the simplest approach that meets the story’s acceptance criteria. Where
 
 Confirm one executor per task before dispatch. Split meaningful human, AI, and automation handoffs. The story owner is accountable for the overall outcome and acceptance decision. Use a stable public alias when the executor's identity is private and keep the identity mapping in restricted storage.
 
-For a checklist task, read its row, its direct prerequisites and the relevant [field guidance](../templates/checklist.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
+For a checklist task, read its row, its direct prerequisites and the checklist section of the [shared field guide](../templates/story-package.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
 
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.

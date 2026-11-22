@@ -8,10 +8,18 @@
 
 **Operations** · Open the invoice queue and use the Overdue flag to identify who needs a follow-up.
 
-**Acceptance** · Pending decision. AC-01 remains open for the story owner's review.
+**Acceptance** · Pending decision. A-01 remains open for the story owner's review.
 
 ## Requirements and verification
 
 [Acceptance criteria and verification checks](invoice.scenarios.example.json)
 
-**Next** · Story owner reviews AC-01 and records the acceptance decision.
+## Blockers
+
+[Synthetic blocker record](blockers.example.json)
+
+## Agents
+
+[Invoice delivery team](agent-roster.example.json)
+
+**Next** · Run formal A-01 acceptance in a fresh Gemini Neon session in the standalone Google Antigravity App on the agreed synthetic build.

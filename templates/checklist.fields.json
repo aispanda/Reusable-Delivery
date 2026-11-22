@@ -1,5 +1,5 @@
 {
-  "$comment": "Field guidance for the task checklist, rendered by the viewer and read by agents one field at a time. Resolve relative reference URLs from this file. Data rules live in checklist.schema.json.",
+  "$comment": "Generated from story-package.fields.json. Field guidance for the task checklist, rendered by the viewer and read by agents one field at a time. Resolve relative reference URLs from this file. Data rules live in checklist.schema.json.",
   "columns": [
     "task",
     "status",
@@ -181,12 +181,13 @@
     },
     "agent": {
       "label": "Agent",
-      "help": "Confirm the task executor before dispatch. Use a stable public alias if the executor's identity is private. Leave blank during planning if unassigned."
+      "help": "Before dispatch, confirm the executor. For a roster-based story, use the agent's stable roster ID. Leave blank during planning if unassigned."
     },
     "stepId": {
       "label": "Step ID",
       "visible": false,
-      "editable": false
+      "editable": false,
+      "help": "Give each new task a stable C- ID, such as C-01. Keep existing task IDs."
     }
   },
   "statusGuide": {

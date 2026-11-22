@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "leadId": "AI-01",
+  "agents": [
+    {
+      "id": "AI-01",
+      "name": "Implementation Lead",
+      "role": "Delivery coordination",
+      "instructions": "Check readiness, assign work, verify handoffs and evidence, and keep the checklist, Next, and blockers current.",
+      "authority": "May assign ready work. Escalate changes to scope, access, or acceptance to the designated human."
+    }
+  ]
+}

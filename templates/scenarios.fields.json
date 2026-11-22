@@ -1,5 +1,5 @@
 {
-  "$comment": "Field guidance for public definitions and private results. Validation and derivation rules are in scenarios.schema.json and results.schema.json.",
+  "$comment": "Generated from story-package.fields.json. Field guidance for public definitions and private results. Validation and derivation rules are in scenarios.schema.json and results.schema.json.",
   "columns": [
     "id",
     "title",
@@ -17,7 +17,7 @@
   "fields": {
     "id": {
       "label": "Criterion ID",
-      "help": "Keep this ID stable."
+      "help": "Give each new criterion a stable A- ID, such as A-01. Keep existing criterion IDs."
     },
     "title": {
       "label": "Title",
@@ -66,6 +66,14 @@
     "expectedResult": {
       "label": "Expected result",
       "help": "State every required outcome, including records, rejection reasons, and exceptions."
+    },
+    "assertions": {
+      "label": "Surface assertions",
+      "help": "For older scenarios, describe what to inspect on the required surface. Fold checks into Actions for new criteria."
+    },
+    "supportingTasks": {
+      "label": "Supporting tasks",
+      "help": "Checklist tasks linked to this criterion or verification record."
     }
   },
   "resultFields": {
