@@ -39,7 +39,14 @@ def main():
 
     historical_count = 0
     invalid = False
+    seen_run_ids = set()
     for index, run in enumerate(results):
+        run_id = run["runId"]
+        if run_id in seen_run_ids:
+            print(f"$[{index}]: duplicate runId", file=sys.stderr)
+            invalid = True
+        seen_run_ids.add(run_id)
+
         if "builderAgent" not in run:
             if args.historical:
                 historical_count += 1
