@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task checklist",
+  "description": "Tasks for one story. The story owns outcome, scope and acceptance. Linked scenarios.json owns structured scenario definitions. Private storage owns their run results. Field guidance: checklist.fields.json. Words are whitespace-delimited. Trim text and omit unused optional fields. The x- annotations specify checks for applications in addition to JSON Schema validation.",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/task"
+  },
+  "x-applicationChecks": [
+    "APP-1 Reject duplicate stepId values.",
+    "APP-2 Reject a requires ID that names no task in this checklist or names the task itself.",
+    "APP-3 Reject any cycle formed by requires.",
+    "APP-4 Reject a requires ID reachable through another ID in the same list; list only direct, independent prerequisites.",
+    "APP-5 Before a task starts, require each listed prerequisite to reach Pass. If a prerequisite reopens, flag affected dependents for review and retain earlier evidence.",
+    "APP-6 Reject tasks over x-taskWordLimit. Resolve dotted paths; count legacy reuseOpportunity only when the artifact description is absent.",
+    "APP-7 Resolve supports IDs against the linked story criteria, inline checks and linked scenario definitions. Reject unknown IDs when all applicable sources are available; otherwise warn about unresolved IDs."
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*-[A-Za-z0-9.]+$"
+    },
+    "idList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "words3": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,2}$",
+      "x-maxWords": 3
+    },
+    "words19": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,18}$",
+      "x-maxWords": 19
+    },
+    "words30": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,29}$",
+      "x-maxWords": 30
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepId",
+        "task",
+        "status",
+        "ownerType",
+        "outputs",
+        "completion"
+      ],
+      "x-taskWordLimit": {
+        "maxWords": 120,
+        "fields": [
+          "task",
+          "comments",
+          "inputs",
+          "outputs",
+          "completion",
+          "evidence",
+          "scope",
+          "direction",
+          "guardrails",
+          "value",
+          "metric",
+          "reusableArtifact.description"
+        ]
+      },
+      "properties": {
+        "stepId": {
+          "$ref": "#/$defs/id"
+        },
+        "task": {
+          "$ref": "#/$defs/words30"
+        },
+        "status": {
+          "enum": [
+            "In design",
+            "Open",
+            "In progress",
+            "Blocked",
+            "Pass"
+          ]
+        },
+        "ownerType": {
+          "enum": [
+            "Human",
+            "AI",
+            "Automation"
+          ]
+        },
+        "requires": {
+          "$ref": "#/$defs/idList"
+        },
+        "supports": {
+          "$ref": "#/$defs/idList"
+        },
+        "comments": {
+          "$ref": "#/$defs/words30"
+        },
+        "uiQa": {
+          "type": "boolean"
+        },
+        "mobileQa": {
+          "type": "boolean"
+        },
+        "value": {
+          "$ref": "#/$defs/words19"
+        },
+        "reusableArtifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "planned": {
+              "type": "boolean"
+            },
+            "description": {
+              "$ref": "#/$defs/words19"
+            }
+          }
+        },
+        "githubPublish": {
+          "type": "boolean",
+          "deprecated": true
+        },
+        "githubFile": {
+          "type": "string",
+          "pattern": "^https://github\\.com/\\S+$"
+        },
+        "inputs": {
+          "$ref": "#/$defs/words30"
+        },
+        "outputs": {
+          "$ref": "#/$defs/words30"
+        },
+        "metric": {
+          "$ref": "#/$defs/words30"
+        },
+        "reuseOpportunity": {
+          "$ref": "#/$defs/words19",
+          "deprecated": true
+        },
+        "completion": {
+          "$ref": "#/$defs/words30"
+        },
+        "evidence": {
+          "$ref": "#/$defs/words30"
+        },
+        "scope": {
+          "$ref": "#/$defs/words30"
+        },
+        "direction": {
+          "$ref": "#/$defs/words30"
+        },
+        "guardrails": {
+          "$ref": "#/$defs/words30"
+        },
+        "docs": {
+          "$ref": "#/$defs/words30"
+        },
+        "model": {
+          "$ref": "#/$defs/words3"
+        },
+        "reasoning": {
+          "$ref": "#/$defs/words3"
+        },
+        "agent": {
+          "$ref": "#/$defs/words30"
+        },
+        "tool": {
+          "description": "Historical tool record retained for existing checklists.",
+          "deprecated": true,
+          "$ref": "#/$defs/words30"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "Pass"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "evidence"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "Blocked"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "comments"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "In progress",
+                  "Pass"
+                ]
+              }
+            }
+          },
+          "then": {
+            "anyOf": [
+              {
+                "required": [
+                  "reusableArtifact"
+                ],
+                "properties": {
+                  "reusableArtifact": {
+                    "required": [
+                      "planned"
+                    ]
+                  }
+                }
+              },
+              {
+                "required": [
+                  "githubPublish"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

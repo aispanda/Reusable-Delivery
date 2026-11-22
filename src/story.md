@@ -3,37 +3,25 @@
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Current execution record](<live link; omit when this story tracks progress>) · [Guide](<revision-pinned link>)
+**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](<live link to checklist.json, when used>) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
+**Scope** · <What the story delivers and verifies, and any exclusions.>
+
+**Operations** · <Trigger, repeatable action and observable result for the beneficiary. Include when it clarifies the story.>
+
 **Demo result** · <Date, scenario, identity verified or unverified, and observed result. If nothing ran, write NOT RUN.> [Evidence](<revision-pinned link>)
 
-**Acceptance** · <What remains open and what was outside scope. If closure was directed, state who authorized it and exactly what they closed.> [Decision, if recorded](<revision-pinned link>)
+**Acceptance** · <Requirement, decision and what remains open by criterion or check ID. Record who authorized any closure and its scope.> [Decision, if recorded](<revision-pinned link>)
 
-## Proposed scenario checks
-<Include when the story is driven by proposed test scenarios. Include the setup bullets for demo stories.>
+## Requirements and verification
 
-- **Where / who** · <Authorized environment and entry link. Sign in as the intended role or test user.>
-- **Start with** · <Direct test-record links, required starting state, and safe reset if needed.>
-
-**Demo sequence** · <Presenter check IDs in order. Include only when the list also contains setup or QA checks.>
-
-1. **<Check ID>** · <Actor and action> → <One visible expected outcome for a presenter step, or the observable expectation for a QA check. Include exact values, counts, and record relationships where relevant.> <Applicable criterion IDs>
-
-| Check ID | Status | Observed result and evidence |
-|---|---|---|
-| <Check ID> | NOT RUN | <When run, record the observed result and link pinned evidence.> |
-
-## Acceptance criteria
-<Include for agreed criteria and for proposed criteria that are not already captured in the scenario checks.>
-
-| Criterion ID | Criterion | Coverage and evidence |
-|---|---|---|
-| <Stable AC ID> | <Preserve original IDs and agreed wording verbatim. Label new, unagreed wording Proposed.> | <Reference applicable check IDs and any coverage gaps, or record the result and pinned evidence here when there is no separate check.> |
+[Acceptance criteria and verification checks](scenarios.json)
+<Keep criterion wording and verification details in the linked file. Store actual results in approved restricted storage.>
 
 ## Material blockers
-<Use one current entry per distinct material blocker. Reference the affected step or check IDs.>
+<Use one current entry per story-wide or shared blocker. Reference the affected task or check IDs. A single-task blocker belongs in its Comments.>
 
 **<Step/check IDs> · <Short status>**
 - **Goal** · <What must the actor accomplish?>
@@ -51,12 +39,26 @@
 
 ## Keep the story reviewable
 
-Lead with the story’s outcome. Put acceptance criteria in a clearly labeled section. Group related criteria and give each distinct condition its own bullet. Place safeguards and exceptions beside the criteria they qualify. Link or cite evidence where it applies, and include the context a reviewer needs to interpret it.
+Lead with the outcome, scope, and repeatable workflow. Keep the full acceptance criteria in the linked `scenarios.json`. Preserve stable IDs and agreed wording, including safeguards and exceptions. Label unagreed wording as Proposed in the review record.
 
-For new stories, write criteria directly and preserve any wording required verbatim. For migrated stories, carry forward required verbatim criteria exactly as written. Put clarifications in a separate note so reviewers can distinguish them from the source wording.
+Give each verification case a stable ID. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence in a private run record. Use `NOT RUN` until execution.
 
-Stories have no word limit. During review, remove repeated explanations and move optional background to a linked reference. Keep every required criterion, safeguard, exception, and detail needed to judge acceptance in the story itself.
+## Task checklist
 
-Give each proposed check a stable ID. State the actor, action, and observable expectation once, including exact values, counts, and record relationships where relevant. For platform checks, also state the exact read or observation that produces the result. Where evidence is absent, record Pending with the reason; where sources conflict, record both and do not record Pass until the conflict is reconciled. Preserve agreed criteria verbatim. Map checks to criteria by ID in either direction as needed. Track status, observed result, and evidence by check ID. Use `NOT RUN` until execution.
+Keep build and setup tasks in the linked [checklist](../templates/checklist.json). The [schema](../templates/checklist.schema.json) defines the task data contract. The [field guidance](../templates/checklist.fields.json) gives short instructions and examples that a viewer can display.
 
-Use only the sections that apply. For a proposed scenario, the scenario bullets carry the proposed expectations. The results table tracks outcomes and evidence by ID. Retain agreed criterion IDs and exact wording in the acceptance criteria section and use references to show coverage and gaps. For new work without a scenario, label unagreed criteria Proposed in that section.
+- The story owns the outcome, scope, repeatable workflow, and acceptance decision. The linked criteria file owns requirements and their verification definitions. The checklist owns task status, Task AC, task results, and task evidence.
+- A task lists applicable story criterion, check or scenario IDs in `supports`. Story QA cites relevant task evidence by task ID. Mark a task Pass when evidence confirms its Task AC. Record a story or scenario result from evidence for that check.
+- Keep one current record for each decision, blocker or file. Use task Comments and evidence for task-specific records. Shared records can live in the story or a linked artifact.
+
+See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.
+
+## Scenario definitions
+
+Copy the [scenario template](../templates/scenarios.json) beside the story. The [schema](../templates/scenarios.schema.json) defines one record per criterion, and the [field guidance](../templates/scenarios.fields.json) covers criteria and private runs.
+
+- Write the title, starting state, ordered actions, and expected result once per criterion. Include required records, rejection reasons, and exceptions in the expected result. Include one verification case in the same record. Split independent cases into separate criteria.
+- Record the actor, scenario version, and required surfaces. Fold setup into the starting state and all execution steps into actions. Add environment or fixtures only when they help reproduce the case. Put any surface-specific readback in actions. Split the criterion if a required surface needs a materially different starting state or procedure.
+- Keep task links in checklist `supports`. Keep runtime identities, fixture mappings, and evidence in approved restricted storage.
+- Start at version 1. Increase it only when a change affects what the check proves. Preserve existing IDs and applicable evidence during a format-only migration.
+- Record runs using the private [results schema](../templates/results.schema.json). A case passes when every required surface passes on the current version and selected build.

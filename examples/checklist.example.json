@@ -1,0 +1,57 @@
+[
+  {
+    "stepId": "S-01",
+    "task": "Add an Overdue flag to the invoice review queue.",
+    "status": "Pass",
+    "ownerType": "AI",
+    "model": "Claude Sonnet 5.5",
+    "reasoning": "Medium",
+    "reusableArtifact": {
+      "planned": false
+    },
+    "outputs": "Queue rule and unit tests in the app repository.",
+    "completion": "Unit tests for past due, due today and paid invoices pass on the stated revision.",
+    "supports": [
+      "QA-01"
+    ],
+    "evidence": "Synthetic: unit run at revision a1b2c3d, 3 of 3 cases passed. Not a story result.",
+    "value": "Reviewers see which invoices need follow-up first."
+  },
+  {
+    "stepId": "S-02",
+    "task": "Load three synthetic invoices into the test environment.",
+    "status": "Pass",
+    "ownerType": "Automation",
+    "direction": "Fixture loader v1.2, triggered manually by the test operator, against the test environment.",
+    "reusableArtifact": {
+      "planned": true,
+      "description": "Fixture file for other invoice-date checks."
+    },
+    "outputs": "Invoices INV-1 to INV-3 in the QA-01 starting state.",
+    "completion": "Read back all three invoices with the expected due dates and payment states.",
+    "supports": [
+      "QA-01"
+    ],
+    "evidence": "Synthetic: readback log lists INV-1, INV-2 and INV-3 with expected states."
+  },
+  {
+    "stepId": "S-03",
+    "task": "Run QA-01 as the test reviewer and record the result.",
+    "status": "Pass",
+    "ownerType": "Human",
+    "requires": [
+      "S-01",
+      "S-02"
+    ],
+    "reusableArtifact": {
+      "planned": false
+    },
+    "outputs": "Recorded QA-01 run result with linked evidence.",
+    "completion": "The QA-01 record identifies the tested build, observation, and evidence.",
+    "supports": [
+      "QA-01"
+    ],
+    "evidence": "Synthetic: screen recording of build 1.4.0 linked from the QA-01 run record.",
+    "comments": "Acceptance of AC-01 stays with the story owner."
+  }
+]

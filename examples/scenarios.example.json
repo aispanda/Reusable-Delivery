@@ -1,0 +1,48 @@
+{
+  "criteria": [
+    {
+      "id": "AC-03",
+      "title": "Trace a draft to its source",
+      "scenarioId": "SC-01",
+      "version": 1,
+      "actor": "sales_reviewer",
+      "environment": "test_org",
+      "fixtures": [
+        "draft_with_document"
+      ],
+      "surfaces": {
+        "desktopUi": true,
+        "mobileUi": false,
+        "backend": true
+      },
+      "startingState": "A draft references a source PDF and the reviewer has access.",
+      "actions": [
+        "The reviewer selects View document.",
+        "Backend: Read back the saved document reference."
+      ],
+      "expectedResult": "The exact source PDF attached to the draft opens."
+    },
+    {
+      "id": "AC-04",
+      "title": "Restrict access to the source PDF",
+      "scenarioId": "SC-02",
+      "version": 1,
+      "actor": "no_access_user",
+      "environment": "test_org",
+      "fixtures": [
+        "draft_with_document"
+      ],
+      "surfaces": {
+        "desktopUi": true,
+        "mobileUi": false,
+        "backend": true
+      },
+      "startingState": "A draft references a source PDF and a user lacks read access.",
+      "actions": [
+        "The user requests the document link.",
+        "Backend: Inspect the service response for the restricted role."
+      ],
+      "expectedResult": "The request is denied and the user receives no document link."
+    }
+  ]
+}

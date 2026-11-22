@@ -4,6 +4,8 @@ Choose the simplest approach that meets the story’s acceptance criteria. Where
 
 One assigned executor per step; split meaningful human/AI/automation handoffs. The accountable human may differ. Unresolved required assignment blocks dispatch.
 
+For a checklist task, read its row, its direct prerequisites and the relevant [field guidance](../templates/checklist.fields.json). Open linked inputs, decisions and evidence as needed. Check the [schema](../templates/checklist.schema.json) before writing.
+
 - **Human:** actual person and action/decision.
 - **Automation:** deterministic workflow/script/tool, version, trigger and accountable operator; AI judgment is not automation.
 - **AI:** record **Model** and **Reasoning** using the IDE's names. Follow user/project choices and existing system constraints. Otherwise choose the model by task: routine work → economical; implementation → balanced; difficult debugging, analysis or consequential review → more capable. Set reasoning separately to match task difficulty. Prefer task-relevant quality, then cost and speed. Use the model's supported setting, such as Low, Medium, High or Extra high; write Default when the tool manages reasoning, or Auto when it selects the model. Note any selection change in the task result.

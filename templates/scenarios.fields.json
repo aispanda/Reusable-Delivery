@@ -1,0 +1,153 @@
+{
+  "$comment": "Field guidance for public definitions and private results. Validation and derivation rules are in scenarios.schema.json and results.schema.json.",
+  "columns": [
+    "id",
+    "title",
+    "actor",
+    "surfaces"
+  ],
+  "details": [
+    "startingState",
+    "actions",
+    "expectedResult",
+    "scenarioId",
+    "version",
+    "environment",
+    "fixtures"
+  ],
+  "fields": {
+    "id": {
+      "label": "Criterion ID",
+      "help": "Keep this ID stable."
+    },
+    "title": {
+      "label": "Title",
+      "help": "Name the required behavior."
+    },
+    "scenarioId": {
+      "label": "Scenario ID",
+      "help": "Keep this ID stable. Reuse the existing ID when moving a story check.",
+      "example": "SC-01",
+      "editable": false
+    },
+    "version": {
+      "label": "Scenario version",
+      "help": "Start at 1. Increase it when a change affects what the scenario proves."
+    },
+    "actor": {
+      "label": "Actor",
+      "help": "Use an alias for the role or test account.",
+      "example": "sales_reviewer"
+    },
+    "environment": {
+      "label": "Environment",
+      "help": "Use an alias for a required environment.",
+      "example": "test_org"
+    },
+    "fixtures": {
+      "label": "Fixture aliases",
+      "help": "List aliases for test records or files. Resolve them in restricted storage."
+    },
+    "actions": {
+      "label": "Actions",
+      "help": "List the execution and verification steps once. Name the surface when it changes a step.",
+      "example": [
+        "Reviewer opens the draft.",
+        "Reviewer chooses View document."
+      ]
+    },
+    "surfaces": {
+      "label": "Required coverage",
+      "help": "Select every surface that must pass. Use a separate criterion if a surface needs a materially different setup or procedure.",
+      "format": "checkboxes",
+      "labels": {
+        "desktopUi": "Desktop UI",
+        "mobileUi": "Mobile UI",
+        "backend": "Backend"
+      }
+    },
+    "startingState": {
+      "label": "Starting state",
+      "help": "Include the preconditions and any setup needed to reproduce the case."
+    },
+    "expectedResult": {
+      "label": "Expected result",
+      "help": "State every required outcome, including records, rejection reasons, and exceptions."
+    }
+  },
+  "resultFields": {
+    "runId": {
+      "label": "Run ID",
+      "help": "Use a unique ID."
+    },
+    "scenarioId": {
+      "label": "Scenario ID",
+      "help": "Use the ID of the scenario tested."
+    },
+    "scenarioVersion": {
+      "label": "Scenario version",
+      "help": "Record the version used for this run."
+    },
+    "surface": {
+      "label": "Surface",
+      "help": "Record the one required surface checked in this run."
+    },
+    "revision": {
+      "label": "Tested revision",
+      "help": "Record the exact build, release or commit tested."
+    },
+    "result": {
+      "label": "Run result",
+      "help": "Record Pass, Fail or Blocked based on the observation."
+    },
+    "observed": {
+      "label": "Observed result",
+      "help": "Record what actually happened."
+    },
+    "evidence": {
+      "label": "Evidence",
+      "help": "Link the observation, trace or readback in restricted storage."
+    },
+    "runAt": {
+      "label": "Run time",
+      "help": "Record the date, time and offset."
+    },
+    "method": {
+      "label": "Method",
+      "help": "Choose Manual or Automated. Start with Manual."
+    },
+    "runner": {
+      "label": "Runner",
+      "help": "Name the tool or use an alias for the tester when useful."
+    },
+    "testedAs": {
+      "label": "Tested as",
+      "help": "Use the alias for the account or role used."
+    },
+    "identityVerified": {
+      "label": "Identity verified",
+      "help": "Set to true only when the role was confirmed."
+    },
+    "environment": {
+      "label": "Environment",
+      "help": "Use the alias of the tested environment."
+    },
+    "comments": {
+      "label": "Comments",
+      "help": "Explain what blocked the run or cite the run being corrected."
+    }
+  },
+  "statusGuide": {
+    "Pass": "Every required surface passed on the selected build and current scenario version.",
+    "Fail": "A required surface failed on the selected build and current scenario version.",
+    "Blocked": "A required check could not finish. See Comments.",
+    "NOT RUN": "A required surface has no applicable run result.",
+    "Stale": "The displayed result belongs to a different build or scenario version."
+  },
+  "displayContract": [
+    "Show each criterion with its verification details and each required surface with its latest applicable result.",
+    "Derive results from the private records using the rules in results.schema.json. Display older evidence with its original version and build.",
+    "Resolve aliases only in an authorized local view. Publish the sanitized scenario definitions separately.",
+    "Keep scenario results distinct from task status and human acceptance."
+  ]
+}
