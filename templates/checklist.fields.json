@@ -23,9 +23,9 @@
     "direction",
     "guardrails",
     "docs",
+    "agent",
     "model",
     "reasoning",
-    "agent",
     "stepId"
   ],
   "fields": {
@@ -168,7 +168,7 @@
     },
     "model": {
       "label": "Model",
-      "help": "Name the AI model for drafting or review. For deterministic runs, name the runner in Solution approach.",
+      "help": "For an AI task, specify the model before dispatch. For deterministic runs, name the runner in Solution approach.",
       "reference": {
         "title": "Model and reasoning selection",
         "url": "../modules/execution.md"
@@ -176,11 +176,12 @@
     },
     "reasoning": {
       "label": "Reasoning",
+      "help": "Required when an AI task needs a specific reasoning setting. Use the tool's supported label.",
       "visible": false
     },
     "agent": {
       "label": "Agent",
-      "help": "Name the agent once a task assignment is decided. Leave blank during planning."
+      "help": "Confirm the task executor before dispatch. Use a stable public alias if the executor's identity is private. Leave blank during planning if unassigned."
     },
     "stepId": {
       "label": "Step ID",

@@ -5,7 +5,7 @@
 ```markdown
 # <ID> · <Outcome title>
 
-**Owner** · <Confirmed story owner or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
+**Owner** · <Person accountable for the story outcome and acceptance decision, or Pending confirmation> · [Checklist](checklist.json) · [Other execution record](<live link only if needed>) · [Guide](<revision-pinned link>)
 
 **Outcome** · As <actor>, I want <capability> so that <benefit>.
 
@@ -13,9 +13,7 @@
 
 **Operations** · <Trigger, repeatable action and observable result for the beneficiary. Include when it clarifies the story.>
 
-**Demo result** · <Date, scenario, identity verified or unverified, and observed result. If nothing ran, write NOT RUN.> [Evidence](<revision-pinned link>)
-
-**Acceptance** · <Requirement, decision and what remains open by criterion or check ID. Record who authorized any closure and its scope.> [Decision, if recorded](<revision-pinned link>)
+**Acceptance** · <Human decision for the story, or Pending decision. Record who authorized acceptance, waiver, or closure, which criteria it covers, and which criterion IDs remain open.> [Decision, if recorded](<revision-pinned link>)
 
 ## Requirements and verification
 
@@ -30,14 +28,14 @@
 
 - **<What to change>** · <Exact verified admin UI path or durable link to verified runbook instructions> · Replay <existing check ID>. <Include a verified prerequisite or activation step only if it affects the change.>
 
-**Next** · <One action tied to an existing step or human decision and the relevant criterion or check IDs. If assignment is pending, name who can assign the verifier or write Pending confirmation. Otherwise name the confirmed executor.> · <Prerequisites> · [Existing step or decision](<revision-pinned link>)
+**Next** · <Optional. Include one immediate action when it clarifies priority or sequence. Reference the relevant task or criterion IDs and name the confirmed executor or decision-maker when known.>
 ```
 
 ## Keep the story reviewable
 
 Lead with the outcome, scope, and repeatable workflow. Keep the full acceptance criteria in the linked `scenarios.json`. Preserve stable IDs and agreed wording, including safeguards and exceptions. Label unagreed wording as Proposed in the review record.
 
-Use the acceptance criterion ID to identify its verification and run records. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence in a private run record. Use `NOT RUN` until execution.
+Use the acceptance criterion ID to identify its verification and run records. Include exact values, counts, record relationships, and platform reads when they affect verification. Record observations and evidence, including from a stakeholder demo that exercises the criterion, in a private run record. Use `NOT RUN` until execution.
 
 ## Task checklist
 

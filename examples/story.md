@@ -8,9 +8,7 @@
 
 **Operations** · Open the invoice queue and use the Overdue flag to identify who needs a follow-up.
 
-**Demo result** · Synthetic walkthrough of AC-01.
-
-**Acceptance** · Pending the story owner's decision.
+**Acceptance** · Pending decision. AC-01 remains open for the story owner's review.
 
 ## Requirements and verification
 
