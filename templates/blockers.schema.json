@@ -5,7 +5,7 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["goal", "blocker", "currentFix"],
+    "required": ["status", "goal", "blocker", "currentFix"],
     "properties": {
       "affectedIds": {
         "type": "array",
@@ -16,7 +16,7 @@
         }
       },
       "status": {
-        "$ref": "#/$defs/shortText"
+        "enum": ["Open", "Closed"]
       },
       "goal": {
         "$ref": "#/$defs/shortText"
