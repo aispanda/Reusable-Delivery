@@ -6,6 +6,9 @@ Track the route, SHA, modules loaded, current step, results, blockers and next a
 |---|---|---|
 | Now | [agreement.md](../modules/agreement.md), [privacy.md](../modules/privacy.md), [story.md](../modules/story.md) | Working agreement, privacy rules for story content, copyable story and criteria |
 | Before recording any check or step status or the next action, dispatching or running any step | [execution.md](../modules/execution.md), [states.md](../modules/states.md) | Executors, bounded execution and evidence states |
+| When using a task checklist | [Checklist schema](../templates/checklist.schema.json), [field guidance](../templates/checklist.fields.json) | Load the relevant rules from the same pinned revision |
+| When using structured scenarios | [Scenario schema](../templates/scenarios.schema.json), [field guidance](../templates/scenarios.fields.json) | Read the relevant definition and rules at the pinned revision |
+| When recording or reading private scenario results | [Results schema](../templates/results.schema.json) | Use the Privacy and evidence state rules already linked above |
 | Before deriving platform checks or reading or changing an external platform | [platform.md](../modules/platform.md) | Platform access and documentation checks. Open a recovery guide only when its probe fails |
 | When planning repeatable work that may warrant automation, or before using automation, a decision model or LangGraph | [automation.md](../modules/automation.md) | Record the LangGraph decision, any revisit trigger and any required human approval in the existing execution record or story. |
 | Before planning or making a code, configuration or data change, a push to the default branch, an intended user test, review, PR, deployment, merge or handoff | [review.md](../modules/review.md) | Testing, review and PR rules, including CodeRabbit first and fresh Claude Opus 5.5 last |

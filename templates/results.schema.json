@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Private scenario run results",
+  "description": "Store real runs in approved restricted storage. Match by criterionId, criterionVersion, surface and tested revision. NOT RUN, Stale and the criterion result are derived.",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/run"
+  },
+  "x-applicationChecks": [
+    "RES-1 Reject duplicate run IDs.",
+    "RES-2 Validate new runs against the known criterion version and required surface. If that version specifies an environment, the run must match it. Preserve older runs as history.",
+    "RES-3 Append runs and identify corrected runs in Comments. Preserve earlier observations and evidence.",
+    "RES-4 For each required surface, use the latest runAt matching the selected revision, current criterion version and applicable environment. Break time ties by append order. If only a different revision or version has applicable evidence, display Stale; otherwise display NOT RUN.",
+    "RES-5 Pass the criterion only when every required surface passes. Otherwise summarize in this order: Fail, Blocked, NOT RUN, Stale. Keep each surface result visible.",
+    "RES-6 Validate runAt as an RFC 3339 date-time using format validation, which must be enabled in the validator."
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*-[A-Za-z0-9.]+$"
+    },
+    "alias": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._][a-z0-9]+)*$",
+      "maxLength": 40
+    },
+    "words19": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,18}$",
+      "x-maxWords": 19
+    },
+    "words30": {
+      "type": "string",
+      "pattern": "^\\S+(\\s+\\S+){0,29}$",
+      "x-maxWords": 30
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "criterionId",
+        "criterionVersion",
+        "surface",
+        "revision",
+        "result",
+        "observed",
+        "runAt",
+        "method"
+      ],
+      "properties": {
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "criterionId": {
+          "$ref": "#/$defs/id"
+        },
+        "criterionVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "surface": {
+          "enum": [
+            "desktopUi",
+            "mobileUi",
+            "backend"
+          ]
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^\\S{1,80}$"
+        },
+        "result": {
+          "enum": [
+            "Pass",
+            "Fail",
+            "Blocked"
+          ]
+        },
+        "observed": {
+          "$ref": "#/$defs/words30"
+        },
+        "evidence": {
+          "type": "string",
+          "pattern": "\\S",
+          "maxLength": 500
+        },
+        "runAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "method": {
+          "enum": [
+            "Manual",
+            "Automated"
+          ]
+        },
+        "runner": {
+          "$ref": "#/$defs/words19"
+        },
+        "testedAs": {
+          "$ref": "#/$defs/alias"
+        },
+        "identityVerified": {
+          "type": "boolean"
+        },
+        "environment": {
+          "$ref": "#/$defs/alias"
+        },
+        "comments": {
+          "$ref": "#/$defs/words30"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "Blocked"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "comments"
+            ]
+          },
+          "else": {
+            "required": [
+              "evidence"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "identityVerified"
+            ],
+            "properties": {
+              "identityVerified": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "testedAs"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
