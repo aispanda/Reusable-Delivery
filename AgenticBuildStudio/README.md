@@ -2,7 +2,7 @@
 
 [Open the live viewer](https://aispanda.github.io/AgenticBuildStudio/) · [Story templates and field guidance](https://github.com/aispanda/Reusable-Delivery/tree/479b7d6d3acc8f6d012998724eb40afb3469228b/templates)
 
-[Reusable UI and social preview guide](../references/ui-ux-and-social-previews.md)
+[Reusable UI and social preview guide](../docs/ui-ux-and-social-previews.md)
 
 Edit `index.html` directly. The viewer shares its card, record, field, and control styles across all four tabs. Its field guidance and roster schema are embedded from the pinned Reusable Delivery templates. Refresh the two embedded constants and the template link together.
 
