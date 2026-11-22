@@ -77,7 +77,7 @@
       "references": [
         {
           "title": "Invoice acceptance criterion",
-          "location": "invoice.scenarios.example.json"
+          "location": "scenarios.json#A-01"
         }
       ]
     }
