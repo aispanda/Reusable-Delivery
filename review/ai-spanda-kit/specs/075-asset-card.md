@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 AISpanda.com reusable asset card - type badge, status badge, title, description, Why it matters, Proof, Last verified, Explore asset
 
 ## Content and anatomy
-Trust, proof, clarity
+Intended feeling (sheet Psychology column, not content): Trust, proof, clarity
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

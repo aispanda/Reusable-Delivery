@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Site name in the header - AI Spanda / AI Builder Studio
 
 ## Content and anatomy
-Identity, trust
+Intended feeling (sheet Psychology column, not content): Identity, trust
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

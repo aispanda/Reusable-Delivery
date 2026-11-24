@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Small label, Live proof, Reusable
 
 ## Content and anatomy
-Orientation, status
+Intended feeling (sheet Psychology column, not content): Orientation, status
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

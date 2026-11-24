@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Header links, main site navigation
 
 ## Content and anatomy
-Orientation, guidance
+Intended feeling (sheet Psychology column, not content): Orientation, guidance
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

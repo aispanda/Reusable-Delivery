@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 AISpanda.com Asset Card proof - Proof text plus Last verified date
 
 ## Content and anatomy
-Trust, evidence
+Intended feeling (sheet Psychology column, not content): Trust, evidence
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

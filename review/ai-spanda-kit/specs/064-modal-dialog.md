@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Pop-up box over the page, confirm or fill in
 
 ## Content and anatomy
-Focus, attention
+Intended feeling (sheet Psychology column, not content): Focus, attention
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

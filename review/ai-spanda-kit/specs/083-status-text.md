@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Small status label - Local prototype on Agentic Build Studio, Live proof / Reusable / Draft on AISpanda.com
 
 ## Content and anatomy
-Orientation, honesty
+Intended feeling (sheet Psychology column, not content): Orientation, honesty
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

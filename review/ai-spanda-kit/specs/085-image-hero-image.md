@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Hero image on AISpanda.com - social / hero.png
 
 ## Content and anatomy
-Warmth, story
+Intended feeling (sheet Psychology column, not content): Warmth, story
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

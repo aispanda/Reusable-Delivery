@@ -37,3 +37,12 @@ These criteria are proposals; verify against the actual screen and record result
 
 ### Review evidence and remaining work — 2026-11-24
 The React story selects `Meeting notes` and checks the selected value. It does not check the static pilot's content updates or prove native arrow-key behavior. A subsequent failing-then-passing test verified that a disabled React select is skipped when tabbing; the draft now forwards native select attributes. Test keyboard selection, applicable validation and form behavior in the target use case. The static pilot evidence above applies only to the isolated HTML screen and stated tested widths; human review remains open.
+
+## Claude review, batch 1, 24 November 2026
+
+- **Verified gap (React draft):** option labels were also the submitted values.
+- **Change:** `options` accepts strings as before or `{ label, value }` objects, plus the same `hint` and `error` props as the input field.
+- **Evidence:** `SelectStableValues` selects "Meeting notes" and checks that the form submits `notes`.
+- **Open:** keyboard opening of the native menu on each supported operating system; this React change does not touch the static Studio pilot.
+
+Stories are in `src/SpandaKitActionsForms.stories.tsx`; each new story failed against the packet code and passed after the change, in a headless Chrome Storybook run on this review branch. Human visual, keyboard, screen reader and device review remain open.

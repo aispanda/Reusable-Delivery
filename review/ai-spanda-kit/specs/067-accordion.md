@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Expand and collapse sections, FAQs
 
 ## Content and anatomy
-Order, focus
+Intended feeling (sheet Psychology column, not content): Order, focus
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

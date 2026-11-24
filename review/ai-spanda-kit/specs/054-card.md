@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Basic content card, white surface
 
 ## Content and anatomy
-Clean, clear
+Intended feeling (sheet Psychology column, not content): Clean, clear
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

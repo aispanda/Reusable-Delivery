@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Success, warning, error or info message
 
 ## Content and anatomy
-Guidance, safety
+Intended feeling (sheet Psychology column, not content): Guidance, safety
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

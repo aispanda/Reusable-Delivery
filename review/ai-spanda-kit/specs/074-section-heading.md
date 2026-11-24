@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Heading for a whole section, e.g. Reusable assets - Start from something that works
 
 ## Content and anatomy
-Structure, guidance
+Intended feeling (sheet Psychology column, not content): Structure, guidance
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

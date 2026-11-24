@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 On or off setting
 
 ## Content and anatomy
-Control, clarity
+Intended feeling (sheet Psychology column, not content): Control, clarity
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states
@@ -36,3 +36,12 @@ These criteria are proposals; verify against the actual screen and record result
 
 ### Review evidence and remaining work — 2026-11-24
 The draft wraps a native checkbox with `role="switch"` in its label. Its Storybook interaction tabs to the control and presses Space twice, checking on and off states. A subsequent provisional visual treatment distinguishes its on/off state by both position and color; an agent inspected the on-state example at 390 and 1440 pixels. The draft exposes only a label, not disabled, form name/value or change handling. Verify visual treatment, forced-colors rendering, intended persistence, screen-reader behavior, touch targets and relevant states in the real use case; no such integration or human approval is established by this example.
+
+## Claude review, batch 1, 24 November 2026
+
+- **Verified gap:** `Toggle` accepted only a label, so disabled, name, value, checked state and change handling were impossible (see `evidence/form-review-followup-2026-11-24.md`).
+- **Change:** forwards native checkbox attributes while keeping `role="switch"` and the switch styling.
+- **Evidence:** `ToggleStates` checks default on, form submission, Space toggling, the change callback and a disabled switch skipped by Tab.
+- **Open:** forced colours rendering, persistence and screen reader review.
+
+Stories are in `src/SpandaKitActionsForms.stories.tsx`; each new story failed against the packet code and passed after the change, in a headless Chrome Storybook run on this review branch. Human visual, keyboard, screen reader and device review remain open.

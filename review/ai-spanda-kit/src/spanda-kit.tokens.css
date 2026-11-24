@@ -10,4 +10,7 @@
   --sk-badge-bg: #e8edf6;
   --sk-tint: #eef3fa;
   --sk-muted: #475a70;
+  /* Sheet values, documented but not approved: amber is decorative only; red is used only as a 2px control border on white (4.83:1). */
+  --sk-accent: #e8a01a;
+  --sk-error: #dc2626;
 }

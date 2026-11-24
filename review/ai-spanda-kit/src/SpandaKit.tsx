@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ChangeEvent, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, type ReactNode } from 'react';
 import './spanda-kit.tokens.css';
 import './spanda-kit.css';
 
@@ -7,15 +7,30 @@ type Content = { children: ReactNode };
 type Action = ButtonHTMLAttributes<HTMLButtonElement>;
 export function PrimaryButton({ children, className, ...props }: Action) { return <button type="button" {...props} className={['sk-button', 'sk-primary', className].filter(Boolean).join(' ')}>{children}</button>; }
 export function SecondaryButton({ children, className, ...props }: Action) { return <button type="button" {...props} className={['sk-button', 'sk-secondary', className].filter(Boolean).join(' ')}>{children}</button>; }
-export function LinkButton({ children, href }: Content & { href: string }) { return <a className="sk-link" href={href}>{children}</a>; }
+export function LinkButton({ children, href, className, ...props }: Content & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) { return <a {...props} href={href} className={['sk-link', className].filter(Boolean).join(' ')}>{children}</a>; }
 export function Card({ children }: Content) { return <article className="sk-card">{children}</article>; }
 export function FeaturedCard({ children }: Content) { return <article className="sk-card sk-featured">{children}</article>; }
-export function InputField({ id, label, ...props }: Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & { id: string; label: string }) { return <label className="sk-field" htmlFor={id}><span>{label}{props.required && ' (required)'}</span><input {...props} id={id} /></label>; }
-export function TextareaField({ id, label, rows = 4, ...props }: Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> & { id: string; label: string }) { return <label className="sk-field" htmlFor={id}><span>{label}{props.required && ' (required)'}</span><textarea {...props} id={id} rows={rows} /></label>; }
-export function SelectField({ id, label, options, ...props }: Omit<SelectHTMLAttributes<HTMLSelectElement>, 'id' | 'children'> & { id: string; label: string; options: string[] }) { return <label className="sk-field" htmlFor={id}><span>{label}{props.required && ' (required)'}</span><select {...props} id={id}>{options.map(o => <option key={o}>{o}</option>)}</select></label>; }
+type FieldExtras = { id: string; label: string; hint?: string; error?: string };
+type Option = string | { label: string; value: string };
+const optionLabel = (o: Option) => (typeof o === 'string' ? o : o.label);
+const optionValue = (o: Option) => (typeof o === 'string' ? o : o.value);
+// Joins caller-supplied, hint and error description IDs, and marks the control invalid when an error is shown.
+function describe(id: string, hint: string | undefined, error: string | undefined, describedBy: string | undefined, invalid: unknown) {
+  const ids = [describedBy, hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(' ');
+  return { 'aria-describedby': ids || undefined, 'aria-invalid': error ? true : (invalid as boolean | 'true' | 'false' | undefined) };
+}
+function FieldShell({ id, label, required, hint, error, children }: { id: string; label: string; required?: boolean; hint?: string; error?: string; children: ReactNode }) {
+  return <div className="sk-field"><label htmlFor={id}>{label}{required && ' (required)'}</label>{children}{hint && <p className="sk-field-hint" id={`${id}-hint`}>{hint}</p>}{error && <p className="sk-field-error" id={`${id}-error`}>Error: {error}</p>}</div>;
+}
+export function InputField({ id, label, hint, error, 'aria-describedby': describedBy, 'aria-invalid': invalid, ...props }: Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & FieldExtras) { return <FieldShell id={id} label={label} required={props.required} hint={hint} error={error}><input {...props} {...describe(id, hint, error, describedBy, invalid)} id={id} /></FieldShell>; }
+export function TextareaField({ id, label, hint, error, rows = 4, 'aria-describedby': describedBy, 'aria-invalid': invalid, ...props }: Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> & FieldExtras) { return <FieldShell id={id} label={label} required={props.required} hint={hint} error={error}><textarea {...props} {...describe(id, hint, error, describedBy, invalid)} id={id} rows={rows} /></FieldShell>; }
+export function SelectField({ id, label, options, hint, error, 'aria-describedby': describedBy, 'aria-invalid': invalid, ...props }: Omit<SelectHTMLAttributes<HTMLSelectElement>, 'id' | 'children'> & FieldExtras & { options: Option[] }) { return <FieldShell id={id} label={label} required={props.required} hint={hint} error={error}><select {...props} {...describe(id, hint, error, describedBy, invalid)} id={id}>{options.map(o => <option key={optionValue(o)} value={optionValue(o)}>{optionLabel(o)}</option>)}</select></FieldShell>; }
 export function Checkbox({ label, ...props }: Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & { label: string }) { return <label className="sk-choice"><input {...props} type="checkbox" /> {label}</label>; }
-export function RadioGroup({ label, options, name }: { label: string; options: string[]; name: string }) { return <fieldset className="sk-group"><legend>{label}</legend>{options.map(o => <label className="sk-choice" key={o}><input type="radio" name={name} value={o} /> {o}</label>)}</fieldset>; }
-export function Toggle({ label }: { label: string }) { return <label className="sk-choice"><input className="sk-switch" type="checkbox" role="switch" /> {label}</label>; }
+// Option strings remain supported; use { label, value } when submitted values must stay stable as labels change.
+export function RadioGroup({ label, options, name, value, defaultValue, onChange, disabled, required }: { label: string; options: Option[]; name: string; value?: string; defaultValue?: string; onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void; disabled?: boolean; required?: boolean }) {
+  return <fieldset className="sk-group" disabled={disabled}><legend>{label}{required && ' (required)'}</legend>{options.map(o => { const v = optionValue(o); return <label className="sk-choice" key={v}><input type="radio" name={name} value={v} required={required} checked={value === undefined ? undefined : value === v} defaultChecked={value === undefined && defaultValue !== undefined ? defaultValue === v : undefined} onChange={onChange ? e => onChange(v, e) : undefined} /> {optionLabel(o)}</label>; })}</fieldset>;
+}
+export function Toggle({ label, ...props }: Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'role'> & { label: string }) { return <label className="sk-choice"><input {...props} className={['sk-switch', props.className].filter(Boolean).join(' ')} type="checkbox" role="switch" /> {label}</label>; }
 export function Badge({ children }: Content) { return <span className="sk-badge">{children}</span>; }
 export function Alert({ children }: Content) { return <div className="sk-alert" role="status">{children}</div>; }
 export function Modal({ title, children }: Content & { title: string }) {

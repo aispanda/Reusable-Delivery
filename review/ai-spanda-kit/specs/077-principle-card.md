@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 AISpanda.com numbered principle card - Aim Before You Generate, Test the Logic, Own the Track, Save the Request First
 
 ## Content and anatomy
-Seriousness, judgement
+Intended feeling (sheet Psychology column, not content): Seriousness, judgement
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Agentic Build Studio request text - the brief sentence that changes with the use case
 
 ## Content and anatomy
-Voice, emphasis, reflection
+Intended feeling (sheet Psychology column, not content): Voice, emphasis, reflection
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

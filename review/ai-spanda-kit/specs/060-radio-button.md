@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Pick exactly one option
 
 ## Content and anatomy
-Choice, control
+Intended feeling (sheet Psychology column, not content): Choice, control
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states
@@ -36,3 +36,12 @@ These criteria are proposals; verify against the actual screen and record result
 
 ### Review evidence and remaining work — 2026-11-24
 The example uses a fieldset and legend, with native radio inputs sharing a name. One story selects two options by pointer and checks that only the latter remains selected. A second story verifies that form data contains `Detailed` after that option is selected; the former implementation incorrectly submitted the indistinguishable default `on`, and the focused check failed before the value fix and passed afterward. A separate Playwright test used Space then ArrowDown in headless Chrome and verified the selection changed. Option strings currently serve as both labels and submitted values; confirm whether stable separate values are needed. Disabled/required states, error handling, screen readers and touch targets remain to be tested in context. This React draft does not establish the static Studio implementation.
+
+## Claude review, batch 1, 24 November 2026
+
+- **Verified gap:** `RadioGroup` could not be disabled, required, preselected or observed, and labels were the submitted values (see `evidence/form-review-followup-2026-11-24.md`).
+- **Change:** adds `disabled` (on the fieldset), `required`, `defaultValue`, controlled `value`, `onChange(value, event)` and `{ label, value }` options; string options still work.
+- **Evidence:** `RadioStates` checks the default selection, required state, change callback, submitted value and disabled group.
+- **Open:** error presentation and screen reader review of the group name.
+
+Stories are in `src/SpandaKitActionsForms.stories.tsx`; each new story failed against the packet code and passed after the change, in a headless Chrome Storybook run on this review branch. Human visual, keyboard, screen reader and device review remain open.

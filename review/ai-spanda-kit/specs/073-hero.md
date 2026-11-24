@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Large intro at top of page - headline, short line, on AISpanda.com and Agentic Build Studio
 
 ## Content and anatomy
-Warmth, authority, first impression
+Intended feeling (sheet Psychology column, not content): Warmth, authority, first impression
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

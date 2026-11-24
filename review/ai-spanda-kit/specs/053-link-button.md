@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Text-only action, looks like a link
 
 ## Content and anatomy
-Trust, clarity
+Intended feeling (sheet Psychology column, not content): Trust, clarity
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states
@@ -38,3 +38,12 @@ These criteria are proposals; verify against the actual screen and record result
 
 - **Proposed checks:** A meaningful link name identifies its actual destination, Enter follows the supplied URL, visible keyboard focus is retained, and the link is distinguishable without color alone. In-place actions should use a button instead.
 - **Current evidence:** `LinkButton` renders a native anchor with its supplied `href`; its story uses a placeholder fragment. The default story does not verify navigation, focus visibility, a real destination or visual distinguishability. Approved tokens and human review remain open.
+
+## Claude review, batch 1, 24 November 2026
+
+- **Verified gap:** `LinkButton` accepted only `href` and children, so callers could not add `className`, `aria-*`, `target` or `rel`, and the shared focus ring did not apply to it.
+- **Change:** forwards native anchor attributes, merges classes and adds `.sk-link` to the focus ring rule.
+- **Evidence:** `LinkButtonAttributes` checks class merging, forwarded attributes and keyboard focus.
+- **Open:** real destinations and a decision on whether link styling should differ from inline body links.
+
+Stories are in `src/SpandaKitActionsForms.stories.tsx`; each new story failed against the packet code and passed after the change, in a headless Chrome Storybook run on this review branch. Human visual, keyboard, screen reader and device review remain open.

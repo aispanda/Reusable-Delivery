@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Switch between views in one place
 
 ## Content and anatomy
-Order, clarity
+Intended feeling (sheet Psychology column, not content): Order, clarity
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

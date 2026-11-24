@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 AISpanda.com hero audience card - Everyday professionals, Technology leaders, Builders & policy
 
 ## Content and anatomy
-Clarity, belonging
+Intended feeling (sheet Psychology column, not content): Clarity, belonging
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states

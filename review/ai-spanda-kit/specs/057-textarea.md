@@ -6,7 +6,7 @@ Status: DRAFT — inventory-derived; not an approved design or completed impleme
 Longer text entry, comments, messages
 
 ## Content and anatomy
-Clarity, focus
+Intended feeling (sheet Psychology column, not content): Clarity, focus
 Representative content, anatomy and length limits: TODO; use real project context before implementation.
 
 ## Variants and states
@@ -36,3 +36,11 @@ These criteria are proposals; verify against the actual screen and record result
 
 ### Review evidence and remaining work — 2026-11-24
 The example associates the visible `Notes` label with a native textarea. Its Storybook interaction enters two lines and checks the resulting value. A subsequent failing-then-passing form test verified that the control now forwards its name and submits the multiline value. Native attributes can now be passed through, but their states and error associations are not fully tested. Long-content usability, announced errors and visual, zoom and assistive-technology review remain open. This React example does not verify an implementation in the static Studio.
+
+## Claude review, batch 1, 24 November 2026
+
+- **Change:** the same `hint` and `error` props as the input field.
+- **Evidence:** `TextareaCallerDescriptionKept` checks that a caller's own description is kept ahead of the error.
+- **Open:** character guidance, long content and announcement review.
+
+Stories are in `src/SpandaKitActionsForms.stories.tsx`; each new story failed against the packet code and passed after the change, in a headless Chrome Storybook run on this review branch. Human visual, keyboard, screen reader and device review remain open.
