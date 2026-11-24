@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI/UX delivery and testing kit, by AI Spanda</title>
+  <meta name="description" content="A free, MIT licensed kit of templates, component checks and examples for people who build interfaces with AI. It keeps the brief, the states and the test evidence together.">
+  <link rel="canonical" href="https://aispanda.github.io/Reusable-Delivery/showroom/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UI/UX delivery and testing kit, by AI Spanda">
+  <meta property="og:description" content="Templates, component checks and examples that take interface work from brief to a reviewed handoff.">
+  <meta property="og:image" content="https://aispanda.github.io/Reusable-Delivery/showroom/brand/og-kit.png">
+  <meta property="og:image:alt" content="UI/UX delivery and testing kit, by AI Spanda.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="brand/favicon-64.png">
+  <link rel="preload" href="fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../examples/tokens.example.css">
+  <link rel="stylesheet" href="../examples/components.css">
+  <link rel="stylesheet" href="showroom.css">
+  <script src="showroom.js" defer></script>
+</head>
+<body>
+  <a class="sp-skip" href="#main">Skip to main content</a>
+
+  <header class="sp-header">
+    <div class="sp-wrap">
+      <a class="sp-brand" href="https://aispanda.com/"><img src="brand/lockup-light.png" width="480" height="160" alt="AI Spanda"></a>
+      <nav class="sp-nav" aria-label="Page">
+        <ul>
+          <li><a href="#problem">Why it exists</a></li>
+          <li><a href="#stages">How it works</a></li>
+          <li><a href="#try">Try it</a></li>
+          <li><a href="#start">Get started</a></li>
+          <li><a href="#status">Status</a></li>
+        </ul>
+        <a class="sp-button sp-button--small" href="https://github.com/aispanda/Reusable-Delivery/tree/main/docs/ui-ux-delivery">View on GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="sp-hero" aria-labelledby="hero-title">
+      <div class="sp-wrap">
+        <div class="sp-hero-copy">
+          <p class="sp-eyebrow">UI/UX delivery and testing kit</p>
+          <h1 id="hero-title">Build interfaces with AI and keep the evidence a reviewer needs</h1>
+          <p class="sp-lede">AI makes screens quickly, which is exactly why so many reach review untried. This free kit gives you the templates, component checks and examples to plan, build and hand over interface work with proof of what was checked and what still needs a person.</p>
+          <div class="sp-actions">
+            <a class="sp-button" href="#start">Start a project</a>
+            <a class="sp-button sp-button--quiet" href="#try">Try the components</a>
+          </div>
+        </div>
+
+        <aside class="sp-proof" aria-labelledby="proof-title">
+          <h2 id="proof-title">This page was delivered with the kit</h2>
+          <ul>
+            <li><span class="sp-mark sp-mark--done" aria-hidden="true">✓</span><span>Automated accessibility rules at 320, 768 and 1280 pixels wide, with no serious or critical findings.</span></li>
+            <li><span class="sp-mark sp-mark--done" aria-hidden="true">✓</span><span>Every control reached by keyboard, each with a visible focus style.</span></li>
+            <li><span class="sp-mark sp-mark--done" aria-hidden="true">✓</span><span>Tabs, dialog, form error and token switch checked in a real browser, and each check shown to fail once on purpose.</span></li>
+            <li><span class="sp-mark sp-mark--open" aria-hidden="true">!</span><span>Human design, keyboard and screen reader review is not yet recorded.</span></li>
+          </ul>
+          <small>Checked <span data-check-date>24 November 2026</span> with Playwright and axe in Chrome on Linux. <a href="https://github.com/aispanda/Reusable-Delivery/tree/main/docs/ui-ux-delivery/showroom/delivery">Read the delivery record</a>.</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sp-section" id="problem" aria-labelledby="problem-title">
+      <div class="sp-wrap">
+        <header>
+          <p class="sp-eyebrow">Why it exists</p>
+          <h2 id="problem-title">Why quick interface work so often fails review</h2>
+          <p class="sp-lede">The same four problems turn up whenever interface work moves quickly between people, tools and agents. Each one has a small, repeatable answer in the kit.</p>
+        </header>
+        <ul class="sp-cards">
+          <li class="sp-card">
+            <h3>It looks finished before anyone tries it</h3>
+            <p>The happy path renders, but the error, empty and disabled states were never built, and nobody noticed because the screenshot looked right.</p>
+            <p class="sp-fix"><strong>The kit</strong>Each component lists its states up front, and each state gets a check that can be run again.</p>
+          </li>
+          <li class="sp-card">
+            <h3>Keyboard users get stuck</h3>
+            <p>A control nobody tabbed to cannot be reached, or focus disappears inside a dialog and never comes back.</p>
+            <p class="sp-fix"><strong>The kit</strong>Keyboard paths and focus return are written into the acceptance criteria and checked in a real browser.</p>
+          </li>
+          <li class="sp-card">
+            <h3>One screenshot stands in for testing</h3>
+            <p>A single image of one state at one width becomes the proof that a whole component works on every device.</p>
+            <p class="sp-fix"><strong>The kit</strong>Checks run at agreed widths and save their results as evidence, and every check is first shown to fail.</p>
+          </li>
+          <li class="sp-card">
+            <h3>Passing checks get mistaken for approval</h3>
+            <p>Decisions are lost between tools and agents, and a green test run quietly replaces the judgment of the person who owns the design.</p>
+            <p class="sp-fix"><strong>The kit</strong>Every review records who or what performed it, so automated results and human decisions are never confused.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sp-section sp-band" id="stages" aria-labelledby="stages-title">
+      <div class="sp-wrap">
+        <header>
+          <p class="sp-eyebrow">How it works</p>
+          <h2 id="stages-title">Five stages, each with a template and a clear output</h2>
+          <p class="sp-lede">Use the arrow keys to move between stages. Each stage produces something a reviewer can open, not a promise that it was done.</p>
+        </header>
+        <div class="sp-tabs" data-tabs>
+          <div role="tablist" aria-label="Delivery stages">
+            <button class="sp-tab" role="tab" id="tab-brief" aria-controls="panel-brief" aria-selected="true" type="button"><span aria-hidden="true">01</span>Brief</button>
+            <button class="sp-tab" role="tab" id="tab-foundations" aria-controls="panel-foundations" aria-selected="false" tabindex="-1" type="button"><span aria-hidden="true">02</span>Foundations</button>
+            <button class="sp-tab" role="tab" id="tab-components" aria-controls="panel-components" aria-selected="false" tabindex="-1" type="button"><span aria-hidden="true">03</span>Components</button>
+            <button class="sp-tab" role="tab" id="tab-screen" aria-controls="panel-screen" aria-selected="false" tabindex="-1" type="button"><span aria-hidden="true">04</span>Screen</button>
+            <button class="sp-tab" role="tab" id="tab-review" aria-controls="panel-review" aria-selected="false" tabindex="-1" type="button"><span aria-hidden="true">05</span>Review and handoff</button>
+          </div>
+
+          <div class="sp-panel" role="tabpanel" id="panel-brief" aria-labelledby="tab-brief" tabindex="0">
+            <div>
+              <h3>Write down what you are building before you build it</h3>
+              <p>Record the audience, their main task, the real content, the stack, the browsers and assistive technology you support, and who owns each decision. If a site already exists, capture its version and the qualities worth keeping before anything is rebuilt.</p>
+              <p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/01-project-brief.md">Open the project brief template</a></p>
+            </div>
+            <div class="sp-evidence"><h4>What a reviewer gets</h4><ul><li>One brief every tool and agent works from</li><li>The supported devices that decide which checks are required</li><li>References with reuse rights recorded</li></ul></div>
+          </div>
+          <div class="sp-panel" role="tabpanel" id="panel-foundations" aria-labelledby="tab-foundations" tabindex="0" hidden>
+            <div>
+              <h3>Keep one source for every token</h3>
+              <p>Colours, type, spacing and focus rules live in one place, with contrast ratios checked and each value marked approved or provisional. The visual direction becomes criteria a reviewer can actually check.</p>
+              <p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/02-design-system.md">Open the design system template</a></p>
+            </div>
+            <div class="sp-evidence"><h4>What a reviewer gets</h4><ul><li>A token source with its version</li><li>Approved and prohibited colour pairs</li><li>Visual acceptance criteria</li></ul></div>
+          </div>
+          <div class="sp-panel" role="tabpanel" id="panel-components" aria-labelledby="tab-components" tabindex="0" hidden>
+            <div>
+              <h3>Build only what the screens need, with every state</h3>
+              <p>Components are built in the stack that will ship. States are part of the component, so default, error, empty, disabled and loading are written as stories or fixtures and checked, not assumed.</p>
+              <p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/03-component-spec.md">Open the component spec template</a></p>
+            </div>
+            <div class="sp-evidence"><h4>What a reviewer gets</h4><ul><li>Stories or fixtures for each state</li><li>Keyboard and accessibility checks that can fail</li><li>Acceptance written as action and result</li></ul></div>
+          </div>
+          <div class="sp-panel" role="tabpanel" id="panel-screen" aria-labelledby="tab-screen" tabindex="0" hidden>
+            <div>
+              <h3>Assemble real screens at real widths</h3>
+              <p>Components are judged together, with matching real content and states at the agreed widths, because a component that works alone can still fail inside a crowded screen.</p>
+              <p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/04-screen-spec.md">Open the screen spec template</a></p>
+            </div>
+            <div class="sp-evidence"><h4>What a reviewer gets</h4><ul><li>Screens at each agreed width</li><li>Focus order and landmarks recorded</li><li>The critical flow and its expected outcome</li></ul></div>
+          </div>
+          <div class="sp-panel" role="tabpanel" id="panel-review" aria-labelledby="tab-review" tabindex="0" hidden>
+            <div>
+              <h3>Hand over evidence, not a feeling</h3>
+              <p>Compare the existing version and the candidate on the same screens, content, states and widths. Record which results came from tools and which from people, and say plainly what review remains.</p>
+              <p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/05-review-handoff.md">Open the review and handoff template</a></p>
+            </div>
+            <div class="sp-evidence"><h4>What a reviewer gets</h4><ul><li>Saved results for every check</li><li>Who performed each review</li><li>Known gaps and the next owner</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-section" id="try" aria-labelledby="try-title">
+      <div class="sp-wrap">
+        <header>
+          <p class="sp-eyebrow">Try it</p>
+          <h2 id="try-title">Use the components with your keyboard</h2>
+          <p class="sp-lede">These are the kit's own example components, loaded from its <code>examples</code> folder. Press Tab to move through them, submit the form with a wrong address, open the dialog and close it with Escape.</p>
+        </header>
+        <div class="sp-lab">
+          <div class="sp-switch">
+            <fieldset>
+              <legend>Token source</legend>
+              <label class="sp-radio"><input type="radio" name="tokens" value="neutral" checked> Neutral placeholders that ship with the kit</label>
+              <label class="sp-radio"><input type="radio" name="tokens" value="aispanda"> AI Spanda, the brand of this page</label>
+            </fieldset>
+            <p>The components read every colour, radius and font from one token file. Switching the source restyles them without changing any component code, which is how your own brand replaces the placeholders.</p>
+            <table class="sp-tokens">
+              <caption>Current values</caption>
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--ex-color-primary</code></th><td data-token="--ex-color-primary"></td></tr>
+                <tr><th scope="row"><code>--ex-color-background</code></th><td data-token="--ex-color-background"></td></tr>
+                <tr><th scope="row"><code>--ex-color-focus</code></th><td data-token="--ex-color-focus"></td></tr>
+                <tr><th scope="row"><code>--ex-radius</code></th><td data-token="--ex-radius"></td></tr>
+              </tbody>
+            </table>
+            <p class="sp-visually-hidden" role="status" id="token-status"></p>
+          </div>
+
+          <div class="sp-stage" data-tokens="neutral" id="stage">
+            <p class="sp-stage-bar"><strong>Live example components</strong><span>examples/components.css</span></p>
+            <div class="ex-page">
+              <section class="ex-card" aria-labelledby="ex-buttons">
+                <h3 id="ex-buttons">Buttons</h3>
+                <div class="ex-row">
+                  <button type="button" class="ex-button ex-button--primary" id="ex-save">Save changes</button>
+                  <button type="button" class="ex-button ex-button--secondary" id="ex-cancel">Cancel</button>
+                  <button type="button" class="ex-button ex-button--primary" disabled>Unavailable</button>
+                </div>
+                <p class="ex-hint" role="status" id="ex-save-status">Not saved yet.</p>
+              </section>
+
+              <section class="ex-card" aria-labelledby="ex-form">
+                <h3 id="ex-form">Form with validation</h3>
+                <form id="ex-signup" novalidate>
+                  <div class="ex-field">
+                    <label class="ex-label" for="ex-email">Email address</label>
+                    <p class="ex-hint" id="ex-email-hint">We use this only for project updates.</p>
+                    <input class="ex-input" id="ex-email" name="email" type="email" autocomplete="email" aria-describedby="ex-email-hint" value="name@example">
+                    <p class="ex-error" id="ex-email-error" hidden>Enter an email address in the format name@example.com.</p>
+                  </div>
+                  <fieldset class="ex-fieldset">
+                    <legend class="ex-label">Notify me about</legend>
+                    <label class="ex-check"><input type="checkbox" name="notify" value="releases"> New releases</label>
+                    <label class="ex-check"><input type="checkbox" name="notify" value="reviews" checked> Review requests</label>
+                    <label class="ex-check"><input type="checkbox" name="notify" value="archive" disabled> Archived projects</label>
+                  </fieldset>
+                  <div class="ex-field">
+                    <label class="ex-label" for="ex-use">Example use case</label>
+                    <select class="ex-select" id="ex-use"><option>Support tickets</option><option>Meeting notes</option></select>
+                  </div>
+                  <div class="ex-row"><button type="submit" class="ex-button ex-button--primary">Subscribe</button></div>
+                  <p class="ex-hint" role="status" id="ex-form-status"></p>
+                </form>
+              </section>
+
+              <section class="ex-card" aria-labelledby="ex-dialog-title">
+                <h3 id="ex-dialog-title">Dialog</h3>
+                <button type="button" class="ex-button ex-button--secondary" id="ex-open-dialog">Delete draft</button>
+                <p class="ex-hint" role="status" id="ex-dialog-status"></p>
+                <dialog class="ex-dialog" id="ex-dialog" aria-labelledby="ex-dialog-heading">
+                  <h3 id="ex-dialog-heading">Delete this draft?</h3>
+                  <p>This removes the draft from your list.</p>
+                  <form method="dialog" class="ex-row"><button class="ex-button ex-button--secondary" value="keep">Keep draft</button><button class="ex-button ex-button--primary" value="delete">Delete</button></form>
+                </dialog>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-section sp-band" id="start" aria-labelledby="start-title">
+      <div class="sp-wrap">
+        <header>
+          <p class="sp-eyebrow">Get started</p>
+          <h2 id="start-title">Start on your own project in three steps</h2>
+          <p class="sp-lede">The kit is plain Markdown, CSS and a few test files. It works beside any stack and installs nothing into your site.</p>
+        </header>
+        <ol class="sp-steps">
+          <li><h3>Write the brief</h3><p>Fill the project brief with your audience, content, stack and supported devices. Every later decision then has something to point back to.</p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/templates/01-project-brief.md">Project brief template</a></li>
+          <li><h3>Swap in your tokens</h3><p>Replace the placeholder token file with your own values, exactly as the switch above does, and record which values are approved.</p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/examples/tokens.example.css">Placeholder tokens</a></li>
+          <li><h3>Run the checks and keep the results</h3><p>Choose the static HTML or the React with Storybook route, show each check can fail, then save the passing evidence for review.</p><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/testing/README.md">Testing starter</a></li>
+        </ol>
+        <pre class="sp-code" tabindex="0" aria-label="Commands to run the kit locally"><code>git clone --depth 1 https://github.com/aispanda/Reusable-Delivery
+cd Reusable-Delivery/docs/ui-ux-delivery
+npm install
+npm run check:static
+npm run storybook</code></pre>
+      </div>
+    </section>
+
+    <section class="sp-section" id="status" aria-labelledby="status-title">
+      <div class="sp-wrap">
+        <header>
+          <p class="sp-eyebrow">Status</p>
+          <h2 id="status-title">What is proven, and what is not yet</h2>
+          <p class="sp-lede">The kit asks you to be honest about evidence, so it starts with its own. <a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/STATUS.md">STATUS.md</a> is the full record.</p>
+        </header>
+        <div class="sp-status">
+          <section aria-labelledby="st-done"><span class="sp-pill sp-pill--done">Verified</span><h3 id="st-done">In this package</h3><ul><li>Type check, story tests with accessibility rules, and the static check pass.</li><li>This page passes its own checks at three widths.</li></ul></section>
+          <section aria-labelledby="st-open"><span class="sp-pill sp-pill--open">Open</span><h3 id="st-open">Still to do</h3><ul><li>Use on a second, unrelated project.</li><li>Human design, keyboard and screen reader review.</li><li>An accepted visual baseline.</li></ul></section>
+          <section aria-labelledby="st-never"><span class="sp-pill sp-pill--never">Not claimed</span><h3 id="st-never">This kit does not claim</h3><ul><li>That it works on any site unchanged.</li><li>That passing checks mean accessibility compliance.</li><li>That any of this replaces human approval.</li></ul></section>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-section sp-band" id="questions" aria-labelledby="faq-title">
+      <div class="sp-wrap">
+        <header><p class="sp-eyebrow">Questions</p><h2 id="faq-title">Before you adopt it</h2></header>
+        <div class="sp-faq">
+          <details><summary>Do I need React or Storybook?</summary><p>No. There is a route for static HTML that needs only Node and Playwright in a separate test folder, and other stacks can run the same kinds of checks with their own browser test runner.</p></details>
+          <details><summary>Will my project inherit the AI Spanda brand?</summary><p>No. The examples use neutral placeholder tokens on purpose. Only this page and the README wrapper carry the AI Spanda style.</p></details>
+          <details><summary>What does it cost, and what is the license?</summary><p>It is free under the MIT license. Storybook, Playwright and axe are installed separately and keep their own licenses.</p></details>
+          <details><summary>Does it work with AI coding agents?</summary><p>Yes. The templates are written so an agent can fill them and run the checks, while the design owner keeps the decisions that need judgment. Every review records whether a person or an agent performed it.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sp-footer">
+    <div class="sp-wrap">
+      <img src="brand/lockup-dark.png" width="340" height="113" alt="AI Spanda">
+      <div>
+        <p>Made by AI Spanda and delivered with the kit it describes. The brief, design system, specs, checks and review record for this page are published beside it.</p>
+        <ul>
+          <li><a href="https://github.com/aispanda/Reusable-Delivery/tree/main/docs/ui-ux-delivery">Kit on GitHub</a></li>
+          <li><a href="https://github.com/aispanda/Reusable-Delivery/tree/main/docs/ui-ux-delivery/showroom/delivery">Delivery record for this page</a></li>
+          <li><a href="https://github.com/aispanda/Reusable-Delivery/blob/main/docs/ui-ux-delivery/LICENSE">MIT license</a></li>
+          <li><a href="https://aispanda.com/">aispanda.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
