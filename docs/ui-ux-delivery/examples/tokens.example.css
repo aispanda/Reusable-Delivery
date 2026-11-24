@@ -1,0 +1,30 @@
+/* Placeholder tokens for the neutral examples. Not a brand and not approved for any project.
+   Replace with values generated from your project's token source, then confirm contrast with automated and manual checks. */
+:root {
+  --ex-color-text: #1f2328;
+  --ex-color-muted: #57606a;
+  --ex-color-background: #f6f7f9;
+  --ex-color-surface: #ffffff;
+  --ex-color-primary: #1d4ed8;
+  --ex-color-primary-hover: #1e40af;
+  --ex-color-primary-subtle: #e8effd;
+  --ex-color-on-primary: #ffffff;
+  --ex-color-border: #d0d7de;
+  --ex-color-border-control: #6e7781;
+  --ex-color-error: #b42318;
+  --ex-color-disabled-surface: #eaeef2;
+  --ex-color-focus: #1d4ed8;
+  --ex-focus-width: 3px;
+  --ex-border-width: 1px;
+  --ex-radius: 6px;
+  --ex-space-1: 4px;
+  --ex-space-2: 8px;
+  --ex-space-3: 12px;
+  --ex-space-4: 16px;
+  --ex-space-5: 24px;
+  --ex-space-6: 32px;
+  --ex-font-family: system-ui, sans-serif;
+  --ex-font-size: 1rem;
+  --ex-line-height: 1.5;
+  --ex-target-min: 44px;
+}

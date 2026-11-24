@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component examples (static HTML)</title>
+  <link rel="stylesheet" href="../tokens.example.css">
+  <link rel="stylesheet" href="../components.css">
+</head>
+<body class="ex-page">
+  <a class="ex-skip" href="#main">Skip to main content</a>
+  <header class="ex-header"><p class="ex-hint">Neutral examples with placeholder tokens. Not a brand.</p></header>
+  <main id="main" class="ex-main" tabindex="-1">
+    <h1>Component examples</h1>
+    <section class="ex-card" aria-labelledby="buttons-title">
+      <h2 id="buttons-title">Buttons</h2>
+      <div class="ex-row"><button type="button" class="ex-button ex-button--primary">Save changes</button><button type="button" class="ex-button ex-button--secondary">Cancel</button><button type="button" class="ex-button ex-button--primary" disabled>Unavailable</button></div>
+    </section>
+    <section class="ex-card" aria-labelledby="fields-title">
+      <h2 id="fields-title">Text fields</h2>
+      <div class="ex-field"><label class="ex-label" for="name">Full name</label><input class="ex-input" id="name" name="name" type="text" autocomplete="name"></div>
+      <div class="ex-field"><label class="ex-label" for="email">Email address</label><p class="ex-hint" id="email-hint">We use this only for project updates.</p><input class="ex-input" id="email" name="email" type="email" value="name@example" aria-invalid="true" aria-describedby="email-hint email-error" required><p class="ex-error" id="email-error">Enter an email address in the format name@example.com.</p></div>
+    </section>
+    <section class="ex-card" aria-labelledby="checks-title">
+      <h2 id="checks-title">Checkboxes</h2>
+      <fieldset class="ex-fieldset"><legend class="ex-label">Notify me about</legend><label class="ex-check"><input type="checkbox" name="notify" value="releases"> New releases</label><label class="ex-check"><input type="checkbox" name="notify" value="reviews" checked> Review requests</label><label class="ex-check"><input type="checkbox" name="notify" value="archive" disabled> Archived projects</label></fieldset>
+    </section>
+    <section class="ex-card" aria-labelledby="select-title">
+      <h2 id="select-title">Native select</h2>
+      <div class="ex-field"><label class="ex-label" for="use-case">Example use case</label><select class="ex-select" id="use-case"><option value="support">Support tickets</option><option value="notes">Meeting notes</option></select><p class="ex-hint" id="use-case-status" role="status">Showing: Support tickets</p></div>
+    </section>
+    <section class="ex-card" aria-labelledby="dialog-section-title">
+      <h2 id="dialog-section-title">Dialog</h2>
+      <button type="button" class="ex-button ex-button--primary" id="open-dialog">Delete draft</button>
+      <dialog class="ex-dialog" id="delete-dialog" aria-labelledby="dialog-title"><h2 id="dialog-title">Delete this draft?</h2><p>This removes the draft from your list.</p><form method="dialog" class="ex-row"><button class="ex-button ex-button--secondary" value="keep">Keep draft</button><button class="ex-button ex-button--primary" value="delete">Delete</button></form></dialog>
+    </section>
+  </main>
+  <script>
+    const dialog = document.getElementById('delete-dialog');
+    document.getElementById('open-dialog').addEventListener('click', () => dialog.showModal());
+    const select = document.getElementById('use-case');
+    const status = document.getElementById('use-case-status');
+    select.addEventListener('change', () => {
+      status.textContent = 'Showing: ' + select.options[select.selectedIndex].text;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+# Lean AI-assisted UI/UX delivery framework
+
+Status: working draft for independent review. Goal: one person can efficiently produce a professional, reviewable UI and handoff for different websites, commerce experiences and applications, using AI for routine work and people for judgment. The one-week target is a hypothesis to measure, not a promise. Scope is screens, interaction patterns, components and design-system handoff; business integrations, backend and production deployment belong to the technical team. Existing user journeys are inputs; designing screens does not by itself validate a journey.
+
+> **Annotation, Claude Opus 5.5, package note, 24 November 2026:** This file is the AI Spanda project's working framework, copied word for word. In this package the templates are in `templates/`, the testing starter is in `testing/`, and neutral examples are in `examples/`. References to Taskbox, the AI Builder Studio pilot, Muse, Carbon, Codex, `framework-templates/`, `handoffs/` and `demo-evidence/` describe that project and are not included here. See `STATUS.md` for what has been verified.
+
+## Reusable core and project inputs
+
+Reuse the process, blank templates, accessibility checks, component and story patterns where their stack and license fit. Each project supplies its audience, content, brand, chosen patterns, constraints and actual token values. Do not assume a brand palette, spacing scale, typography or a React library is universal. Track source, decision owner and version of token values; document exceptions. Human review is targeted at consequential decisions and final output, not a meeting for every component.
+
+## Five stages
+
+1. **Brief:** record audience, task, journey input, priority screen, content, stack, brand, constraints and owner. Choose suitable patterns with `01-project-brief.md`.
+2. **Foundations:** document project rules and one authoritative token source with `02-design-system.md`. Generated outputs must derive from that source where appropriate. Record provisional decisions and owners.
+3. **Components:** build or adapt only what the screen needs in its own stack. React may use stories; static HTML may use semantic fixtures. States are part of a component. Use `03-component-spec.md` when code and stories alone are insufficient.
+4. **Screen:** assemble content and interactions, with relevant widths and states, using `04-screen-spec.md`. Open Design is an optional visual reference, not an obligatory per-component conversion step.
+5. **Review and handoff:** run relevant checks and record remaining human visual, keyboard, screen-reader and usability review with `05-review-handoff.md`. Measure time and improve templates based on observed gaps.
+
+## Sources of truth and evidence
+
+Record the source revision of exact token values, use DESIGN.md for rationale and rules, and component code with stories or fixtures for behavior. Mark unapproved choices provisional. Save test commands, dates, source version and results when practical. An agent inspecting a screenshot is not a human review. Do not claim token generation, Chromatic comparison, or accessibility certification until verified.
+
+## Roles and tool choices
+
+Muse contributes audience, design reasoning and usability. Carbon provides an independent architecture and implementation review. Codex combines contributions, prepares templates and assists with the pilot. Claude Opus is requested for independent validation after the draft; model availability and the outcome must be verified. Rajeev or a designated designer approves brand and high-impact design choices and reviews the result. Frontend Design and Impeccable may assist with visual direction and critique. Storybook is the component workbench. shadcn/ui, MUI, daisyUI, and other libraries are optional project-dependent building blocks, not a mandatory stack; licensing and compatibility matter. The Infographic Framework can inform pattern selection, subject to reviewing the actual relevant entries.
+
+## First pilot: AI Builder Studio
+
+Use a separate working copy of the actual screen and its real content. Inspect its stack and content-security policy first. Start with the brief card, workflow preview and navigation/skip link. Preserve existing behavior and mark current design values provisional until approved. Check the flow at representative narrow and wide widths; measure time and decisions. Do not modify the live site or Salesforce. A human still reviews brand fit, usability and accessibility.
+
+> **Annotation, Claude Opus 5.5 review, 24 November 2026:** Recorded results and open items for the static pilot are in demo-evidence/testing-and-refinement-log.md, Stages 2 and 7. Open: keyboard only opening of the native select on each supported operating system, skip link activation moving focus to the main content, and human review.
+
+## Evidence and next review
+
+Inputs include Muse's design contribution in the existing Learn DaisyUI conversation and Carbon's earlier five-stage response in the Antigravity conversation; their recommendations are treated as proposals. Muse's suggestions that every component requires its own spec, every page must originate exclusively in Storybook, and a four-pixel scale must be universal are optional project choices, not universal requirements. Carbon's written contribution is at `handoffs/carbon-framework-input.md`: it emphasizes shared project tokens, targeted component stories, a static-HTML route without forced React migration, and a small Studio pilot. Its suggestions for strict fixed gates, mandatory component test infrastructure, multi-brand switching and automated accessibility coverage are options to evaluate, not verified capabilities or universal requirements. Automated accessibility tests catch some issues and do not replace manual review. Storybook MCP is installed in the lab, but agent connectivity is not yet verified. Templates are in `framework-templates/` alongside this file.
+
+## Storybook tutorial lessons — verified in Taskbox
+
+The component brief is enough to start; stories can be written early and guide the component's implementation. Develop individual states in isolation, then compose them into a list or other pattern, and finally preview a screen. Include default and meaningful variant states, plus loading, empty and error states at the appropriate level. Use sample data, controls, and interaction checks to make examples repeatable without a live backend; integration data still needs its own verification. In the local Taskbox exercise, Storybook's accessibility check detected archived text with low contrast and passed after correction. Automated checks complement keyboard and human review; they cannot prove accessibility. Build the static Storybook for handoff, and treat Chromatic publishing and visual baselines as optional steps requiring an account and an explicit sharing decision. Storybook previews are a development workbench, not just a post-design test; Open Design may precede or complement them depending on the task.
+
+For data-dependent screens, document the expected data contract and use deterministic mocked success and error responses in Storybook. In the practice project, connected Redux stories use MSW to simulate both; this isolates design review from availability of a live service. Test real integration separately. The reusable screen template should capture data, loading, empty and error states, and their acceptance criteria. Avoid forcing Redux or React on projects with different stacks.
+
+## Practical testing choices
+
+For each important component, list representative states and acceptance criteria as an action and an observable result; use Storybook stories to develop and inspect those states. Automate high-value interaction and accessibility checks, then review keyboard operation and visual quality by hand. Check selected assembled screens and critical flows in a browser; mocked data makes tests repeatable but does not validate real integrations. Use responsive examples appropriate to the project rather than testing every possible combination.
+
+> **Annotation — Codex, 2026-11-24, primary-button pilot:** For a reproducible bug, add a focused test and confirm it fails for the reported reason before fixing it; rerun it after the fix. Where useful, assess design and technical evidence independently to surface different issues. Record precisely what each check covered: the component or screen, states, viewport, tools, result and any failed or skipped checks. A source scan or a screenshot of one state does not establish that every state or device was reviewed. Scale the depth of review to the risk and project rather than requiring the same ceremony for every component.
+
+> **Annotation — Codex, 2026-11-24, reusable starter:** `framework-templates/testing-starter/` contains a draft static HTML fixture and browser check, an illustrative React story, and a results checklist. Adapt these to the project's stack and actual component; they are not a universal setup. The static example passed one local Chrome smoke test, and the React example passed after adapting its import to the current Taskbox pilot. Portability to another project still needs verification.
+
+> **Annotation, Claude Opus 5.5 review, 24 November 2026:** Record who performed each review: a named person, or an agent with its model and tool. Several agents reviewing in parallel are agent review even when their prompts are independent. Before citing a check as passing, record that it was shown able to fail, as the regression entries in the evidence log already do.
+
+> **Annotation, Claude Opus 5.5 review, 24 November 2026:** The 35 React drafts in the Taskbox lab are a separate reference implementation; their results do not show that the static Studio behaves the same way. Decide whether the lab is a deliverable, a specification aid or a temporary experiment before adding more tests to it.
+
+For visual regression, a person first reviews and accepts baseline images in a consistent environment. A tool such as Chromatic can compare later screenshots and flag changes for review; a difference is not automatically a defect, and a passing comparison does not establish that the original design is good. Sharing or publishing is optional and requires a deliberate choice. CI automation is useful when a project needs repeatable ongoing checks, not a prerequisite for a first design pilot.
+
+Stories can describe planned states before those states are finished: explicitly label placeholders and check rendered results rather than assuming that a story name proves its behavior is implemented. Reuse representative fixtures between component, screen and flow checks where practical. A flow with mocked responses verifies the frontend's response to those fixtures, not real authentication, service behavior or production integration.
+
+These checks complement each other. In an earlier run of the separate handbook practice lab, 22 Storybook tests passed, yet a browser flow exposed a CSS-hidden archive checkbox that normal keyboard users cannot reach. A pointer interaction still worked. Record such findings and manually review keyboard access; automated checks cannot prove accessibility. See `handoffs/storybook-testing-handbooks.md` for the practice scope and remaining exercises.
+
+## Coordinating the tools and handovers
+
+Use one component brief as the shared contract; keep decisions, links, pending questions and evidence in the project's handoff folder. A coordinator agent reads the artifacts and performs the handovers below. The tools do not automatically exchange a complete design or message one another in this pilot.
+
+1. **Brief → optional Open Design reference:** supply project rules, chosen reference, constraints and acceptance criteria. Open Design produces a visual specimen; record its project/file link, adopted reference guidance, overrides, and unapproved choices. Verify any source licensing before reusing code or assets.
+2. **Brief/reference → implementation and stories or fixtures:** the agent reads the brief and any selected reference, creates or adapts code in the target stack, and links the files. HTML from a design exercise is not automatically a React component. Check that the implementation follows the brief and document differences.
+3. **Screen → design critique:** where useful, provide the component, story and rendered view to Impeccable or an equivalent review. The agent records and resolves applicable findings or marks them for human judgment. A clean detector result alone is not a full design or accessibility review.
+
+   > **Annotation — Codex, 2026-11-24:** This critique can also be applied to an individual component, as in the primary-button pilot.
+4. **Stories → Storybook and Playwright:** run component, interaction and configured accessibility checks in Storybook; Playwright drives a real browser for targeted component and screen-flow checks. The Storybook Vitest integration itself uses Playwright, so an additional Playwright check should cover a distinct risk. Record what ran, results and remaining manual checks.
+
+   > **Annotation, Claude Opus 5.5 review, 24 November 2026:** Native browser behavior (dialog Escape, select menus, form submission, focus return) is the clearest distinct risk that simulated story events miss, as the Taskbox dialog and accordion findings showed. Keep a separate real browser check for it and name the operating system in the evidence.
+5. **Stories → Chromatic (optional):** once a project is connected and sharing is chosen, publish stories and have a person review a baseline. Subsequent builds compare against that baseline; a person decides whether differences are intentional. In the current pilot Chromatic is installed but unconnected, so no visual comparison has run.
+   > **Annotation, Claude Opus 5.5, package note, 24 November 2026:** Since this text was written, a Chromatic project has been created for the reference project's practice Storybook. No build has been published and no baseline accepted. This package includes no Chromatic setup.
+6. **Review → handoff:** include links to brief, design, code and stories, test results, reference provenance, unapproved decisions, manual accessibility review and next action. Feed concrete missing inputs back into the template; avoid treating passing checks as design approval.
+
+**Current automation:** in `taskbox`, with its Storybook already running on port 6007, `sh scripts/check-spanda-pilot.sh` runs the Impeccable static detector, Storybook/Vitest suite and a separate Playwright check in sequence, stopping on command failure. The script prints results; it does not start Open Design, write a handoff, connect Chromatic, approve a design or start the Storybook server. It uses the installed Mac Chrome path by default and supports `CHROME_PATH` and `STORYBOOK_URL` for the separate Playwright check; the Vitest configuration currently uses a Mac-specific Chrome path. The coordinator must review detector findings even when the detector exits successfully, and capture any evidence needed for handoff. This is a pilot script, not a general orchestration service.
+
+> **Annotation, Claude Opus 5.5 review, 24 November 2026:** This describes the earlier primary button pilot. framework-templates/testing-starter/ is the route intended for reuse. check-spanda-pilot.sh and check-kit-keyboard.mjs still assume port 6007 and Mac paths, and remain project scripts until they are parameterized and run elsewhere.
