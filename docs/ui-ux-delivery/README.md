@@ -2,7 +2,7 @@
 
 A small kit for planning, building and checking interface components on real projects: project templates, a testing starter for static HTML and for React with Storybook, and neutral visual examples. It uses Storybook, Playwright, axe and, optionally, Chromatic through their official packages and documentation, and does not bundle them.
 
-Read [STATUS.md](STATUS.md) before relying on anything here. Nothing in this folder has yet been shown to work unchanged on another project.
+Read [STATUS.md](STATUS.md) before relying on anything here. The examples and checks pass in this package, but nothing has yet been shown to work unchanged on another project.
 
 ## Contents
 
@@ -12,7 +12,7 @@ This is a preview of draft neutral examples. To interact with them, run the exam
 
 | Path | Use |
 | --- | --- |
-| [framework.md](framework.md) | Process record from the reference project, kept word for word with labelled annotations |
+| [framework.md](framework.md) | The five stage delivery process, evidence rules and tool handovers |
 | [templates/](templates/) | Brief, design system, component spec, screen spec, review and handoff |
 | [testing/](testing/) | Testing starter: static check, React stories, results and human review checklists |
 | [examples/](examples/) | Placeholder tokens, shared CSS, a static HTML component page and React stories |
@@ -22,12 +22,13 @@ This is a preview of draft neutral examples. To interact with them, run the exam
 
 ## Use it on a project
 
-1. Fill [templates/01-project-brief.md](templates/01-project-brief.md), including stack, supported browsers and assistive technology.
+1. Fill [templates/01-project-brief.md](templates/01-project-brief.md), including stack, supported browsers and assistive technology. Record the existing site's source version, content and qualities, or the references you will adopt or adapt, before rebuilding.
 2. Record project rules and the single token source in [templates/02-design-system.md](templates/02-design-system.md). Replace `examples/tokens.example.css` with the project's own values; the examples are not a brand.
 3. Choose the route that matches the real site:
    * Static HTML: build a fixture from the real component and adapt `testing/static/check-static-button.mjs`. See [testing/README.md](testing/README.md), including the `ui-tests/` setup for sites without Node.
    * React with Storybook: adapt `testing/react/Button.example.stories.tsx` in the project's own Storybook.
-4. Show that each new check can fail, save the evidence, and complete [testing/results-checklist.md](testing/results-checklist.md).
+   * Other stacks: test built pages with the project's own browser test runner, using the same kinds of checks.
+4. Compare existing and candidate screens with the same content, states and widths. Show that each new check can fail, save the evidence, and complete [testing/results-checklist.md](testing/results-checklist.md).
 5. Before handoff, complete the required lines of [testing/human-review-checklist.md](testing/human-review-checklist.md) and [templates/05-review-handoff.md](templates/05-review-handoff.md).
 
 ## Run the examples locally
@@ -67,4 +68,4 @@ Set `CHROME_PATH` to use an installed Chrome instead of the Playwright browser.
 
 This folder is licensed under MIT. Copyright © 2026 AI Spanda. Dependencies retain their own licenses; see [LICENSE](LICENSE).
 
-> **Rights update:** The owner confirmed the included asset was created by AI Spanda. The MIT license in this folder applies to that asset. Dependencies such as Playwright and axe are installed separately and retain their own licenses; see their package notices.
+The MIT license applies to the files in this folder, which AI Spanda created. Dependencies such as Storybook, Playwright and axe are installed separately and keep their own licenses; see their package notices.

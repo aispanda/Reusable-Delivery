@@ -9,5 +9,4 @@ Interaction, focus, keyboard and accessibility rules: TODO
 Content voice and usage rules: TODO
 Component inventory and links to code, stories or fixtures and specifications: TODO
 Known exceptions, provisional values, decision owners and pending decisions: TODO
-
-> **Annotation, Claude Opus 5.5 review, 24 November 2026:** Visual acceptance criteria a reviewer can check (for example type scale and line length, spacing rhythm, color pairs, focus treatment, image cropping), each marked approved or provisional: TODO
+Visual acceptance criteria a reviewer can check (for example type scale and line length, spacing rhythm, color pairs, focus treatment, image cropping), each marked approved or provisional: TODO
