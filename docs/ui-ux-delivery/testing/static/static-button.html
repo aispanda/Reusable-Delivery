@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Replace with the real component's markup and styles, and the site's content security policy meta tag if it has one. -->
+  <title>Button test fixture</title>
+</head>
+<body>
+  <main>
+    <h1>Button test fixture</h1>
+    <button type="button" id="example-action">Run example</button>
+    <p id="result" role="status">Not run</p>
+  </main>
+  <script>
+    document.querySelector('#example-action').addEventListener('click', () => {
+      document.querySelector('#result').textContent = 'Example ran';
+    });
+  </script>
+</body>
+</html>
