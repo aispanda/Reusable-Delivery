@@ -20,7 +20,7 @@ Earlier runs of the same starter showed that each static check and each button s
 
 ## Open
 
-* Portability: not yet validated on a second, unrelated project.
+* Portability: not yet validated on a second, unrelated project. One trial on an Astro site applied the process rather than these files unchanged; its lessons are in `framework.md` and `testing/README.md`, as reported by that project and not rerun here.
 * Human review: no human design, keyboard or screen reader review of this package has been recorded.
 * Visual regression: no visual baseline has been accepted and this package has no visual comparison setup. The example screenshot is a preview, not a baseline.
 * GitHub Pages is not enabled for this repository yet. The workflow `.github/workflows/ui-ux-showroom-pages.yml` publishes the showroom once Pages uses GitHub Actions as its source; until then run it locally.

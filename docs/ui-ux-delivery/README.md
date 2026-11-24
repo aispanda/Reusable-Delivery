@@ -78,7 +78,7 @@ The [showroom](showroom/index.html) lets you try these components with a keyboar
 3. Choose the route that matches the real site:
    * Static HTML: build a fixture from the real component and adapt `testing/static/check-static-button.mjs`. See [testing/README.md](testing/README.md), including the `ui-tests/` setup for sites without Node.
    * React with Storybook: adapt `testing/react/Button.example.stories.tsx` in the project's own Storybook.
-   * Other stacks: test built pages with the project's own browser test runner, using the same kinds of checks.
+   * Other stacks: use a native Storybook adapter where one exists, or test built pages with the project's own runner. Confirm stories render in a browser, not only that the build exits cleanly.
 4. Compare existing and candidate screens with the same content, states and widths. Show that each new check can fail, save the evidence, and complete [testing/results-checklist.md](testing/results-checklist.md).
 5. Before handoff, complete the required lines of [testing/human-review-checklist.md](testing/human-review-checklist.md) and [templates/05-review-handoff.md](templates/05-review-handoff.md).
 
@@ -109,6 +109,7 @@ Set `CHROME_PATH` to use an installed Chrome instead of the Playwright browser.
 * Playwright accessibility testing with axe: https://playwright.dev/docs/accessibility-testing
 * axe core rules: https://github.com/dequelabs/axe-core
 * Chromatic: https://www.chromatic.com/docs/
+* Chromatic for Playwright: https://www.chromatic.com/docs/playwright/
 * WCAG 2.2: https://www.w3.org/TR/WCAG22/
 * ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
 
