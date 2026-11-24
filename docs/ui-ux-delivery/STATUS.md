@@ -6,6 +6,8 @@ Last updated: 24 November 2026. Draft.
 
 > **Rights update:** The owner confirmed AI Spanda created the asset and named AI Spanda as copyright holder. Direct dependency metadata identifies MIT, Apache-2.0, and MPL-2.0 licenses; dependencies are installed separately and retain their own terms. This is a direct-dependency check, not an audit of all transitive dependencies or generated distributions.
 
+> **Framework update, 24 November 2026:** Annotations on baseline capture, references, visual acceptance criteria and baseline versus candidate comparison were added to `framework.md` and templates 01 to 05. They are guidance only; no new checks were run for them.
+
 > **Visual update:** A screenshot of the neutral static examples is included for GitHub readers. It is not an approved visual regression baseline.
 
 ## Recorded evidence from the reference project

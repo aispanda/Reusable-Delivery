@@ -16,6 +16,14 @@ Reuse the process, blank templates, accessibility checks, component and story pa
 4. **Screen:** assemble content and interactions, with relevant widths and states, using `04-screen-spec.md`. Open Design is an optional visual reference, not an obligatory per-component conversion step.
 5. **Review and handoff:** run relevant checks and record remaining human visual, keyboard, screen-reader and usability review with `05-review-handoff.md`. Measure time and improve templates based on observed gaps.
 
+> **Annotation, Claude Opus 5.5 review, 24 November 2026: baseline, references and comparison.** A review of the AI Spanda draft components found them thinner than the live site. The live Astro asset cards show a maturity label, a "Why it matters" line, proof with a last verified date, tag chips and an explore link, and the principle cards are numbered; the React drafts had a title, description and link. The drafts were built from an inventory sheet rather than from the site. To prevent this at each stage:
+>
+> 1. **Brief:** before rebuilding, record the existing site's source version (repository commit or deployed date), stack, real content and visual and functional qualities, with screenshots at the agreed widths. With no existing site, name one or more references (a site, screenshot, design file, Storybook or repository), state what to adopt, adapt or avoid, and check reuse rights before copying code, fonts, images or text. A reference informs the design; it is not copied uncritically.
+> 2. **Foundations:** turn the visual direction into acceptance criteria a reviewer can check, such as type scale and line length, spacing rhythm, color pairs, focus treatment and image handling, each marked approved or provisional.
+> 3. **Components:** take anatomy, states and content fields from the baseline or chosen reference; an inventory row is a starting list, not a specification. Build in the stack that will ship (on AISpanda.com, Astro components), and treat work in another stack as a reference only.
+> 4. **Screen:** compare components assembled in representative screens with matching real content, states and widths, not only as isolated examples.
+> 5. **Review:** compare baseline and candidate for visual quality, behavior, accessibility and performance. Choose tools for the actual risks, and record which results came from automated checks, which from a visual comparison tool and which from a person. Passing checks or an unchanged visual diff do not replace human brand and design approval.
+
 ## Sources of truth and evidence
 
 Record the source revision of exact token values, use DESIGN.md for rationale and rules, and component code with stories or fixtures for behavior. Mark unapproved choices provisional. Save test commands, dates, source version and results when practical. An agent inspecting a screenshot is not a human review. Do not claim token generation, Chromatic comparison, or accessibility certification until verified.

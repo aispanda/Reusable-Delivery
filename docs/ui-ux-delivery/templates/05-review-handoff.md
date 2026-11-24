@@ -10,3 +10,5 @@ Source-code paths, setup instructions and technical team handoff: TODO
 Actual time versus estimate and remaining decisions: TODO
 
 > **Annotation, Claude Opus 5.5 review, 24 November 2026:** For each review listed, name who performed it (person, or agent with model and tool). Storybook or site build current with the handed off source: yes or no, and date: TODO.
+
+> **Annotation, Claude Opus 5.5 review, 24 November 2026:** Baseline versus candidate on the same screens, content, states and widths: visual quality, behavior, accessibility and performance, with the tool or person and the result for each: TODO
