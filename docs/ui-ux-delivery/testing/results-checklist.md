@@ -9,7 +9,7 @@
 - Result for each check, including failures and skips:
 - Issue → correction → evidence that it was corrected:
 - Visual, keyboard, screen-reader, zoom, touch and real-device review actually performed:
-- Visual baseline: not set / pending review / accepted by whom and when:
+- Visual baseline: not set / local archive only / uploaded, pending review / accepted by whom and when:
 - Real integration vs fixture or mocked-data scope:
 - Remaining issues, owner and next action:
 - Evidence links and demo-relevant before/after observations:
