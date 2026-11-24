@@ -42,15 +42,17 @@ Each tile opens its template. [framework.md](framework.md) explains the process,
 | --- | --- |
 | **Start a project** | Fill the [project brief](templates/01-project-brief.md), then follow [Use it on a project](#use-it-on-a-project). |
 | **Test components** | Pick the static HTML or React route in the [testing starter](testing/README.md). |
-| **See the examples** | Open the [static component page](examples/static/components.html) locally, or run Storybook as shown in [Run the examples locally](#run-the-examples-locally). |
+| **See the examples** | Open the [showroom](showroom/index.html), the kit's front page built and checked with the kit itself, or run the examples as shown in [Run the examples locally](#run-the-examples-locally). |
 
 ![Neutral component examples on placeholder tokens. Left: a Save changes button with a visible keyboard focus ring beside Cancel and an unavailable button, a text field, an email field in its error state with its message, and checkboxes in unchecked, checked and disabled states. Right: an open Delete this draft dialog with keyboard focus on the Delete button.](examples/screenshots/static-components.png)
 
 The examples use placeholder tokens on purpose, so a project that adopts the kit replaces them with its own brand. This image is a preview, not a visual baseline.
 
+The [showroom](showroom/index.html) lets you try these components with a keyboard and switch their token source live. Its [delivery record](showroom/delivery/README.md) shows the brief, design system, specs and check results behind it. It will be published at https://aispanda.github.io/Reusable-Delivery/showroom/ once GitHub Pages is enabled; until then, serve this folder with any static server and open `/showroom/`.
+
 ## Status
 
-[STATUS.md](STATUS.md) is the record of what has and has not been verified. The checks pass inside this package. The kit has not yet been shown to work unchanged on a second project, and no human design, keyboard or screen reader review has been recorded.
+[STATUS.md](STATUS.md) is the record of what has and has not been verified. The checks pass inside this package. The kit has not yet been shown to work unchanged on a second project, and no human design, keyboard or screen reader review has been recorded. The showroom passes its own 33 checks, and each was also shown to fail when its feature was broken on purpose.
 
 <details>
 <summary><strong>What is in this folder</strong></summary>
@@ -62,6 +64,7 @@ The examples use placeholder tokens on purpose, so a project that adopts the kit
 | [testing/](testing/) | Testing starter: static check, React stories, results and human review checklists |
 | [examples/](examples/) | Placeholder tokens, shared CSS, a static HTML component page and React stories |
 | [assets/](assets/) | README banner, stage tiles and status badges |
+| [showroom/](showroom/) | One page showroom in the AI Spanda style, its checks (`npm run check:showroom`) and its delivery record |
 | `package.json`, `vite.config.ts`, `tsconfig.json`, `.storybook/` | Local setup for the examples and checks |
 | [STATUS.md](STATUS.md) | What has and has not been verified |
 | [LICENSE](LICENSE) | MIT license for this folder |
@@ -94,6 +97,7 @@ npx playwright install chromium
 * Story tests with accessibility rules: `npm run test:stories`
 * Static check: `npm run check:static` (writes JSON to `evidence/`)
 * Type check: `npm run typecheck`
+* Showroom checks: `npm run check:showroom` (writes JSON to `showroom/delivery/check-results/`)
 
 Set `CHROME_PATH` to use an installed Chrome instead of the Playwright browser.
 
@@ -118,4 +122,4 @@ This folder is licensed under MIT. Copyright © 2026 AI Spanda. Dependencies ret
 
 The MIT license applies to the files in this folder, which AI Spanda created. Dependencies such as Storybook, Playwright and axe are installed separately and keep their own licenses; see their package notices.
 
-The banner, stage tiles and badges carry the AI Spanda style. The tokens and examples stay neutral, so a project that adopts this kit does not inherit the AI Spanda brand.
+The banner, stage tiles, badges and showroom carry the AI Spanda style, and the logo is the existing AI Spanda raster lockup, unchanged. The tokens and examples stay neutral, so a project that adopts this kit does not inherit the AI Spanda brand.

@@ -1,0 +1,207 @@
+{
+  "date": "2026-11-24T20:10:24.614Z",
+  "page": "showroom/index.html",
+  "sha256": {
+    "index.html": "0e06726353e16b77d1e50edaa15989d6e23b3271d0e036ce585fa3999c34425a",
+    "showroom.css": "30b80855f10241388a04e2510c757f484a088cd3c5871f0d15a9e80ea51880e4",
+    "showroom.js": "3c82b36d160ceb62585c928f2bd1a9891debae23da5149c878a604809a3b16a8"
+  },
+  "playwright": "1.65.1",
+  "axeCorePlaywright": "4.14.0",
+  "break": "save",
+  "failsOn": "axe violations with impact serious or critical; any failed assertion",
+  "notCovered": [
+    "screen reader output",
+    "zoom and text spacing",
+    "forced colors",
+    "touch and real devices",
+    "other browsers and operating systems",
+    "visual design quality and brand fit"
+  ],
+  "checks": [
+    {
+      "name": "Automated rules on load: no serious or critical violations",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "No horizontal overflow",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Tab reaches every visible control, each with a visible focus outline",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Stage tabs: arrow keys, Home and End move selection and show the matching panel",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with the dialog open: no serious or critical violations",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Dialog: Enter opens it with focus inside, Escape closes it and focus returns",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules in the error state: no serious or critical violations",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Form: an invalid address shows a linked error and focus moves to the field; a valid one clears it",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with AI Spanda tokens: no serious or critical violations",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Token switch: arrow key selects AI Spanda values and components restyle without code changes",
+      "width": 320,
+      "result": "pass"
+    },
+    {
+      "name": "Save button: Enter and Space update the status message",
+      "width": 320,
+      "result": "fail",
+      "detail": "Expected values to be strictly equal: + actual - expected + 'Not saved yet.' - 'Changes saved.' "
+    },
+    {
+      "name": "Automated rules on load: no serious or critical violations",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "No horizontal overflow",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Tab reaches every visible control, each with a visible focus outline",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Stage tabs: arrow keys, Home and End move selection and show the matching panel",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with the dialog open: no serious or critical violations",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Dialog: Enter opens it with focus inside, Escape closes it and focus returns",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules in the error state: no serious or critical violations",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Form: an invalid address shows a linked error and focus moves to the field; a valid one clears it",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with AI Spanda tokens: no serious or critical violations",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Token switch: arrow key selects AI Spanda values and components restyle without code changes",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "name": "Save button: Enter and Space update the status message",
+      "width": 768,
+      "result": "fail",
+      "detail": "Expected values to be strictly equal: + actual - expected + 'Not saved yet.' - 'Changes saved.' "
+    },
+    {
+      "name": "Automated rules on load: no serious or critical violations",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "No horizontal overflow",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Tab reaches every visible control, each with a visible focus outline",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Stage tabs: arrow keys, Home and End move selection and show the matching panel",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with the dialog open: no serious or critical violations",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Dialog: Enter opens it with focus inside, Escape closes it and focus returns",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules in the error state: no serious or critical violations",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Form: an invalid address shows a linked error and focus moves to the field; a valid one clears it",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Automated rules with AI Spanda tokens: no serious or critical violations",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Token switch: arrow key selects AI Spanda values and components restyle without code changes",
+      "width": 1280,
+      "result": "pass"
+    },
+    {
+      "name": "Save button: Enter and Space update the status message",
+      "width": 1280,
+      "result": "fail",
+      "detail": "Expected values to be strictly equal: + actual - expected + 'Not saved yet.' - 'Changes saved.' "
+    }
+  ],
+  "axe": {
+    "load 320": [],
+    "dialog 320": [],
+    "error 320": [],
+    "aispanda tokens 320": [],
+    "load 768": [],
+    "dialog 768": [],
+    "error 768": [],
+    "aispanda tokens 768": [],
+    "load 1280": [],
+    "dialog 1280": [],
+    "error 1280": [],
+    "aispanda tokens 1280": []
+  },
+  "browser": "chromium 153.0.8010.12",
+  "os": "linux"
+}

@@ -10,6 +10,7 @@
     "build-storybook": "storybook build",
     "test:stories": "vitest --project storybook run",
     "check:static": "node testing/static/check-static-button.mjs testing/static/static-button.html evidence",
+    "check:showroom": "node showroom/check-showroom.mjs",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" },
