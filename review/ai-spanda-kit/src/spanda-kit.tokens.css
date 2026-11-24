@@ -1,0 +1,13 @@
+/* Illustrative kit tokens; replace from the approved project source before use. */
+:root {
+  --sk-ink: #12141a;
+  --sk-surface: #ffffff;
+  --sk-cream: #f3f1ea;
+  --sk-line: #c3cfdd;
+  --sk-control-border: #77889d;
+  --sk-blue: #164cca;
+  --sk-featured: #fff3d6;
+  --sk-badge-bg: #e8edf6;
+  --sk-tint: #eef3fa;
+  --sk-muted: #475a70;
+}

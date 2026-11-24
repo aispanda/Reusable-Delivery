@@ -1,0 +1,28 @@
+{
+  "name": "ai-spanda-kit-review",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest --project storybook run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "10.1.11",
+    "@storybook/addon-vitest": "10.1.11",
+    "@storybook/react-vite": "10.1.11",
+    "storybook": "10.1.11",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/browser-playwright": "^4.0.16",
+    "playwright": "^1.57.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.16"
+  }
+}
