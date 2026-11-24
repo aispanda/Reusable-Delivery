@@ -109,6 +109,7 @@ Set `CHROME_PATH` to use an installed Chrome instead of the Playwright browser.
 * Playwright accessibility testing with axe: https://playwright.dev/docs/accessibility-testing
 * axe core rules: https://github.com/dequelabs/axe-core
 * Chromatic: https://www.chromatic.com/docs/
+* Chromatic for Playwright: https://www.chromatic.com/docs/playwright/
 * WCAG 2.2: https://www.w3.org/TR/WCAG22/
 * ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
 
