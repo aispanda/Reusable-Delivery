@@ -124,6 +124,6 @@ Set `CHROME_PATH` to use an installed Chrome instead of the Playwright browser.
 
 This folder is licensed under MIT. Copyright © 2026 AI Spanda. Dependencies retain their own licenses; see [LICENSE](LICENSE).
 
-The MIT license applies to the files in this folder, which AI Spanda created. Dependencies such as Storybook, Playwright and axe are installed separately and keep their own licenses; see their package notices.
+The MIT license applies to the files in this folder, which AI Spanda created. Dependencies such as Storybook, Playwright and axe are installed separately and keep their own licenses; see their package notices. Linked upstream sources, including It’s a Plan (AGPL-3.0) and shadcn/ui, are not included in this folder and keep their own licenses.
 
 The banner, stage tiles, badges and showroom carry the AI Spanda style, and the logo is the existing AI Spanda raster lockup, unchanged. The tokens and examples stay neutral, so a project that adopts this kit does not inherit the AI Spanda brand.
