@@ -41,7 +41,7 @@ Each tile opens its template. [framework.md](framework.md) explains the process,
 | Path | First step |
 | --- | --- |
 | **Start a project** | Fill the [project brief](templates/01-project-brief.md), then follow [Use it on a project](#use-it-on-a-project). |
-| **Start with existing components** | Follow the [component reuse guide](reuse-existing-components.md) for a worked Astro and shadcn/ui example with stock components, source links and a test handoff. |
+| **Start with existing components** | [Choose a UI pattern](choose-a-ui-pattern.md) by task and open its working source. Use the [reuse guide](reuse-existing-components.md) for the component inventory, Astro setup and verification. |
 | **Test components** | Pick the static HTML or React route in the [testing starter](testing/README.md). |
 | **See the examples** | Open the [showroom](showroom/index.html), the kit's front page built and checked with the kit itself, or run the examples as shown in [Run the examples locally](#run-the-examples-locally). |
 
@@ -74,7 +74,7 @@ The [showroom](showroom/index.html) lets you try these components with a keyboar
 
 ## Use it on a project
 
-If you already have a site or component library, use the [component reuse guide](reuse-existing-components.md) alongside the five stages below.
+If you already have a site or component library, [choose a UI pattern](choose-a-ui-pattern.md) before opening the [component reuse guide](reuse-existing-components.md) alongside the five stages below.
 
 1. Fill [templates/01-project-brief.md](templates/01-project-brief.md), including stack, supported browsers and assistive technology. Record the existing site's source version, content and qualities, or the references you will adopt or adapt, before rebuilding.
 2. Record project rules and the single token source in [templates/02-design-system.md](templates/02-design-system.md). Replace `examples/tokens.example.css` with the project's own values; the examples are not a brand.
