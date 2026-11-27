@@ -3,7 +3,7 @@
     {
       "id": "A-01",
       "title": "Flag overdue invoices",
-      "version": 1,
+      "version": 2,
       "actor": "invoice_reviewer",
       "environment": "test_queue",
       "fixtures": [
@@ -16,7 +16,7 @@
         "mobileUi": false,
         "backend": false
       },
-      "startingState": "A reviewer has invoices with known due dates and payment states.",
+      "startingState": "As of 2026-01-02 UTC, overdue_unpaid and overdue_paid are due 2026-01-01, and due_today is due 2026-01-02. The fixture names specify payment state; due_today is unpaid.",
       "actions": [
         "The reviewer opens the invoice queue.",
         "Inspect the Overdue flag on all three fixture invoices."
