@@ -4,7 +4,7 @@ See the [current worked demo](modules/using.md#example-quantity-rules-and-volume
 
 ## Checklist example
 
-The synthetic [invoice story](examples/story.md) with its [acceptance criterion](examples/invoice.scenarios.example.json) [checklist](examples/checklist.example.json), [agent roster](examples/agent-roster.example.json), and [blockers](examples/blockers.example.json) show two independent setup tasks, a verification task that requires both, and a story acceptance decision that remains pending. The checklist uses the [schema](templates/checklist.schema.json) and [shared field guide](templates/story-package.fields.json). Read this example when you need a filled-in reference.
+The synthetic [invoice story](examples/story.md) with its [acceptance criterion](examples/invoice.scenarios.example.json), [checklist](examples/checklist.example.json), [agent roster](examples/agent-roster.example.json), and [blockers](examples/blockers.example.json) show two independent setup tasks, a verification task that requires both, and a story acceptance decision that remains pending. Task C-03 links the exact flag rule and replays the A-01 procedure on three fixtures. The checklist uses the [schema](templates/checklist.schema.json) and [shared field guide](templates/story-package.fields.json).
 
 ## Scenario example
 
