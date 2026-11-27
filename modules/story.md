@@ -50,6 +50,7 @@ Keep build and setup tasks in the linked [checklist](../templates/checklist.json
 
 - The story owns the outcome, scope, repeatable workflow, and acceptance decision. The linked criteria file owns requirements and their verification definitions. The checklist owns task status, Task AC, task results, and task evidence.
 - Use stable C- IDs for new tasks and A- IDs for new criteria. Preserve historical IDs. A task lists applicable story criterion, check or scenario IDs in `supports`. Story QA cites relevant task evidence by task ID. Mark a task Pass when evidence confirms its Task AC. Record a story or scenario result from evidence for that check.
+- Use the shared field guide to record the applicable design sections and a runnable Task AC for each task. [Select a check](../CODE-QUALITY.md#select-a-check) that fits the task. Keep one authoritative copy of each procedure and link to it.
 - Keep one current record for each decision, blocker or file. Use task Comments and evidence for task-specific records. Shared records can live in the story or a linked artifact.
 
 See the [synthetic example](../EXAMPLE.md#checklist-example) when it helps.

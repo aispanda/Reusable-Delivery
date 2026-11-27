@@ -103,7 +103,7 @@
         "comments": {
           "label": "Comments",
           "format": "stepReferences",
-          "help": "Record what happened, what failed, and the next step. If stopping, explain why and link the follow-up.",
+          "help": "Record what happened and the next action. For a failed or blocked check, name the reason, follow-up and its owner. Keep earlier comments and evidence inline or by link.",
           "example": "Retest returned unrelated policy text. Recheck in S-07; refine in S-08 if the error persists."
         },
         "ownerType": {
@@ -168,7 +168,7 @@
         },
         "inputs": {
           "label": "Expected inputs",
-          "help": "List the artifacts and access needed to start. Put prerequisite tasks in Requires.",
+          "help": "List the artifacts, fixture or starting state, and access needed for the task and check. Identify the input revision when it affects the result. Put prerequisite tasks in Requires.",
           "example": "Pilot PDF, baseline JSON, and test processor version."
         },
         "outputs": {
@@ -183,8 +183,8 @@
         },
         "completion": {
           "label": "Task AC",
-          "help": "Define how to verify this task’s output before running. Include a meaningful failure case when relevant. Close only when the check passes.",
-          "example": "A valid draft survives reload. An over-limit Value fails and leaves the saved JSON intact."
+          "help": "Name the check type and observable pass rule. Give the bounded steps or link the exact versioned test, runbook or criterion that defines them. Use Supports when the cited criterion defines the procedure. Include a meaningful failure case when relevant.",
+          "example": "UI smoke check. Run A-01 on all three fixtures. Pass if only the overdue unpaid invoice shows the flag."
         },
         "supports": {
           "label": "Supports checks or scenarios",
@@ -220,8 +220,8 @@
         },
         "docs": {
           "label": "Documentation and debugging",
-          "help": "Link the exact guide section, skill, or repo file for this action.",
-          "example": "Google Document AI → Send a processing request → Batch processing."
+          "help": "Link the exact applicable design sections and any guide, skill or repo file needed for this task. Use section anchors or line links at the relevant revision. If no design section applies, give the reason in Comments.",
+          "example": "Link directly to the approved invoice flag rule, including the paid and due-today cases."
         },
         "model": {
           "label": "Model",
